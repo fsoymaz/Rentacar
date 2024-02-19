@@ -1,0 +1,48 @@
+.table-container {
+	margin-top: 20px;
+  }
+  
+  .table-container table {
+	width: 100%;
+	border-collapse: collapse;
+  }
+  
+  .table-container th,
+  .table-container td {
+	padding: 8px;
+	border: 1px solid #ddd;
+  }
+  
+  .table-container th {
+	background-color: #f2f2f2;
+  }
+  
+  .button-group {
+	margin-top: 20px;
+  }
+  
+  .button-group button {
+	margin-right: 10px;
+  }
+  
+
+  /* Admin.css */
+
+/* Tablo stilini ayarla */
+.table-container {
+	overflow-x: auto; /* Yatay kaydırma */
+	max-width: 100%; /* Tablonun maksimum genişliği */
+  }
+  
+  /* Buton grubunu yatay hizala */
+  .button-group {
+	display: flex;
+	justify-content: space-between; /* Butonları eşit aralıklı olarak hizala */
+	margin-top: 20px; /* Üst boşluk ekle */
+  }
+  
+  /* Modalı ortala */
+  .modal-dialog {
+	margin: 10% auto;
+  }
+  

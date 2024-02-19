@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Poppins", "sans-sarif";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --sidebar-color: #bcddf6;
+  --primary-color: #f4f2f2;
+  --primary-color-light: #f4f2f2;
+  --text-color: #707070;
+  --dark-color: #000;
+
+  --trans-02: all 0.2s ease;
+  --trans-03: all 0.3s ease;
+  --trans-04: all 0.4s ease;
+  --trans-04: all 0.5s ease;
+}
+
+
+
+
+.sidebar .text {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  margin-left: 1%;
+}
+
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  background-color: var(--sidebar-color);
+  padding: 10px 0;
+  transition: var(--trans-02);
+  z-index: 1; /* Alt içeriği baskılamak için z-index eklendi */
+}
+
+
+.sidebar header {
+  position: relative;
+}
+
+
+
+
+
+.sidebar header .toggle {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%) rotate(180deg);
+  height: 25px;
+  width: 25px;
+  background-color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--sidebar-color);
+  font-size: 22px;
+}
+
+.sidebar li {
+  height: 50px;
+  /* background-color: red; */
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar li .icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+
+}
+.sidebar li .icons,
+.sidebar li .text {
+  color: var(--text-color);
+  transition: var(--trans-03);
+}
+
+
+@media screen and (max-width: 900px){
+  .sidebar li .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-left: -37px;
+  
+  }
+  
+}
+
+  
+.sidebar li a {
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding-right: 50px;
+  border-radius: 6px;
+  transition: var(--trans-04);
+  text-align: left;
+}
+
+.sidebar li a:hover {
+  background: var(--primary-color);
+}
+
+
+
+
+
+
+
+.sidebar.close {
+  width: 5%;
+}
+
+.sidebar.close .text {
+  opacity: 0;
+}
+
+
+
+/* Sidebar.css */
+
+.sidebar .submenu li {
+  padding: 10px;
+}
+
+.sidebar .submenu li a {
+  color: #050101;
+  display: flex; /* Linklerin blok olarak görünmesini sağlar */
+  margin-top: 50%;
+
+}
+
+.sidebar .submenu li a:hover {
+  background-color: #4eb6bd; /* Fare ile üzerine gelindiğinde arka plan rengini değiştirir */
+}

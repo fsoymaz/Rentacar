@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Poppins&display=swap');
+
+
+.blanco {
+    background: white;
+    border-radius: 1.5em;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+	margin-bottom: 200px;
+}
+
+.blanco h1 {
+    font-family: 'Bree Serif', serif;
+    font-weight: 400;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.blanco form {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.fechas {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fecha {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.fecha input[type="date"] {
+    padding: 1em;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: .4em;
+}
+
+
+
+form label {
+    margin-top: 1em;
+}
+
+form input {
+    border-radius: 0.2em;
+    border: .5px solid gray;
+}
+
+form input[type="text"] {
+    margin-bottom: 1em;
+    padding: 1em;
+    font-weight: bold;
+}
+
+form input[type="date"] {
+    font-weight: bold;
+}
+
+form input[type="time"] {
+    font-weight: bold;
+}
+
+
+form input[placeholder] {
+    color: rgb(35, 34, 34);
+    font-family: 'Poppins', sans-serif;
+}
+
+form input[type="submit"] {
+    margin-top: 2%;
+    width: 100%;
+    border-radius: 1em;
+    background: rgb(6, 49, 78);
+    padding: 4%;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+}
+
+
+#pickupLocation {
+  padding: 10px; /* İçeriğin etrafındaki dolgu miktarını ayarlar */
+  font-size: 16px; /* Yazı tipi boyutunu ayarlar */
+}

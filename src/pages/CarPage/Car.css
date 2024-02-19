@@ -1,0 +1,159 @@
+
+
+.filter-menu-button {
+  position: absolute;
+  top: 12%; /* Yukarıdan 20 piksel uzaklık */
+  left: 0; /* Sağdan 20 piksel uzaklık */
+  background-color: #8ca4be; /* Arka plan rengi */
+  color: rgb(255, 255, 255); /* Yazı rengi */
+  border: none; /* Kenarlık yok */
+  border-radius: 5px; /* Kenar yuvarlama */
+  padding: 10px 20px; /* Dolgular */
+  cursor: pointer; /* İmleç tipi */
+  transition: background-color 0.3s ease; /* Geçiş efekti */
+  z-index: 100; /* Diğer elemanların üzerinde olacak */
+}
+
+.filter-menu-button:hover {
+  background-color: #6c849d; /* Üzerine gelindiğinde arka plan rengi */
+}
+
+.filter-menu {
+  text-align: center; /* Filtre menüsündeki içerikleri ortala */
+  padding: 20px;
+  background-color: #8ca4be;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none; /* Başlangıçta gizle */
+  z-index: 100;
+  max-width: 200px; /* Maksimum genişlik belirle */
+  position: absolute; /* Mutlak konumlandırma */
+  top: 17.5%; /* Filtre butonundan aşağıya doğru uzaklık */
+  overflow-y: auto; /* Dikey taşma durumunda kaydırma çubuğunu göster */
+}
+
+.filter-menu {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.filter-item {
+  margin-bottom: 10px;
+}
+
+.filter-item label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filter-item select,
+.filter-item input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Prevents padding from increasing the width */
+}
+
+
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+/* Make the filter menu appear/disappear with animation */
+.filter-menu {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.filter-menu.active {
+  opacity: 1;
+  max-height: 800px; /* Adjust as needed */
+}
+
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 4%;
+}
+
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.887);
+}
+
+.card img {
+  height: 200px;
+  padding: 5%;
+}
+
+
+.icon-section {
+  height: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: calc(2 * var(--icon-size) + var(--gap-size)); /* 2 icon + 1 gap */
+}
+
+.icon {
+  flex: 1 0 auto;
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+#filter {
+  height: 30px;
+  width: 70%;
+}
+
+.mnu {
+  background-color: #8ca4be; /* Arka plan rengi */
+  color: white; /* Yazı rengi */
+  border-radius: 5px; /* Kenar yuvarlama */
+  padding: 8px 20px; /* Dolgular */
+  cursor: pointer; /* İmleç tipi */
+  transition: background-color 0.3s ease; /* Geçiş efekti */
+
+}
+
+.mnu:hover {
+  background-color: #6c849d; /* Üzerine gelindiğinde arka plan rengi */
+}

@@ -1,0 +1,17 @@
+.header-title {
+	font-size: 20px;
+}
+
+.header-content {
+    color: #F3F3F3;
+    font-size: 1rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.header-content:hover {
+	color: rgb(176, 217, 232);
+}

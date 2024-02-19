@@ -1,0 +1,93 @@
+.body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.accordion {
+    max-width: 800px;
+}
+
+.accordion .context-box {
+    position: relative;
+    margin: 10px 20px;
+}
+
+.accordion .context-box .label {
+    position: relative;
+    padding: 10px;
+    background: #2694af;
+    color: #fff;
+    cursor: pointer;
+}
+.accordion .context-box .label::before{
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+
+.accordion .context-box .main-label::before{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+
+.accordion .context-box.active .label::before {
+    content: '-';
+}
+
+.accordion .context-box.active .main-label::before {
+    content: '-';
+}
+
+.accordion .context-box .content {
+    position: relative;
+    background: none;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    overflow-y: auto;
+}
+
+.accordion .context-box.active .content{
+    height: 150px;
+    padding: 10px;
+    font-weight: 400;
+    font-size: medium;
+    
+
+}
+
+.main-label{
+    position: relative;
+    padding: 20px;
+    background: rgb(182, 33, 85);
+    color: #fff;
+    font-weight: 700;
+    font-size:x-large;
+    }
+.slogan{
+    display:block ;
+    margin-top: 15px;
+    padding: 20px;
+    background: #2694af;
+    color: #fff;
+    font-weight: 700;
+    font-size:x-large;
+}
+.align-right{
+    text-align: right;
+}
+
+.content{
+    color: white;
+    font-style: italic;
+    font-size: 25px;
+}

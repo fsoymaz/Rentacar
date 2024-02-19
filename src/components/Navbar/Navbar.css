@@ -1,0 +1,62 @@
+/* Navbar Stilleri */
+.Navbar {
+  top: 0%;
+	position: fixed;
+	width: 100%;
+	z-index: 999;
+  background: linear-gradient(to left, rgb(6, 49, 78) 40%, rgb(243, 244, 250) 80%);
+}
+
+.Nav {
+	flex-grow: 1;
+}
+
+.Nav a {
+	font-size: 15px;
+	font-weight: bold;
+	color: rgb(53, 62, 68);
+}
+
+.Nav a:hover {
+	color: rgb(11, 148, 197);
+
+}
+
+
+
+
+
+@media (max-width: 990px) {
+  .Nav a {
+    background: linear-gradient(to left, rgb(6, 49, 78) 40%, rgb(247, 247, 247) 80%);
+    color: rgb(11, 148, 197);
+  }
+  .Nav a:hover {
+    color: rgb(7, 78, 103);
+  }
+
+
+
+
+
+  .navbar-toggler.collapsed .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(11, 148, 197, 4)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+  }
+}
+
+.transparent-button {
+  background-color: transparent !important;
+  color: rgb(254, 255, 255) !important;
+}
+
+
+.profile {
+  font-size: 15px;
+  color: rgb(246, 239, 242);
+  font-weight: bold;
+  padding: 0 20px;
+}
+
+.profile:hover {
+  color: rgb(216, 229, 234);
+}
