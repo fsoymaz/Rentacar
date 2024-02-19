@@ -8,7 +8,7 @@ import 'react-slideshow-image/dist/styles.css'
 import CustomFooter from './components/Footer/Footer';
 import About from './pages/About/About';
 import Admin from './pages/Admin/Admin';
-import AddCar from './pages/Admin/AdminPages/AddCar';
+import AddCar from './pages/Admin/AdminPages/AdminCarPage/AddCar';
 import AddBrand from './pages/Admin/AdminPages/AddBrand';
 import AddModel from './pages/Admin/AdminPages/AddModel';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -27,7 +27,7 @@ import UserRoute from './contexts/UserRoute';
 import RentalForm from './pages/Rental/rental';
 import RentalDetail from './pages/RentalDetails/RentalDetails';
 import Succsess from './pages/Success/Success';
-import Car from './pages/Admin/AdminPages/Car';
+import Car from './pages/Admin/AdminPages/AdminCarPage/Car';
 
 function App(): ReactElement {
   const isOnAdminPage = window.location.pathname.indexOf('/admin') === 0;

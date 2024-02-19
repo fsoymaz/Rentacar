@@ -1,7 +1,4 @@
-import React from 'react';
-import { AddCarRequest } from '../../../models/cars/request/addCarRequest';
-import { GetAllCarResponse } from '../../../models/cars/response/getAllCarResponse';
-
+import { GetAllCarResponse } from '../../../../models/cars/response/getAllCarResponse';
 
 const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
   return (

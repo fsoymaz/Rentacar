@@ -1,57 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { Formik, Form } from 'formik';
-import axios from 'axios';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
-import FormikInput from '../../../components/FormikInput/FormikInput';
-import FormikSelect from '../../../components/FormikSelect/FormikSelect';
-import modelService from '../../../service/baseSevice/modelService';
-import colorService from '../../../service/baseSevice/colorService';
-import carService from '../../../service/baseSevice/carService';
-import { AddCarRequest } from '../../../models/cars/request/addCarRequest';
-import { Category } from '../../../Enum/CategoryEnum';
-import { FuelType } from '../../../Enum/FuelType';
-import { TransmissionType } from '../../../Enum/TransmissionType';
-import { Option, generateOptions } from '../../../components/GenerateOptions/GenerateOptions';
-import locationService from '../../../service/baseSevice/locationService';
-import { Image } from 'semantic-ui-react';
-import { faIdCard } from '@fortawesome/free-solid-svg-icons';
-import { UpdateCarRequest } from '../../../models/cars/request/updateCarRequest';
-import imageDataService from '../../../service/baseSevice/imageDataService';
+import FormikInput from '../../../../components/FormikInput/FormikInput';
+import FormikSelect from '../../../../components/FormikSelect/FormikSelect';
+import carService from '../../../../service/baseSevice/carService';
+import { Category } from '../../../../Enum/CategoryEnum';
+import { FuelType } from '../../../../Enum/FuelType';
+import { TransmissionType } from '../../../../Enum/TransmissionType';
+import { Option, generateOptions } from '../../../../components/GenerateOptions/GenerateOptions';
+import { UpdateCarRequest } from '../../../../models/cars/request/updateCarRequest';
+import imageDataService from '../../../../service/baseSevice/imageDataService';
+import { getFormikInfo } from '../../../../utils/getFormikInfo';
+import { UpdateInitialValues } from '../../../../initialValues/CarInitialValues';
 
-// Enum for category
+interface plateValue {
+  plate: string;
+}
 const categoryOptions: Option[] = generateOptions(Category);
 const fuelTypeOptions: Option[] = generateOptions(FuelType);
 const transmissionTypeOptions: Option[] = generateOptions(TransmissionType);
-
+const isupdate: boolean = true;
 const validationSchema = Yup.object().shape({
-  // Validation rules should be added here
 });
-
 const UpdateCar: React.FC = () => {
   const [imagePath, setImagePath] = useState<string>('');
   const [isVisible, setIsVisible] = useState(false);
-  const [initialValues, setInitialValues] = useState<UpdateCarRequest>({
-    id: 0,
-    modelYear: 0,
-    plate: '',
-    minFindeksRate: 0,
-    kilometer: 0,
-    dailyPrice: 0,
-    transmissionType: '',
-    fuelType: '',
-    category: '',
-    passengerCapacity: 0,
-    imagePath: ''
-  });
+  const [plate, setPlate] = useState<string>('');
+  const [initialValues, setInitialValues] = useState<UpdateCarRequest>(
+    UpdateInitialValues
+  );
+
 
   const fetchCarByPlate = async (plate: string) => {
-    console.log("ben geldim", plate);
     try {
       const response = await carService.getByPlate(plate);
       const carData = response.data;
-      console.log("carData", carData);
       setInitialValues({
         id: carData.id,
         modelYear: carData.modelYear,
@@ -72,8 +57,10 @@ const UpdateCar: React.FC = () => {
   };
 
   const plateFunction = async (values: plateValue) => {
-    console.log("ben geldim", values.plate);
+    setIsVisible(false);
     await fetchCarByPlate(values.plate);
+    setPlate(values.plate);
+    setIsVisible(true);
   };
 
   const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,18 +73,8 @@ const UpdateCar: React.FC = () => {
     setImagePath(response.data);
   };
 
-  const FormikInfo = [
-    { formikType: "FormikInput", label: "Id", name: "id", type: "number", placeholder: "Id giriniz"},
-    { formikType: "FormikInput", label: "Model Year", name: "modelYear", type: "number", placeholder: "Model Year giriniz" },
-    { formikType: "FormikInput", label: "Plate", name: "plate", type: "string", placeholder: "Plate giriniz" },
-    { formikType: "FormikInput", label: "Min Findeks Rate", name: "minFindeksRate", type: "number", placeholder: "Min Findeks Rate giriniz" },
-    { formikType: "FormikInput", label: "Kilometer", name: "kilometer", type: "number", placeholder: "Kilometre giriniz" },
-    { formikType: "FormikInput", label: "Daily Price", name: "dailyPrice", type: "number", placeholder: "Daily Price giriniz" },
-    { formikType: "FormikSelect", label: "Transmission Type", name: "transmissionType", options: transmissionTypeOptions },
-    { formikType: "FormikSelect", label: "Fuel Type", name: "fuelType", options: fuelTypeOptions },
-    { formikType: "FormikSelect", label: "Category", name: "category", options: categoryOptions },
-    { formikType: "FormikInput", label: "Passenger Capacity", name: "passengerCapacity", type: "number", placeholder: "Passenger Capacity giriniz" },
-  ];
+
+  const FormikInfo = getFormikInfo([], [], [], transmissionTypeOptions, fuelTypeOptions, categoryOptions, isupdate);
 
   const handleSubmit = async (values: UpdateCarRequest) => {
     try {
@@ -111,10 +88,6 @@ const UpdateCar: React.FC = () => {
     }
   };
 
-  interface plateValue {
-    plate: string;
-  }
-
   return (
     <div className='container' style={{ justifyContent: 'center', alignItems: 'center' }}>
       <h1>Update Car</h1>
@@ -125,7 +98,7 @@ const UpdateCar: React.FC = () => {
       >
         <Form className='form-container'>
           <FormikInput key="plate" label="plate" name="plate" type="string" placeholder="plate" />
-          <button type="submit">Sub</button>
+          <button className='btn btn-success' type="submit">Göster</button>
         </Form>
       </Formik>
 
@@ -148,7 +121,8 @@ const UpdateCar: React.FC = () => {
               <br />
               <input name="image" type="file" onChange={handleImageChange} />
             </label>
-            <button type="submit">Submit</button>
+            <br />
+            <button className='btn btn-success' type="submit">Değiştir</button>
           </Form>
         </Formik>
       )}

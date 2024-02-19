@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Modal } from 'react-bootstrap';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Button, Modal, Row, Col } from 'react-bootstrap';
 
 type Props = {
   service: any;
@@ -8,10 +9,11 @@ type Props = {
   UpdateData: any;
 }
 
-const AdminPageAplication: React.FC<Props> = ({ service, Table, AddData, UpdateData }: Props) => {
+const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, UpdateData }: Props) => {
   const [data, setData] = useState<any>([]);
   const [showModal, setShowModal] = useState(false);
   const [isAddingData, setIsAddingData] = useState(true);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
 
   useEffect(() => {
     fetchData();
@@ -28,50 +30,61 @@ const AdminPageAplication: React.FC<Props> = ({ service, Table, AddData, UpdateD
 
   const handleAdd = async (data: any) => {
     try {
-      // handle add logic with data
       setIsAddingData(true);
       setShowModal(false);
-      await fetchData(); // Call fetchData to refresh data
+      await fetchData(); 
     } catch (error) {
       console.error('Error adding data:', error);
     }
   };
 
-  const handleUpdate = () => {
-    setIsAddingData(false); // Güncelleme yapılacağı için isAddingData değerini false yap
-    setShowModal(true); // Modal'ı göster
+  const handleUpdate = (item: any) => {
+    setSelectedItem(item);
+    setIsAddingData(false); 
+    setShowModal(true); 
   };
   
-  const handleDelete = () => {
-    // handle delete logic
+  const handleDelete = async () => {
+    if (true) {
+      try {
+        await service.delete(122);
+        await fetchData();
+      } catch (error) {
+        console.error('Error deleting data:', error);
+      }
+    } else {
+      console.error('No item selected or item does not have an id.');
+    }
   };
 
   return (
     <div className='container px-5' >
-      <div className='button-group'>
-        <Button variant='primary' onClick={() => { setIsAddingData(true); setShowModal(true); }}>
-          Add
-        </Button>
-
-        <Button variant='warning' onClick={handleUpdate}>
-          Update
-        </Button>
-
-        <Button variant='danger' onClick={handleDelete}>
-          Delete
-        </Button>
-      </div>
+      <Row className='button-group'>
+        <Col xs={12} sm={4}>
+          <Button variant='primary' className='w-100' onClick={() => { setIsAddingData(true); setShowModal(true); }}>
+            Add
+          </Button>
+        </Col>
+        <Col xs={12} sm={4}>
+          <Button variant='warning' className='w-100' onClick={handleUpdate}>
+            Update
+          </Button>
+        </Col>
+        <Col xs={12} sm={4}>
+          <Button variant='danger' className='w-100' onClick={handleDelete}>
+            Delete
+          </Button>
+        </Col>
+      </Row>
       <div className='table-container' style={{ backgroundColor: 'white' }}>
-        <table>
-          <Table cars={data} />
-        </table>
+        <Table cars={data} />
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title className='mb-2'>{isAddingData ? 'Add' : 'Update'} Data</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {isAddingData ? <AddData onSubmit={handleAdd} /> : <UpdateData onSubmit={handleUpdate} />}
+          {isAddingData ? <AddData onSubmit={handleAdd} /> : <UpdateData item={selectedItem} onSubmit={handleUpdate} />}
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={() => setShowModal(false)}>
@@ -86,4 +99,4 @@ const AdminPageAplication: React.FC<Props> = ({ service, Table, AddData, UpdateD
   );
 };
 
-export default AdminPageAplication;
+export default AdminPageApplication;
