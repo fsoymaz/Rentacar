@@ -3,7 +3,6 @@ import { GetAllCarResponse } from '../../../../models/cars/response/getAllCarRes
 const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
   return (
     <>
-      {/* Table Header */}
       <thead>
         {/* Table Header Rows */}
         <tr>

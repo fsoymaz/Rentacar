@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { CarModel } from '../../models/carModels/GetAllCarModel';
 import { motion } from 'framer-motion';
 import './Car.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faCog, faGasPump, faIdCard, faMoneyBill, faPaintBrush, faUser } from '@fortawesome/free-solid-svg-icons';
 import carService from '../../service/baseSevice/carService';
+import { GetAllCarResponse } from '../../models/cars/response/getAllCarResponse';
+import Header from '../../components/Header/Header';
 
 interface CategoryCarsProps { }
 
@@ -13,10 +14,9 @@ const CategoryCars: React.FC<CategoryCarsProps> = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const category = query.get('category');
-  const [cars, setCars] = useState<CarModel[]>([]);
+  const [cars, setCars] = useState<GetAllCarResponse[]>([]);
 
   useEffect(() => {
-    console.log('category:', category);
     const fetchCars = async () => {
       try {
         const response = await carService.getCarsByCategory(category || '');
@@ -26,13 +26,12 @@ const CategoryCars: React.FC<CategoryCarsProps> = () => {
       }
     };
 
-    if (category) {
       fetchCars();
-    }
   }, [category]);
 
   return (
     <div>
+      <Header backgroundImage="/logo/carPage.jpg" />
       <div className="car-list p-5">
         {cars.map((car) => (
              <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">

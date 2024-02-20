@@ -52,13 +52,11 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
       } catch (error) {
         console.error('Error deleting data:', error);
       }
-    } else {
-      console.error('No item selected or item does not have an id.');
     }
   };
 
   return (
-    <div className='container px-5' >
+    <div className='container p-5' >
       <Row className='button-group'>
         <Col xs={12} sm={4}>
           <Button variant='primary' className='w-100' onClick={() => { setIsAddingData(true); setShowModal(true); }}>

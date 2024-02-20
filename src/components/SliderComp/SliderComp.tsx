@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import { CarModel } from '../../models/carModels/GetAllCarModel';
 import './SliderComp.css';
 import carService from '../../service/baseSevice/carService';
 import { GetAllCarResponse } from '../../models/cars/response/getAllCarResponse';

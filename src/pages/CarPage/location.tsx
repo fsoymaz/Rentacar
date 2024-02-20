@@ -1,4 +1,3 @@
-// LocationSelect.tsx
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +17,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ value, onChange, locati
     return (
         <label>
             <FontAwesomeIcon icon={faMapMarkerAlt} /> {' '}
-            <select value={value} onChange={onChange}>
+            <select className="select-style" value={value} onChange={onChange}>
                 {locations.map((location) => (
                     <option key={location.id} value={location.id}>
                         {location.name}

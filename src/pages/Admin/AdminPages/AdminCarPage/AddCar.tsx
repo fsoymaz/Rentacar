@@ -1,8 +1,5 @@
-// AddCar.tsx
-
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
 import FormikInput from '../../../../components/FormikInput/FormikInput';
@@ -19,30 +16,17 @@ import ColorFetcher from '../../../../components/Fetch/FetchColors';
 import imageDataService from '../../../../service/baseSevice/imageDataService';
 import { getFormikInfo } from '../../../../utils/getFormikInfo';
 import { AddInitialValues } from '../../../../initialValues/CarInitialValues';
-import { carSchema } from '../../../../components/validationSchemas/validationSchemas';
-
-// Enum for category
-
-
-
 
 const AddCar: React.FC = () => {
-  const categoryOptions: Option[] = generateOptions(Category);
-  const fuelTypeOptions: Option[] = generateOptions(FuelType);
-  const transmissionTypeOptions: Option[] = generateOptions(TransmissionType);
   const [models, setModels] = useState<Option[]>([]);
   const [colors, setColors] = useState<Option[]>([]);
   const [locations, setLocations] = useState<Option[]>([]);
   const [imagePath, setImagePath] = useState<string>('');
 
-  const initialValues = {
-    ...AddInitialValues,
-    fuelType: "Yakıt Tipi Giriniz", // Add this line
-    transmissionType: "Vites Tipi Seçiniz", // Add this line
-    category: "Kategory Seçiniz" // Add this line
-  };
+  const categoryOptions: Option[] = generateOptions(Category);
+  const fuelTypeOptions: Option[] = generateOptions(FuelType);
+  const transmissionTypeOptions: Option[] = generateOptions(TransmissionType);
 
-  const initialOption: any = { value: '', name: 'Lütfen bir Seçim yapınız', label: 'Seçiniz' };
   const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
     if (event.currentTarget.files && event.currentTarget.files[0]) {
@@ -53,7 +37,6 @@ const AddCar: React.FC = () => {
     setImagePath(response.data);
   };
 
-  
   const FormikInfo = getFormikInfo(models, colors, locations, transmissionTypeOptions, fuelTypeOptions, categoryOptions);
 
   return (
@@ -61,8 +44,9 @@ const AddCar: React.FC = () => {
       <LocationFetcher onLocationsFetched={setLocations} />
       <ModelFetcher onModelsFetched={setModels} />
       <ColorFetcher onColorsFetched={setColors} />
+
       <Formik
-        initialValues={initialValues}
+        initialValues={AddInitialValues}
         onSubmit={async (values: AddCarRequest, { resetForm }) => {
           try {
             const carDataWithImage = { ...values, imagePath };
@@ -75,7 +59,7 @@ const AddCar: React.FC = () => {
         validationSchema={""}
       >
         <Form>
-          {FormikInfo.map((formikInfo, index) => {
+          {FormikInfo.map((formikInfo) => {
             if (formikInfo.formikType === "FormikInput") {
               return <FormikInput key={`input-${formikInfo.name}`} label={formikInfo.label} name={formikInfo.name} type={formikInfo.type ?? ''} placeholder={formikInfo.placeholder ?? ''} />;
             } else if (formikInfo.formikType === "FormikSelect") {
@@ -83,14 +67,14 @@ const AddCar: React.FC = () => {
             }
           })}
           <label className='form-label'>
-            Image PAth
+            Image Path
             <br />
             <input name="image" type="file" onChange={handleImageChange} />
           </label><br />
+
           <button className='btn btn-success' type="submit">Submit</button>
         </Form>
       </Formik>
-
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 import {
   BarChart,
   Bar,
@@ -73,7 +73,7 @@ const Admin = () => {
           </Row>
           <Row>
             <Col lg={6}>
-              <Card>
+              <Card className='mt-5'>
                   <Card.Title>Haftalık Kiralama İşlemleri</Card.Title>
                   <BarChart
                     width={400}

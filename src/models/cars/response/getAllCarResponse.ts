@@ -1,5 +1,5 @@
-import { modelLocation } from "../../carModels/GetAllCarModel";
 import { colorModel } from "../../colorModels/getColorModel";
+import { locationModels } from "../../locations/locationModels";
 import { modelModels } from "../../modelModels/GetAllModelsModel";
 
 export interface GetAllCarResponse {
@@ -16,5 +16,5 @@ export interface GetAllCarResponse {
     fuelType: string;
     category: string;
     passengerCapacity: number;
-    location: modelLocation;
+    location: locationModels;
 }

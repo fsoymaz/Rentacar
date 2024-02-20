@@ -13,7 +13,7 @@ interface HeaderProps {
 }
 
 function Header({ backgroundImage, title, description, buttonText, onButtonClick, scrollTo }: HeaderProps) {
-  const shouldShowArrow = scrollTo !== undefined; // Eğer scrollTo belirlenmişse oku göster
+  const shouldShowArrow = scrollTo !== undefined;
 
   const scrollToContent = () => {
     const contentDiv = document.getElementById(scrollTo || '');

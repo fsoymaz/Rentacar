@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { UserModel } from "../../models/userModels/userModel";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { registerSchema } from "../../components/validationSchemas/validationSchemas";
 import FormikInput from "../../components/FormikInput/FormikInput";
@@ -11,7 +10,6 @@ import './profile.css';
 const Profile = () => {
   const authState = useSelector((store: any) => store.auth);
   const [user, setUser] = useState<UserModel>();
-  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [initialValues, setInitialValues] = useState<UserModel>({
     id: authState.id,

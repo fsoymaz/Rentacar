@@ -17,7 +17,6 @@ const BrandFetcher: React.FC<BrandFetcherProps> = ({ onBrandsFetched }) => {
         };
 
         fetchBrands();
-
     }, [onBrandsFetched]);
 
     return null; // Bu bileşen görsel bir şey döndürmeyecek, sadece veri getirecek

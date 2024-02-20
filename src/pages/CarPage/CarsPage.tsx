@@ -1,6 +1,5 @@
 // Cars.tsx
 import React, { useEffect, useState } from "react";
-import { CarModel } from "../../models/carModels/GetAllCarModel";
 import { motion } from "framer-motion";
 import Header from "../../components/Header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,11 +15,12 @@ import {
 import "./Car.css";
 import carService from "../../service/baseSevice/carService";
 import CarFetcher from "../../components/Fetch/FetchCars";
+import { GetAllCarResponse } from "../../models/cars/response/getAllCarResponse";
 
 interface CarsPageProps {}
 
 const Cars: React.FC<CarsPageProps> = () => {
-  const [cars, setCars] = useState<CarModel[]>([]);
+  const [cars, setCars] = useState<GetAllCarResponse[]>([]);
 
  
 

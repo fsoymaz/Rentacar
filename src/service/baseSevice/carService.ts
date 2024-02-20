@@ -7,7 +7,6 @@ import { GetByIdCarResponse } from "../../models/cars/response/getByIdCarRespons
 import { UpdateCarResponse } from "../../models/cars/response/updateCarResponse";
 
 import { BaseService } from "./baseService";
-import { CarModel } from "../../models/carModels/GetAllCarModel";
 import axiosInstance from "../../utils/Interceptors";
 
 class CarService extends BaseService<
@@ -23,10 +22,10 @@ class CarService extends BaseService<
     this.apiUrl = "cars";
 
   }
-  async getCarsByCategory(category: string): Promise<AxiosResponse<CarModel[]>> {
+  async getCarsByCategory(category: string): Promise<AxiosResponse<GetAllCarResponse[]>> {
     try {
       console.log('category:', category);
-      const response = await axiosInstance.get<CarModel[]>(`/cars/category?category=${category}`);
+      const response = await axiosInstance.get<GetAllCarResponse[]>(`/cars/category?category=${category}`);
       return response;
     } catch (error) {
       console.error('An error occurred while fetching cars by category.', error);
@@ -51,7 +50,7 @@ class CarService extends BaseService<
     return response.data;
   }
 
-  async getAvailableCars(startDate: string, endDate: string, locationId: number): Promise<AxiosResponse<CarModel[]>> {
+  async getAvailableCars(startDate: string, endDate: string, locationId: number): Promise<AxiosResponse<GetAllCarResponse[]>> {
     try {
       console.log(locationId, startDate, endDate);
       const response = await axiosInstance.get(`/cars/available?startDate=${startDate}&endDate=${endDate}&locationId=${locationId}`);
