@@ -13,14 +13,14 @@ export interface RentalState {
   startDate: string;
   endDate: string;
   carId: number;
-  locationId: number; // Değişiklik
+  locationId: number;
 }
 
 const initialRentalState: RentalState = {
   startDate: "",
   endDate: "",
   carId: 0,
-  locationId: 0, // Değişiklik
+  locationId: 0,
 };
 
 const initialState: AuthState = {
@@ -76,3 +76,4 @@ export const rentalReducer = rentalSlice.reducer;
 
 export const selectAuth = (state: RootState) => state.auth;
 export const selectRental = (state: RootState) => state.rental;
+

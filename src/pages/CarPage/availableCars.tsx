@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Car.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectRental, handleCarId, handleEndDate, handleStartDate, handleLocationId } from '../../store/rental/rentalSlice';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../store/configureStore';
 import carService from '../../service/baseSevice/carService';
 import Filter from './filter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,6 +14,8 @@ import { CarModel } from '../../models/carModels/GetAllCarModel';
 import LocationFetcher from '../../components/Fetch/FetchLocations';
 import ModelFetcher from '../../components/Fetch/FetchModels';
 import BrandFetcher from '../../components/Fetch/FetchBrands';
+import { RootState } from '../../store/configureStore';
+import { handleCarId, handleEndDate, handleLocationId, handleStartDate, selectRental } from '../../store/rental/rentalSlice';
 
 const AvailableCars: React.FC = () => {
     const initialState = {
@@ -149,7 +149,7 @@ const AvailableCars: React.FC = () => {
             <div className='container pt-5'>
                 <div className="car-list">
                     {state.cars.map((car) => (
-                        <motion.div key={car.id} whileHover={{ scale: 1.10 }} className="card" onClick={() => handleCarClick(car.id)}>
+                        <div key={car.id}  className="card" onClick={() => handleCarClick(car.id)}>
                             <img
                                 src={car?.imagePath}
                                 alt="Car Image"
@@ -174,7 +174,7 @@ const AvailableCars: React.FC = () => {
                                 </div>
                             </div>
                             <button type="submit" className="btn btn-success" onClick={() => handleRentButtonClick(car.id)}> {car.dailyPrice}₺ Kiralama Yap</button>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

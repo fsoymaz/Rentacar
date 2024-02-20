@@ -63,8 +63,8 @@ function App(): ReactElement {
           <Route path="/availableCars" element={<AvailableCars />} />
           <Route path="/rental" element={<UserRoute><RentalForm /></UserRoute>} />
           <Route path="/card" element={<UserRoute><CreditCardForm/></UserRoute>} />
-          <Route path="/paymentDetail" element={<RentalDetail/>} />
-          <Route path="/success" element={<Succsess/>} />
+          <Route path="/paymentDetail" element={<UserRoute><RentalDetail/> </UserRoute>} />
+          <Route path="/invoice" element={<UserRoute><Succsess/></UserRoute>} />
         </Routes>
       </div>
       {!isOnAdminPage && <CustomFooter />}

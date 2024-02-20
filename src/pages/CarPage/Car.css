@@ -1,17 +1,16 @@
 
 
 .filter-menu-button {
-  position: absolute;
-  top: 12%; /* Yukarıdan 20 piksel uzaklık */
+  margin-top: 35px;
+  position: fixed;
   left: 0; /* Sağdan 20 piksel uzaklık */
   background-color: #8ca4be; /* Arka plan rengi */
   color: rgb(255, 255, 255); /* Yazı rengi */
   border: none; /* Kenarlık yok */
-  border-radius: 5px; /* Kenar yuvarlama */
-  padding: 10px 20px; /* Dolgular */
   cursor: pointer; /* İmleç tipi */
   transition: background-color 0.3s ease; /* Geçiş efekti */
   z-index: 100; /* Diğer elemanların üzerinde olacak */
+  height: 4%;
 }
 
 .filter-menu-button:hover {
@@ -20,28 +19,20 @@
 
 .filter-menu {
   text-align: center; /* Filtre menüsündeki içerikleri ortala */
-  padding: 20px;
-  background-color: #8ca4be;
-  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: none; /* Başlangıçta gizle */
   z-index: 100;
-  max-width: 200px; /* Maksimum genişlik belirle */
-  position: absolute; /* Mutlak konumlandırma */
-  top: 17.5%; /* Filtre butonundan aşağıya doğru uzaklık */
-  overflow-y: auto; /* Dikey taşma durumunda kaydırma çubuğunu göster */
-}
-
-.filter-menu {
+  max-width: 30%; 
+  position: fixed; 
+  overflow-y: auto; 
+  margin-top: 40px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
-  border-radius: 5px;
   padding: 20px;
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+
 }
+
 
 .filter-item {
   margin-bottom: 10px;

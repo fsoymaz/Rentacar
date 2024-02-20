@@ -6,11 +6,11 @@ import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { JwtPayload, jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
-import { loginSuccess } from "../../store/user/userSlice";
 import { setToken } from "../../utils/Interceptors";
 import SignedIn from "../../components/Navbar/SignedIn";
 import { addLogin } from "../../models/auth/addLogin";
 import { RootState } from "../../store/configureStore";
+import { loginSuccess } from "../../store/user/userSlice";
 
 const LoginForm = () => {
   const dispatch = useDispatch();

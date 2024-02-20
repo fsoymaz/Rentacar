@@ -1,3 +1,17 @@
+export function storeState(key: string, state: any) {
+  localStorage.setItem(key, JSON.stringify(state));
+}
+
+export function loadState(key: string, defaultState: any) {
+  const stateInStorage = localStorage.getItem(key);
+  if (!stateInStorage) return defaultState;
+  try {
+    return JSON.parse(stateInStorage);
+  } catch {
+    return defaultState;
+  }
+}
+
 export function storeAuthState(auth:any) {
     localStorage.setItem("auth", JSON.stringify(auth));
   }

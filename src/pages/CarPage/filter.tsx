@@ -11,8 +11,8 @@ interface FilterProps {
     onModelChange: (model: string) => void;
     onMinPriceChange: (price: number) => void;
     onMaxPriceChange: (price: number) => void;
-    onStartDateChange: (date: string) => void; // Alış Tarihi değişikliği için prop
-    onEndDateChange: (date: string) => void; // Dönüş Tarihi değişikliği için prop
+    onStartDateChange: (date: string) => void;
+    onEndDateChange: (date: string) => void;
     onApplyFilters: () => void;
     filterMenuVisible: boolean;
     toggleFilterMenu: () => void;
@@ -31,7 +31,6 @@ const Filter: React.FC<FilterProps> = ({
     onEndDateChange, // Dönüş Tarihi değişikliği için prop
     onApplyFilters,
     filterMenuVisible,
-    toggleFilterMenu,
 }) => {
     return (
         <div className={`filter-menu ${filterMenuVisible ? 'active' : ''}`}>

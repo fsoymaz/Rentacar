@@ -5,6 +5,7 @@
     background: linear-gradient(to left, rgba(222, 230, 235, 0.867)  30%, rgba(219, 213, 212, 0) 70%);
     margin: auto;
     border-radius: 3em;
+    margin-bottom: 10%;
 }
 
 .slider-item-text
@@ -13,7 +14,7 @@
     align-items: center;
 }
 img {
-	width: 50%;
+	width: 60%;
 	height: auto;
 }
 
