@@ -3,11 +3,12 @@ import Carousel from 'react-bootstrap/Carousel';
 import { CarModel } from '../../models/carModels/GetAllCarModel';
 import './SliderComp.css';
 import carService from '../../service/baseSevice/carService';
+import { GetAllCarResponse } from '../../models/cars/response/getAllCarResponse';
 
 type Props = {};
 
 const SliderComp = (props: Props) => {
-	const [cars, setCars] = useState<CarModel[]>([]);
+	const [cars, setCars] = useState<GetAllCarResponse[]>([]);
 	const [randomCarIndexes, setRandomCarIndexes] = useState<number[]>([]);
 
 	useEffect(() => {
@@ -32,7 +33,7 @@ const fetchCars = async () => {
 
 
 	return (
-		<div id="slider-section" className="slider-comp-container">
+		<div id="slider-section" className="slider-comp-container ">
 			<Carousel className="custom-slider">
 				{randomCarIndexes.map((index, idx) => (
 					<Carousel.Item key={idx} className="slider-item">

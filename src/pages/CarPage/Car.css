@@ -93,6 +93,7 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   margin-top: 4%;
+
 }
 
 
@@ -110,8 +111,8 @@
 }
 
 .card img {
-  height: 200px;
-  padding: 5%;
+  height: 100%;
+  padding: 10%;
 }
 
 

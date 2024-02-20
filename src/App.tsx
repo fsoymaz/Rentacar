@@ -67,7 +67,7 @@ function App(): ReactElement {
           <Route path="/success" element={<Succsess/>} />
         </Routes>
       </div>
-      <CustomFooter />
+      {!isOnAdminPage && <CustomFooter />}
     </div>
   )
 }

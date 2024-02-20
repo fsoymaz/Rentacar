@@ -9,6 +9,8 @@
     flex-direction: column;
     position: relative;
 	margin-bottom: 200px;
+    top: 10%;
+
 }
 
 .blanco h1 {

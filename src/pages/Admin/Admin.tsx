@@ -30,7 +30,7 @@ const Admin = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   return (
-    <Container fluid className='py-5 m-5'>
+    <div className='container p-5'>
       <Row>
         <Col lg={1} md={3}>
          
@@ -38,7 +38,7 @@ const Admin = () => {
         <Col lg={10} md={9}>
           {/* Ana içerik */}
           <Row>
-            <Col lg={6} md={6}>
+            <Col lg={6} md={6}sm={6}>
               <Card className='mx-5 px-5'>
                 <Card.Body>
                   <Card.Title>Kullanıcı Sayısı</Card.Title>
@@ -72,15 +72,14 @@ const Admin = () => {
             </Col>
           </Row>
           <Row>
-            <Col lg={12}>
+            <Col lg={6}>
               <Card>
-                <Card.Body>
                   <Card.Title>Haftalık Kiralama İşlemleri</Card.Title>
                   <BarChart
-                    width={600}
-                    height={300}
+                    width={400}
+                    height={250}
                     data={data}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    margin={{ top: 10, right: 30, left: 20, bottom: 5 }}
                   >
                     <CartesianGrid strokeDasharray='3 3' />
                     <XAxis dataKey='name' />
@@ -89,13 +88,12 @@ const Admin = () => {
                     <Legend />
                     <Bar dataKey='uv' fill='#8884d8' />
                   </BarChart>
-                </Card.Body>
               </Card>
             </Col>
           </Row>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 

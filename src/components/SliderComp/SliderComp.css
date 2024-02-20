@@ -1,0 +1,31 @@
+/* SliderComp.css */
+
+.slider-comp-container {
+    width: 60%;
+    background: linear-gradient(to left, rgba(222, 230, 235, 0.867)  30%, rgba(219, 213, 212, 0) 70%);
+    margin: auto;
+    border-radius: 3em;
+}
+
+.slider-item-text
+{
+    display: flex;
+    align-items: center;
+}
+img {
+	width: 50%;
+	height: auto;
+}
+
+@media screen and (max-width: 400px) {
+    .slider-item-text
+{
+    display:contents;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+    .img {
+        width: 100%;
+    }
+}

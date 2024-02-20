@@ -2,12 +2,8 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Doğru import
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { Formik, Form as FormikForm } from 'formik';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCar } from '@fortawesome/free-solid-svg-icons';
-import SliderComp from '../../components/Home/SliderComp';
-import FormikInput from '../../components/FormikInput/FormikInput';
+import {Row, Col} from 'react-bootstrap';
+import SliderComp from '../../components/SliderComp/SliderComp';
 import './Homepage.css';
 import Header from '../../components/Header/Header';
 import RentACarForm from '../../components/RentacarForm/RentacarForm';
