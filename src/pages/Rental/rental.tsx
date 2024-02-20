@@ -13,9 +13,6 @@ import {
 import { RentalState, rentalSlice, resetRentalState, selectRental } from "../../store/rental/rentalSlice";
 import { RootState } from "../../store/configureStore";
 import carService from "../../service/baseSevice/carService";
-import axios from "axios";
-import { storeState } from "../../store/user/storage";
-import RentalDetail from "../RentalDetails/RentalDetails";
 
 function RentalForm() {
   const dispatch = useDispatch();

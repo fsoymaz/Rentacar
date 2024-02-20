@@ -1,5 +1,5 @@
 // userSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loadAuthState } from './storage';
 import { setToken } from '../../utils/Interceptors';
 

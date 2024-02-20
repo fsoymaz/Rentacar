@@ -7,7 +7,6 @@ import { ReportHandler } from 'web-vitals';
 import { useNavigate } from 'react-router-dom';
 import userService from '../../service/baseSevice/userService';
 import axios from 'axios';
-import { storeState } from '../../store/user/storage';
 import rentalService from '../../service/baseSevice/rentalService';
 
 
