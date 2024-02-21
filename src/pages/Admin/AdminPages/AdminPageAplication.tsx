@@ -45,15 +45,16 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
   };
   
   const handleDelete = async () => {
-    if (true) {
+    if (selectedItem) { // Silinecek öğe varsa
       try {
-        await service.delete(122);
-        await fetchData();
+        await service.delete(selectedItem.id); // Seçili öğeyi sil
+        await fetchData(); // Verileri yeniden getir
       } catch (error) {
         console.error('Error deleting data:', error);
       }
     }
   };
+  
 
   return (
     <div className='container p-5' >
