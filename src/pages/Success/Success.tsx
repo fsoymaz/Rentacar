@@ -113,7 +113,6 @@ const Success = (props: Props) => {
           </div>
         </div>
       </div>
-      {/* İndirme butonunu pdfIndir fonksiyonuyla ilişkilendirin */}
       <button className="btn btn-light text-capitalize" onClick={pdfIndir}>
         <i className="far fa-file-pdf text-danger"></i> İndir
       </button>

@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
 import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 const CustomNavbar = () => {
-  const authContext: any = useContext(AuthContext);
   const [logo, setLogo] = useState('/logo/LOGOROSSO.png');
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((store: any) => store.auth.isAuthenticated);
   const handleMouseEnter = () => {
     setLogo('/logo/LOGOBLU.png'); // Mouse üzerindeyken gösterilecek logo
   };
@@ -21,14 +21,14 @@ const CustomNavbar = () => {
 
 
   const signOut = () => {
-    authContext.setIsAuthenticated(false);
+    dispatch(isAuthenticated(false))
     localStorage.removeItem('isAuthenticated');
     navigate('/');
   
   };
 
   const signIn = () => {
-    authContext.setIsAuthenticated(true);
+    dispatch(isAuthenticated(true))
     localStorage.setItem('isAuthenticated', 'true');
   };
 
@@ -77,7 +77,7 @@ const CustomNavbar = () => {
         </Nav>
         <Nav >
           <Nav.Link>
-            {authContext.isAuthenticated ? <SignedIn /> : <SignedOut signIn={signIn} />}
+            {isAuthenticated ? <SignedIn /> : <SignedOut signIn={signIn} />}
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

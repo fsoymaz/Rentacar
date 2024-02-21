@@ -15,13 +15,7 @@ import { RootState } from "../../store/configureStore";
 import carService from "../../service/baseSevice/carService";
 
 function RentalForm() {
-  const dispatch = useDispatch();
   const rental: RentalState = useSelector(selectRental);
-  const userId = useSelector((state: RootState) => state.auth.id);
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated
-  );
-  const navigate = useNavigate();
   const [carDetails, setCarDetails] = useState<any>(null);
 
   const carId = rental.carId;
@@ -40,19 +34,11 @@ function RentalForm() {
     }
   }, [carId]);
 
- 
-  
-
- 
-
   return (
-
     <div>
       <div >
       </div>
-
-    
-          <button type='submit' className='btn btn-success' >Kirala</button>
+      <button type='submit' className='btn btn-success' >Kirala</button>
     </div>
   );
 }

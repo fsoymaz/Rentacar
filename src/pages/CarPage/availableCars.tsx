@@ -28,7 +28,6 @@ const AvailableCars: React.FC = () => {
     const [state, setState] = useState(initialState);
     const dispatch = useDispatch();
     const rental = useSelector(selectRental);
-    const { startDate, endDate, locationId } = rental;
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
@@ -64,7 +63,7 @@ const AvailableCars: React.FC = () => {
 
     const handleApplyFilters = () => {
         console.log('Applying filters', state);
-        dispatch(handleLocationId(locationId));
+        dispatch(handleLocationId(rental.locationId));
     };
 
     const handleCarClick = (carId: number) => {
@@ -88,13 +87,13 @@ const AvailableCars: React.FC = () => {
                     <div className="mnu">
                         <LocationFetcher onLocationsFetched={setLocations} />
                         <FetchAvailableCars
-                            startDate={startDate}
-                            endDate={endDate}
-                            locationId={locationId}
+                            startDate={rental.startDate}
+                            endDate={rental.endDate}
+                            locationId={rental.locationId}
                             state={state}
                             setState={setState}
                         />
-                        <LocationSelect value={locationId} onChange={(e) => {
+                        <LocationSelect value={rental.locationId} onChange={(e) => {
                             dispatch(handleLocationId(parseInt(e.target.value)));
                         }} locations={locations} />
                         <button className="filter-menu-button" onClick={toggleFilterMenu}>

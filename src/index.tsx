@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
 import 'semantic-ui-css/semantic.min.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -19,13 +18,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <AuthProvider>
     <Provider store={store}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
         </Provider>
-    </AuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

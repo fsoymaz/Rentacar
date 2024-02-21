@@ -15,7 +15,6 @@ export default function SignedIn({  }: {}) {
   const handleLogout = () => {
     dispatch(logoutSuccess());
     dispatch(resetRentalState());
-    // Diğer çıkış işlemleri buraya eklenebilir, örneğin token'ı silme vb.
     localStorage.removeItem('token');
     navigate('/');
   };

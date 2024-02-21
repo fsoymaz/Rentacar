@@ -28,7 +28,6 @@ const LoginForm = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    //dispatch(logout());
     navigate("/");
   };
 
@@ -43,12 +42,10 @@ const LoginForm = () => {
         dispatch(loginSuccess(decodedToken));
         setToken(accessToken);
 
-        // localStorage'dan navi tokenını al ve navigate fonksiyonu ile yönlendir
         const naviToken = localStorage.getItem("navi");
         if (naviToken) {
           navigate(naviToken);
         } else {
-          // Eğer navi tokenı yoksa varsayılan olarak ana sayfaya yönlendir
           navigate("/");
         }
       } else {
