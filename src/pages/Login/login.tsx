@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import authService from "../../service/authService/AuthService";
-import "./styles.css";
+import "../Login/styles.css";
 
 import { useNavigate } from "react-router-dom";
 import { JwtPayload, jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
-import { setToken } from "../../utils/Interceptors";
-import SignedIn from "../../components/Navbar/SignedIn";
-import { addLogin } from "../../models/auth/addLogin";
-import { RootState } from "../../store/configureStore";
 import { loginSuccess } from "../../store/user/userSlice";
+import { setToken } from "../../utils/Interceptors";
+import { addLogin } from "../../models/auth/addLogin";
+import SignedIn from "../../components/Navbar/SignedIn";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const authState = useSelector((store: RootState) => store.auth);
+  const authState = useSelector((store: any) => store.auth);
 
   const [credentials, setCredentials] = useState<addLogin>({
     email: "",

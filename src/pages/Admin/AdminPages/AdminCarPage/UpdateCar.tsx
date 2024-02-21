@@ -78,7 +78,6 @@ const UpdateCar: React.FC = () => {
 
   const handleSubmit = async (values: UpdateCarRequest) => {
     try {
-      values.imagePath = imagePath; // imagePath değerini values nesnesine ekleyin
       const response = await carService.update(values);
       console.log('response:', response);
       if (response.status === 201) {

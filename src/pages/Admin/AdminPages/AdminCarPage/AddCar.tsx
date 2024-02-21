@@ -16,7 +16,6 @@ import ColorFetcher from '../../../../components/Fetch/FetchColors';
 import imageDataService from '../../../../service/baseSevice/imageDataService';
 import { getFormikInfo } from '../../../../utils/getFormikInfo';
 import { AddInitialValues } from '../../../../initialValues/CarInitialValues';
-import { carSchema } from '../../../../components/validationSchemas/validationSchemas';
 
 const AddCar: React.FC = () => {
   const [models, setModels] = useState<Option[]>([]);
