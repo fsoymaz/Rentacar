@@ -13,7 +13,6 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Car.css";
-import carService from "../../service/baseSevice/carService";
 import CarFetcher from "../../components/Fetch/FetchCars";
 import { GetAllCarResponse } from "../../models/cars/response/getAllCarResponse";
 
