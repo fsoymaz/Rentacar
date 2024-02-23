@@ -5,29 +5,26 @@ import Header from "../../components/Header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCar,
-  faCog,
   faGasPump,
-  faIdCard,
-  faMoneyBill,
   faPaintBrush,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Car.css";
-import CarFetcher from "../../components/Fetch/FetchCars";
 import { GetAllCarResponse } from "../../models/cars/response/getAllCarResponse";
+import BaseFetcher from "../../components/Fetch/BaseFetcher";
+import carService from "../../service/baseSevice/carService";
 
-interface CarsPageProps {}
+interface CarsPageProps { }
 
 const Cars: React.FC<CarsPageProps> = () => {
   const [cars, setCars] = useState<GetAllCarResponse[]>([]);
 
- 
+
 
   return (
     <div className="CarPage">
       <Header backgroundImage="/logo/carPage.jpg" />
+      <BaseFetcher service={() => carService.getAll()} onBaseFetched={setCars} />
       <div className="car-list p-5">
-         <CarFetcher onCarsFetched={setCars} />
         {cars.map((car) => (
           <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">
             <img

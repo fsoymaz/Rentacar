@@ -12,9 +12,10 @@
 }
 
 .Nav a {
-	font-size: 15px;
+	font-size: 17px;
 	font-weight: bold;
 	color: rgb(53, 62, 68);
+  font-family:'Courier New', Courier, monospace;
 }
 
 .Nav a:hover {

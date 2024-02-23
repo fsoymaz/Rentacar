@@ -10,12 +10,14 @@ import { Category } from '../../../../Enum/CategoryEnum';
 import { FuelType } from '../../../../Enum/FuelType';
 import { TransmissionType } from '../../../../Enum/TransmissionType';
 import { Option, generateOptions } from '../../../../components/GenerateOptions/GenerateOptions';
-import LocationFetcher from '../../../../components/Fetch/FetchLocations';
-import ModelFetcher from '../../../../components/Fetch/FetchModels';
-import ColorFetcher from '../../../../components/Fetch/FetchColors';
 import imageDataService from '../../../../service/baseSevice/imageDataService';
 import { getFormikInfo } from '../../../../utils/getFormikInfo';
 import { AddInitialValues } from '../../../../initialValues/CarInitialValues';
+import locationService from '../../../../service/baseSevice/locationService';
+import BaseFetcher from '../../../../components/Fetch/BaseFetcher';
+import colorService from '../../../../service/baseSevice/colorService';
+import modelService from '../../../../service/baseSevice/modelService';
+import { carSchema } from '../../../../components/validationSchemas/validationSchemas';
 
 const AddCar: React.FC = () => {
   const [models, setModels] = useState<Option[]>([]);
@@ -41,9 +43,10 @@ const AddCar: React.FC = () => {
 
   return (
     <div className='container' style={{ justifyContent: 'center', alignItems: 'center' }}>
-      <LocationFetcher onLocationsFetched={setLocations} />
-      <ModelFetcher onModelsFetched={setModels} />
-      <ColorFetcher onColorsFetched={setColors} />
+      <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
+      <BaseFetcher service={() => colorService.getAll()} onBaseFetched={setColors} />
+      <BaseFetcher service={() => modelService.getAll()} onBaseFetched={setModels} />
+
 
       <Formik
         initialValues={AddInitialValues}
@@ -51,12 +54,17 @@ const AddCar: React.FC = () => {
           try {
             const carDataWithImage = { ...values, imagePath };
             const response = await carService.add(carDataWithImage);
-            toast.success('Car added successfully!');
+            if (response.status === 201) {
+              toast.success('Araç Başarı ile eklendi!');
+              return;
+            } else
+              toast.error('Araç eklenemedi eksik alanları doldurun');
+              return;
           } catch (error) {
-            toast.error('An error occurred while adding the car.');
+            toast.error('Bilinmedik Hata.');
           }
         }}
-        validationSchema={""}
+        validationSchema={carSchema}
       >
         <Form>
           {FormikInfo.map((formikInfo) => {

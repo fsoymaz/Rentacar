@@ -25,7 +25,6 @@ export const carSchema = Yup.object().shape({
     .min(500, "Günlük Ücret 500'den küçük olamaz"),
   modelId: Yup.number().required("Model zorunludur").positive("Model ID pozitif bir sayı olmalıdır"),
   colorId: Yup.number().required("Renk zorunludur").positive("Renk ID pozitif bir sayı olmalıdır"),
-  imagePath: Yup.string().required("Resim Yolu zorunludur"),
   transmissionType: Yup.string().required("Vites Tipi zorunludur"),
   fuelType: Yup.string().required("Yakıt Tipi zorunludur"),
   category: Yup.string().required("Kategori zorunludur"),

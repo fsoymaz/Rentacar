@@ -2,7 +2,7 @@ import { GetAllCarResponse } from '../../../../models/cars/response/getAllCarRes
 
 const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
   return (
-    <>
+    <table>
       <thead>
         {/* Table Header Rows */}
         <tr>
@@ -42,7 +42,7 @@ const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
           </tr>
         ))}
       </tbody>
-      </>
+    </table>
   );
 };
 

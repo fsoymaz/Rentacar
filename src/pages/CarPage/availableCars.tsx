@@ -68,12 +68,12 @@ const AvailableCars: React.FC = () => {
     const handleRentButtonClick = (carId: number) => {
         dispatch(handleCarId(carId));
         if (!isAuthenticated) {
-            localStorage.setItem('navi', '/availableCars');
-            navigate('/login');
-            return;
+          localStorage.setItem('navi', '/availableCars');
+          navigate('/login');
+          return;
         }
         navigate('/paymentDetail');
-    };
+      };
 
     return (
         <div className="container pt-5">
@@ -115,7 +115,6 @@ const AvailableCars: React.FC = () => {
 
                 <BaseFetcher service={() => brandService.getAll()} onBaseFetched={setBrands} />
                 <BaseFetcher service={() => modelService.getAll()} onBaseFetched={setModels} />
-                <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
                 <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
             </header>
             <div className="mt-5 p-5 row row-cols-1 row-cols-md-2 row-cols-lg-3">

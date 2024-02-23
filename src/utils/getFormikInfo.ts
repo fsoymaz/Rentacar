@@ -9,8 +9,7 @@ export const getFormikInfo = (
     categoryOptions?: Option[],
     isUpdate?: boolean
 ) => {
-    const initialOption: any = { value: '', name: 'Lütfen bir Seçim yapınız', label: 'Seçiniz' };
-
+    const initialOption: any = { id: 'initial-option', value: 0, name: 'Lütfen bir Seçim yapınız', label: 'Seçiniz' };
     const formikInfo = [
         { formikType: "FormikInput", label: "Model Year", name: "modelYear", type: "number", placeholder: "Model Year giriniz" },
         { formikType: "FormikInput", label: "Plate", name: "plate", type: "string", placeholder: "Plate giriniz" },
