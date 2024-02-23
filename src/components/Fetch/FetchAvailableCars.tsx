@@ -1,4 +1,3 @@
-// FetchAvailableCars.tsx
 import React from 'react';
 import carService from '../../service/baseSevice/carService';
 
@@ -6,11 +5,15 @@ interface FetchDataProps {
   startDate: string;
   endDate: string;
   locationId: number;
-  state: any; // Bu tipi durumunuzun gerçek tipine göre değiştirin
-  setState: React.Dispatch<React.SetStateAction<any>>; // Bu tipi durumunuzun gerçek tipine göre değiştirin
+  category: string;
+  brand: string;
+  model: string;
+  minPrice: number | null;
+  maxPrice: number | null;
+  setState: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const FetchAvailableCars: React.FC<FetchDataProps> = ({ startDate, endDate, locationId, state, setState }) => {
+const FetchAvailableCars: React.FC<FetchDataProps> = ({ startDate, endDate, locationId, category, brand, model, minPrice, maxPrice, setState }) => {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,20 +21,20 @@ const FetchAvailableCars: React.FC<FetchDataProps> = ({ startDate, endDate, loca
           startDate,
           endDate,
           locationId,
-          state.category,
-          state.brand,
-          state.model,
-          state.minPrice,
-          state.maxPrice
+          category,
+          brand,
+          model,
+          minPrice,
+          maxPrice
         );
-        setState({ ...state, cars });
+        setState((prevState: any) => ({ ...prevState, cars }));
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchData();
-  }, [startDate, endDate, locationId, state.category, state.brand, state.model, state.minPrice, state.maxPrice]);
+  }, [startDate, endDate, locationId, category, brand, model, minPrice, maxPrice, setState]);
 
   return null;
 };

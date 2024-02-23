@@ -4,16 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import Filter from './filter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faGasPump, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
-import LocationSelect from './location';
 import { BrandModel } from '../../models/brandModels/GetAllBrandModel';
 import { modelModels } from '../../models/modelModels/GetAllModelsModel';
-import LocationFetcher from '../../components/Fetch/FetchLocations';
-import ModelFetcher from '../../components/Fetch/FetchModels';
-import BrandFetcher from '../../components/Fetch/FetchBrands';
 import FetchAvailableCars from '../../components/Fetch/FetchAvailableCars';
 import { GetAllCarResponse } from '../../models/cars/response/getAllCarResponse';
 import { handleCarId, handleEndDate, handleLocationId, handleStartDate, selectRental } from '../../store/rental/rentalSlice';
 import { RootState } from '../../store/configureStore';
+import BaseFetcher from '../../components/Fetch/BaseFetcher';
+import modelService from '../../service/baseSevice/modelService';
+import brandService from '../../service/baseSevice/brandService';
+import locationService from '../../service/baseSevice/locationService';
 
 const AvailableCars: React.FC = () => {
     const initialState = {
@@ -35,11 +35,6 @@ const AvailableCars: React.FC = () => {
     const [models, setModels] = useState<modelModels[]>([]);
     const [locations, setLocations] = useState<{ id: number; name: string }[]>([]);
 
-    const [filterMenuVisible, setFilterMenuVisible] = useState(false);
-
-    const toggleFilterMenu = () => {
-        setFilterMenuVisible(!filterMenuVisible);
-    };
 
     const handleCategoryChange = (category: string) => {
         setState({ ...state, category });
@@ -85,20 +80,17 @@ const AvailableCars: React.FC = () => {
             <header>
                 <div>
                     <div className="mnu">
-                        <LocationFetcher onLocationsFetched={setLocations} />
                         <FetchAvailableCars
                             startDate={rental.startDate}
                             endDate={rental.endDate}
                             locationId={rental.locationId}
-                            state={state}
+                            category={state.category}
+                            brand={state.brand}
+                            model={state.model}
+                            minPrice={state.minPrice}
+                            maxPrice={state.maxPrice}
                             setState={setState}
                         />
-                        <LocationSelect value={rental.locationId} onChange={(e) => {
-                            dispatch(handleLocationId(parseInt(e.target.value)));
-                        }} locations={locations} />
-                        <button className="filter-menu-button" onClick={toggleFilterMenu}>
-                            {filterMenuVisible ? 'Filtreyi Gizle' : 'Filtreyi aç'}
-                        </button>
                     </div>
                 </div>
                 <Filter
@@ -113,12 +105,18 @@ const AvailableCars: React.FC = () => {
                     onStartDateChange={(date) => dispatch(handleStartDate(date))}
                     onEndDateChange={(date) => dispatch(handleEndDate(date))}
                     onApplyFilters={handleApplyFilters}
-                    toggleFilterMenu={toggleFilterMenu}
-                    filterMenuVisible={filterMenuVisible}
-                />
+                    locationId={rental.locationId}
+                    onLocationChange={(e) => {
+                        dispatch(handleLocationId(parseInt(e.target.value)));
+                    } }
+                    locations={locations} toggleFilterMenu={function (): void {
+                        throw new Error('Function not implemented.');
+                    } } filterMenuVisible={false}                />
 
-                <BrandFetcher onBrandsFetched={setBrands} />
-                <ModelFetcher onModelsFetched={setModels} />
+                <BaseFetcher service={() => brandService.getAll()} onBaseFetched={setBrands} />
+                <BaseFetcher service={() => modelService.getAll()} onBaseFetched={setModels} />
+                <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
+                <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
             </header>
             <div className="mt-5 p-5 row row-cols-1 row-cols-md-2 row-cols-lg-3">
                 {state.cars.map((car) => (
@@ -134,6 +132,7 @@ const AvailableCars: React.FC = () => {
                                     {car.modelYear} {car.model?.brand?.name}{' '}
                                     {car.model?.name}
                                 </h5>
+                                <h1>{car.category}</h1>
                                 <div className="icon-section">
                                     <div className="icons">
                                         <FontAwesomeIcon icon={faGasPump} /> {car.fuelType}

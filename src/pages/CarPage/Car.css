@@ -1,80 +1,3 @@
-
-
-.filter-menu-button {
-  margin-top: 35px;
-  position: absolute;
-  left: 0;
-  background-color: #8ca4be;
-  color: rgb(255, 255, 255);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  z-index: 100;
-  height: 4%;
-}
-
-.filter-menu-button:hover {
-  background-color: #6c849d;
-}
-
-.filter-menu {
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  max-width: 30%; 
-  position: fixed; 
-  margin-top: 40px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 20px;
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  max-height: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
-
-
-.filter-item {
-  margin-bottom: 10px;
-}
-
-.filter-item label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.filter-item select,
-.filter-item input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-
-
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: #fff;
-  cursor: pointer;
-}
-
-
-
-
-
-.filter-menu.active {
-  opacity: 1;
-  max-height: 800px; /* Adjust as needed */
-  display: flex;
-}
-
-
 .car-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -86,10 +9,8 @@
 
 .card {
   border: 1px solid #ccc;
-  border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease;
-  cursor: pointer;
 }
 
 .card:hover {
@@ -99,7 +20,7 @@
 
 .card img {
   height: 100%;
-  padding: 10%;
+  padding: 20%;
 }
 
 
@@ -127,24 +48,7 @@
   width: var(--icon-size);
   height: var(--icon-size);
 }
-#filter {
-  height: 30px;
-  width: 70%;
-}
 
-.mnu {
-  background-color: #8ca4be; /* Arka plan rengi */
-  color: white; /* Yazı rengi */
-  border-radius: 5px; /* Kenar yuvarlama */
-  padding: 8px 20px; /* Dolgular */
-  cursor: pointer; /* İmleç tipi */
-  transition: background-color 0.3s ease; /* Geçiş efekti */
-
-}
-
-.mnu:hover {
-  background-color: #6c849d; /* Üzerine gelindiğinde arka plan rengi */
-}
 
 .select-style {
   border-radius: 5px;
@@ -153,4 +57,31 @@
   font-size: 12px;
   font-weight: bold;
   color: #333333c1;
+}
+
+.filter-item {
+  border: 1px solid #ccc; /* Kutucuk kenar çizgisi */
+  padding: 10px; /* Kutucuk içi boşluk */
+  display: flex; /* Öğeleri yatay olarak düzenle */
+  flex-direction: column; /* Öğeleri dikey olarak düzenle */
+}
+
+
+.filter-item label {
+  display: block; /* Etiketlerin alt alta sıralanmasını sağlar */
+  margin-bottom: 5px; /* Etiketler arası boşluk */
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr; /* Küçük ekranlarda sadece bir sütun */
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .container {
+    grid-template-columns: 1fr 4fr; /* Geniş ekranlarda sol 1 birim, sağ 4 birim */
+  }
 }

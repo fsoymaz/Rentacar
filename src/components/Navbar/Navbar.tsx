@@ -33,7 +33,7 @@ const CustomNavbar = () => {
   };
 
   const handleLinkClick = () => {
-    window.scrollTo(0, 0); // Sayfanın en üstüne çık
+    window.scrollTo(0, 0);
   };
 
   return (

@@ -17,9 +17,15 @@ interface FilterProps {
     onApplyFilters: () => void;
     filterMenuVisible: boolean;
     toggleFilterMenu: () => void;
+    locationId: number;
+    onLocationChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    locations: { id: number; name: string }[];
 }
 
 const Filter: React.FC<FilterProps> = ({
+    locationId,
+    onLocationChange,
+    locations,
     category,
     brands,
     models,
@@ -34,6 +40,14 @@ const Filter: React.FC<FilterProps> = ({
 }) => (
     <div className={`filter-menu ${filterMenuVisible ? 'active' : ''}`}>
         <div className="filter-item">
+        <label>Location:</label>
+      <select value={locationId} onChange={onLocationChange}>
+        {locations.map((location) => (
+          <option key={location.id} value={location.id}>
+            {location.name}
+          </option>
+        ))}
+      </select>
             <label>Ketegory:</label>
             <select value={category} onChange={(e) => onCategoryChange(e.target.value)}>
                 <option value={""}>Hepsi</option>

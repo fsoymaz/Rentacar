@@ -3,8 +3,8 @@ import { loadToken, storeToken } from "../store/user/storage";
 import { logoutSuccess } from '../store/user/userSlice';
 
 const axiosInstance = axios.create({
-    //baseURL: "http://localhost:8080/api",
-    baseURL: "https://rent-a-car-project.azurewebsites.net/api",
+    baseURL: "http://localhost:8080/api",
+    //baseURL: "https://rent-a-car-project.azurewebsites.net/api",
 });
 
 
