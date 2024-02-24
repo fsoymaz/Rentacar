@@ -32,3 +32,42 @@
   .odd-row {
 	background-color: #ffffff; /* Beyaz */
   }
+
+  .table-container {
+	overflow-x: auto;
+  }
+  
+  .table {
+	width: 100%;
+	border-collapse: collapse;
+  }
+  
+
+  
+  @media screen and (max-width: 600px) {
+	.table {
+	  overflow-x: auto;
+	  display: block;
+	}
+  
+	.th,
+	.td {
+	  display: block;
+	  text-align: left;
+	}
+  
+	.thead {
+	  display: none;
+	}
+  
+	.tr {
+	  margin-bottom: 16px;
+	  border: none;
+	}
+  
+	.th {
+	  border-bottom: 1px solid #ddd;
+	}
+  }
+  
+  

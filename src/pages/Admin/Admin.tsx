@@ -72,11 +72,11 @@ const Admin = () => {
             </Col>
           </Row>
           <Row>
-            <Col lg={6}>
+            <Col lg={6} md={12}>
               <Card className='mt-5'>
                   <Card.Title>Haftalık Kiralama İşlemleri</Card.Title>
                   <BarChart
-                    width={400}
+                    width={450}
                     height={250}
                     data={data}
                     margin={{ top: 10, right: 30, left: 20, bottom: 5 }}

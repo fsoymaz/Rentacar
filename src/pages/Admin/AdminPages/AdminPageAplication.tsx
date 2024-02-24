@@ -21,12 +21,17 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    fetchData();
   }, [isAddingData, isDeletingData, isUpdatingData, service]);
 
   const fetchData = async () => {
     try {
       const fetchedData = await service.getAll();
-      setData(fetchedData.data as any);
+      setData(fetchedData.data);
+      console.log('fetchedData:', data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -37,7 +42,7 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
       await AddData(formData);
       setShowModal(false);
       setIsAddingData(false);
-      fetchData(); // Yeni verileri getir
+      fetchData();
     } catch (error) {
       console.error('Error adding data:', error);
     }
@@ -72,7 +77,7 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
     setIsAddingData(false);
     setIsDeletingData(false);
     setShowModal(false);
-    fetchData(); // Yeni verileri getir
+    fetchData();
   };
 
   return (
@@ -95,7 +100,7 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
         </Col>
       </Row>
       <div className='table-container' style={{ backgroundColor: 'white' }}>
-        <Table cars={data} />
+        <Table data={data} />
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>

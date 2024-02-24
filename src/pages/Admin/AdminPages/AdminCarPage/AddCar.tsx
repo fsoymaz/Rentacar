@@ -65,7 +65,7 @@ const AddCar: React.FC = () => {
       return;
     }
 
-    formikSubmit(); // Formik form submit işlemini gerçekleştir
+    formikSubmit();
   };
 
   return (

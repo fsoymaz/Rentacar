@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { PostBrandModel } from '../../../models/brandModels/GetAllBrandModel';
+import { PostBrandModel } from '../../../../models/brandModels/GetAllBrandModel';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import brandService from '../../../service/baseSevice/brandService';
+import brandService from '../../../../service/baseSevice/brandService';
 
 const AddBrand: React.FC = () => {
   const [brandName, setBrandName] = useState<string>('');
@@ -23,9 +23,9 @@ const AddBrand: React.FC = () => {
         const brandData: PostBrandModel = {
           name: values.brandName,
         };
-
+  
         const brandResponse = await brandService.add(brandData);
-
+  
         console.log('Brand added successfully!');
         toast.success('Brand added successfully!');
         formik.resetForm();
@@ -35,7 +35,7 @@ const AddBrand: React.FC = () => {
       }
     },
   });
-
+  
   return (
     <div className="col-6">
       <div className="row">

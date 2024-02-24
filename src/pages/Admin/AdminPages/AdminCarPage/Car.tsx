@@ -8,7 +8,6 @@ import DeleteCar from './DeleteCar';
 import AdminPageApplication from '../AdminPageAplication';
 
 const Car = () => {
-  const [cars, setCars] = useState<any>([]); // Değişken adı cars olarak değiştirildi
   return (
     <div className="Car">
       <AdminPageApplication service={carService} Table={CarTable} AddData={AddCar} UpdateData={UpdateCar} DeleteData={DeleteCar} />

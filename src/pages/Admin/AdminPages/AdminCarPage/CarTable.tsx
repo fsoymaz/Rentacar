@@ -5,14 +5,14 @@ import '../Admin.css';
 
 type NestedKeysInGetAllCarResponse = keyof GetAllCarResponse | keyof GetAllCarResponse['model'] | 'model.brand' | 'location' | 'color';
 
-const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
+const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
   const [filter, setFilter] = useState<string>('');
   const [sortConfig, setSortConfig] = useState<{ key: NestedKeysInGetAllCarResponse, direction: 'ascending' | 'descending' } | null>({ key: 'modelYear', direction: 'ascending' });
-  const [sortedCars, setSortedCars] = useState<GetAllCarResponse[]>(cars);
+  const [sortedCars, setSortedCars] = useState<GetAllCarResponse[]>(data);
 
   useEffect(() => {
-    setSortedCars(cars);
-  }, [cars]);
+    setSortedCars(data);
+  }, [data]);
 
   const fuelTypeTranslations: { [key: string]: { name: string, color: string, icon: JSX.Element } } = {
     ELECTRIC: { name: 'Elektrikli', color: '#2ecc71', icon: <FaPlug /> },
@@ -62,7 +62,7 @@ const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
       direction = sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
     }
 
-    let sortedCars = [...cars];
+    let sortedCars = [...data];
 
     sortedCars.sort((a, b) => {
       let aValue;
@@ -103,7 +103,7 @@ const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.toLowerCase(); // Filtre değerini küçük harfe dönüştür
     setFilter(value);
-    const filteredCars = cars.filter(car => car.plate.toLowerCase().includes(value)); // Araba plakalarını küçük harfe dönüştürerek filtrele
+    const filteredCars = data.filter(car => car.plate.toLowerCase().includes(value)); // Araba plakalarını küçük harfe dönüştürerek filtrele
     setSortedCars(filteredCars);
   };
 

@@ -35,6 +35,12 @@ const Sidebar = () => {
                 <span className="text nav-text">Add Car</span>
               </a>
             </li>
+            <li className="nav-link">
+              <a href="/admin/addBrand">
+                <i className="bx bx-tag icons"></i>
+                <span className="text nav-text">Add Brand</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
