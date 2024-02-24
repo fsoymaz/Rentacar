@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GetAllCarResponse } from '../../../../models/cars/response/getAllCarResponse';
-import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
+import { FaCarSide, FaChair, FaCog, FaCrown, FaGasPump, FaLeaf, FaMoneyBillAlt, FaOilCan, FaPlane, FaPlug, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
 import '../Admin.css';
 
 type NestedKeysInGetAllCarResponse = keyof GetAllCarResponse | keyof GetAllCarResponse['model'] | 'model.brand' | 'location' | 'color';
@@ -14,10 +14,30 @@ const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
     setSortedCars(cars);
   }, [cars]);
 
-  const categoryTranslations: { [key: string]: string } = {
-    economy: 'Ekonomi',
-    comfort: 'Konfor',
-    luxury: 'Lüks'
+  const fuelTypeTranslations: { [key: string]: { name: string, color: string, icon: JSX.Element } } = {
+    ELECTRIC: { name: 'Elektrikli', color: '#2ecc71', icon: <FaPlug /> },
+    GASOLINE: { name: 'Benzinli', color: '#3498db', icon: <FaGasPump /> },
+    DIESEL: { name: 'Dizel', color: '#f1c40f', icon: <FaOilCan /> },
+    HYBRID: { name: 'Hibrit', color: '#8e44ad', icon: <FaLeaf /> },
+  };
+
+
+  const transmissionTypeTranslations: { [key: string]: { name: string, color: string, font: string, icon: JSX.Element } } = {
+    MANUAL: { name: 'Manuel', color: '#FF5733', font: 'Arial, sans-serif', icon: <FaCog /> },
+    AUTOMATIC: { name: 'Otomatik', color: '#3366FF', font: 'Tahoma, sans-serif', icon: <FaCarSide /> },
+  };
+
+
+  const categoryTranslations: { [key: string]: { name: string, color: string, icon: JSX.Element } } = {
+    economy: { name: 'Ekonomi', color: 'rgb(137, 60, 208)', icon: <FaMoneyBillAlt /> },
+    comfort: { name: 'Konfor', color: 'rgb(213, 78, 215)', icon: <FaChair /> },
+    luxury: { name: 'Lüks', color: 'rgb(37, 109, 191)', icon: <FaCrown /> }
+  };
+
+  const locationIcons: { [key: string]: JSX.Element } = {
+    'sab. gök. havalimanı': <FaPlane />,
+    'atatürk havalimanı': <FaPlane />,
+    'istanbul havalimanı': <FaPlane />
   };
 
   const columnKeys: { [key: string]: NestedKeysInGetAllCarResponse } = {
@@ -42,8 +62,8 @@ const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
       direction = sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
     }
 
-    let sortedCars = [...cars]; 
-    
+    let sortedCars = [...cars];
+
     sortedCars.sort((a, b) => {
       let aValue;
       let bValue;
@@ -81,42 +101,59 @@ const CarTable = ({ cars }: { cars: GetAllCarResponse[] }) => {
   };
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+    const value = event.target.value.toLowerCase(); // Filtre değerini küçük harfe dönüştür
     setFilter(value);
-    const filteredCars = cars.filter(car => car.plate.includes(value));
+    const filteredCars = cars.filter(car => car.plate.toLowerCase().includes(value)); // Araba plakalarını küçük harfe dönüştürerek filtrele
     setSortedCars(filteredCars);
   };
 
+
   return (
-    <table>
-      <thead>
-        <tr>
-          {Object.keys(columnKeys).map((columnName, index) => (
-            <th key={index} onClick={() => handleSort(columnKeys[columnName])}>
-              {columnName} {sortConfig && sortConfig.key === columnKeys[columnName] && (sortConfig.direction === 'ascending' ? <FaSortAmountDown /> : <FaSortAmountUp />)}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {sortedCars.map((car: GetAllCarResponse, index) => (
-          <tr key={car.id} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-            <td>{car.modelYear}</td>
-            <td>{car.plate}</td>
-            <td>{car.minFindeksRate}</td>
-            <td>{car.kilometer}</td>
-            <td>{car.dailyPrice}₺</td>
-            <td>{car.model.brand?.name}</td>
-            <td>{car.model?.name}</td>
-            <td>{car.color.name}</td>
-            <td>{car.transmissionType}</td>
-            <td>{car.fuelType}</td>
-            <td className={`category-${car.category.toLowerCase()}`}>{categoryTranslations[car.category.toLowerCase()]}</td>
-            <td>{car.location.name}</td>
+    <div>
+      <input className='form-control'
+        type="text"
+        placeholder="Plaka filtresi..."
+        value={filter}
+        onChange={handleFilterChange}
+      />
+      <table>
+        <thead>
+          <tr>
+            {Object.keys(columnKeys).map((columnName, index) => (
+              <th key={index} onClick={() => handleSort(columnKeys[columnName])}>
+                {columnName} {sortConfig && sortConfig.key === columnKeys[columnName] && (sortConfig.direction === 'ascending' ? <FaSortAmountDown /> : <FaSortAmountUp />)}
+              </th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {sortedCars.map((car: GetAllCarResponse, index) => (
+            <tr key={car.id} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+              <td>{car.modelYear}</td>
+              <td>{car.plate}</td>
+              <td>{car.minFindeksRate}</td>
+              <td>{car.kilometer}</td>
+              <td>{car.dailyPrice}₺</td>
+              <td>{car.model.brand?.name}</td>
+              <td>{car.model?.name}</td>
+              <td>{car.color.name}</td>
+              <td style={{ color: transmissionTypeTranslations[car.transmissionType].color, fontFamily: transmissionTypeTranslations[car.transmissionType].font }}>
+                {transmissionTypeTranslations[car.transmissionType].icon} {transmissionTypeTranslations[car.transmissionType].name}
+              </td>
+              <td style={{ color: fuelTypeTranslations[car.fuelType].color }}>
+                {fuelTypeTranslations[car.fuelType].icon} {fuelTypeTranslations[car.fuelType].name}
+              </td>
+              <td style={{ color: categoryTranslations[car.category.toLowerCase()].color }}>
+                {categoryTranslations[car.category.toLowerCase()].icon} {categoryTranslations[car.category.toLowerCase()].name}
+              </td>
+              <td>
+                {locationIcons[car.location.name.toLowerCase()]} {car.location.name}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

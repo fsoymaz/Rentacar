@@ -24,18 +24,6 @@
 	margin-right: 20px;
 }
 
-.category-economy {
-	color: rgb(137, 60, 208); /* ECONOMY kategorisi için renk */
-}
-
-.category-comfort {
-	color: rgb(213, 78, 215); /* COMFORT kategorisi için renk */
-}
-
-.category-luxury {
-	color: rgb(37, 109, 191); /* LUXURY kategorisi için renk */
-}
-
 
 .even-row {
 	background-color: #f2f2f2; /* Gri */
@@ -44,4 +32,3 @@
   .odd-row {
 	background-color: #ffffff; /* Beyaz */
   }
-  

@@ -11,7 +11,7 @@ const Car = () => {
   const [cars, setCars] = useState<any>([]); // Değişken adı cars olarak değiştirildi
   return (
     <div className="Car">
-      <AdminPageApplication service={carService} Table={CarTable} AddData={AddCar} UpdateData={UpdateCar} DeleteData={DeleteCar} /> {/* Table props'u büyük harfle başladı */}
+      <AdminPageApplication service={carService} Table={CarTable} AddData={AddCar} UpdateData={UpdateCar} DeleteData={DeleteCar} />
     </div>
   );
 }
