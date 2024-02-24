@@ -22,8 +22,8 @@ const Cars: React.FC<CarsPageProps> = () => {
 
   return (
     <div className="CarPage">
-      <Header backgroundImage="/logo/carPage.jpg" />
       <BaseFetcher service={() => carService.getAll()} onBaseFetched={setCars} />
+      <Header backgroundImage="/logo/carPage.jpg" />
       <div className="car-list p-5">
         {cars.map((car) => (
           <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">
@@ -37,6 +37,7 @@ const Cars: React.FC<CarsPageProps> = () => {
                 {car.modelYear} {car.model?.brand?.name}{" "}
                 {car.model?.name}
               </h3>
+              <h1>{car.plate}</h1>
               <div className="icon-section">
                 <div className="icons">
                   <FontAwesomeIcon icon={faGasPump} /> {car.fuelType}

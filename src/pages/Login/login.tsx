@@ -26,10 +26,6 @@ const LoginForm = () => {
     console.log("authState", authState);
   }, [authState]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

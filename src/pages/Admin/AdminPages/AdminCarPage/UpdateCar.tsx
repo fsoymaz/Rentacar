@@ -23,6 +23,8 @@ const fuelTypeOptions: Option[] = generateOptions(FuelType);
 const transmissionTypeOptions: Option[] = generateOptions(TransmissionType);
 const isupdate: boolean = true;
 const validationSchema = Yup.object().shape({
+  plate: Yup.string()
+    .required('Plate is required'),
 });
 const UpdateCar: React.FC = () => {
   const [imagePath, setImagePath] = useState<string>('');
@@ -31,7 +33,6 @@ const UpdateCar: React.FC = () => {
   const [initialValues, setInitialValues] = useState<UpdateCarRequest>(
     UpdateInitialValues
   );
-
 
   const fetchCarByPlate = async (plate: string) => {
     try {
@@ -57,10 +58,24 @@ const UpdateCar: React.FC = () => {
   };
 
   const plateFunction = async (values: plateValue) => {
-    setIsVisible(false);
-    await fetchCarByPlate(values.plate);
-    setPlate(values.plate);
-    setIsVisible(true);
+    try {
+      setIsVisible(false);
+      // Kontrol edilecek olan plaka değeri
+      const plateValueToCheck = values.plate;
+      // Veritabanında plakanın varlığını kontrol et
+      const response = await carService.getByPlate(plateValueToCheck);
+      // Eğer plaka bulunamazsa hata mesajı göster
+      if (!response.data) {
+        toast.error('Plate not found in the database');
+        return;
+      }
+      // Plaka bulunduysa diğer işlemlere devam et
+      await fetchCarByPlate(plateValueToCheck);
+      setPlate(plateValueToCheck);
+      setIsVisible(true);
+    } catch (error) {
+      console.error('Error checking plate:', error);
+    }
   };
 
   const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +87,6 @@ const UpdateCar: React.FC = () => {
     const response = await imageDataService.add(formData);
     setImagePath(response.data);
   };
-
 
   const FormikInfo = getFormikInfo([], [], [], transmissionTypeOptions, fuelTypeOptions, categoryOptions, isupdate);
 

@@ -23,7 +23,6 @@ export const getFormikInfo = (
     ];
 
     if (isUpdate) {
-        formikInfo.unshift({ formikType: "FormikInput", label: "ID", name: "id", type: "number", placeholder: "ID giriniz" });
         formikInfo.push({ formikType: "FormikInput", label: "Image Path", name: "imagePath", type: "string", placeholder: "Image Path giriniz" });
     } else {
         formikInfo.push(

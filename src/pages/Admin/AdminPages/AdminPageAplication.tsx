@@ -1,23 +1,27 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, Row, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleCarId, selectRental } from '../../../store/rental/rentalSlice'; // Redux'dan carId'yi alın
 
 type Props = {
   service: any;
   Table: any;
   AddData: any;
   UpdateData: any;
+  DeleteData: any;
 }
 
-const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, UpdateData }: Props) => {
+const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, UpdateData, DeleteData }: Props) => {
   const [data, setData] = useState<any>([]);
   const [showModal, setShowModal] = useState(false);
-  const [isAddingData, setIsAddingData] = useState(true);
+  const [isAddingData, setIsAddingData] = useState(false);
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [isDeletingData, setIsDeletingData] = useState(false);
+  const [isUpdatingData, setIsUpdatingData] = useState(false);
 
   useEffect(() => {
     fetchData();
-  }, [isAddingData, service]);
+  }, [isAddingData, isDeletingData, isUpdatingData, service]);
 
   const fetchData = async () => {
     try {
@@ -28,11 +32,12 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
     }
   };
 
-  const handleAdd = async (data: any) => {
+  const handleAdd = async (formData: any) => {
     try {
-      setIsAddingData(true);
+      await AddData(formData);
       setShowModal(false);
-      await fetchData(); 
+      setIsAddingData(false);
+      fetchData(); // Yeni verileri getir
     } catch (error) {
       console.error('Error adding data:', error);
     }
@@ -40,37 +45,52 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
 
   const handleUpdate = (item: any) => {
     setSelectedItem(item);
-    setIsAddingData(false); 
-    setShowModal(true); 
+    setIsAddingData(false);
+    setIsDeletingData(false);
+    setShowModal(true);
   };
-  
-  const handleDelete = async () => {
-    if (true) {
-      try {
-        await service.delete(122);
-        await fetchData();
-      } catch (error) {
-        console.error('Error deleting data:', error);
-      }
+
+
+  const handleDelete = (item: any) => {
+    setSelectedItem(item);
+    setIsAddingData(false);
+    setIsDeletingData(true);
+    setShowModal(true);
+  };
+
+  const renderModalBody = () => {
+    if (isAddingData) {
+      return <AddData onSubmit={handleAdd} />;
+    } else if (isDeletingData) {
+      return <DeleteData />;
+    } else {
+      return <UpdateData item={selectedItem} onSubmit={() => setIsUpdatingData(false)} />;
     }
+  };
+
+  const handleSaveChanges = () => {
+    setIsAddingData(false);
+    setIsDeletingData(false);
+    setShowModal(false);
+    fetchData(); // Yeni verileri getir
   };
 
   return (
     <div className='container p-5' >
       <Row className='button-group'>
         <Col xs={12} sm={4}>
-          <Button variant='primary' className='w-100' onClick={() => { setIsAddingData(true); setShowModal(true); }}>
+          <Button variant='primary' className='w-100' onClick={() => { setIsAddingData(true); setIsUpdatingData(false); setShowModal(true); }}>
             Add
           </Button>
         </Col>
         <Col xs={12} sm={4}>
-          <Button variant='warning' className='w-100' onClick={handleUpdate}>
+          <Button variant='warning' className='w-100' onClick={() => handleUpdate(selectedItem)}>
             Update
           </Button>
         </Col>
         <Col xs={12} sm={4}>
-          <Button variant='danger' className='w-100' onClick={handleDelete}>
-            Delete
+          <Button variant='danger'  className='w-100' onClick={() => handleDelete(selectedItem)}>
+            Delete Car
           </Button>
         </Col>
       </Row>
@@ -79,16 +99,21 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
       </div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title className='mb-2'>{isAddingData ? 'Add' : 'Update'} Data</Modal.Title>
+          <Modal.Title className='mb-2 font-weight-bold'>
+            {isAddingData ? 'Add' : (isDeletingData ? 'Delete' : 'Update')} Data
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {isAddingData ? <AddData onSubmit={handleAdd} /> : <UpdateData item={selectedItem} onSubmit={handleUpdate} />}
+          {renderModalBody()}
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={() => setShowModal(false)}>
             Close
           </Button>
-          <Button variant='primary' onClick={isAddingData ? handleAdd : handleUpdate}>
+          <Button
+            variant='primary'
+            onClick={handleSaveChanges} // Save Changes'e tıklandığında yeni verileri getir
+          >
             Save Changes
           </Button>
         </Modal.Footer>

@@ -20,7 +20,7 @@ type Props = {
 const FormikSelect = ({ label, name, options, placeholder, }: Props) => {
   return (
     <div className="mb-3">
-      <label className='container form-label' style={{ width: '100%' }} >
+      <label className='form-label w-100'>
         {label}
         <Field as="select" className="form-control" name={name}>
           <option value="" disabled>

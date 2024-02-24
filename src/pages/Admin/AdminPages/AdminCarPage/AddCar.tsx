@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik';
 import { toast } from 'react-toastify';
 
 import FormikInput from '../../../../components/FormikInput/FormikInput';
@@ -39,7 +39,34 @@ const AddCar: React.FC = () => {
     setImagePath(response.data);
   };
 
-  const FormikInfo = getFormikInfo(models, colors, locations, transmissionTypeOptions, fuelTypeOptions, categoryOptions);
+  const handleSubmit = async (values: AddCarRequest, { resetForm }: FormikHelpers<AddCarRequest>) => {
+    if (!imagePath) {
+      toast.error('Lütfen önce bir resim ekleyin!');
+      return;
+    }
+
+    try {
+      const carDataWithImage = { ...values, imagePath };
+      const response = await carService.add(carDataWithImage);
+      if (response.status === 201) {
+        toast.success('Araç Başarı ile eklendi!');
+        resetForm();
+      } else {
+        toast.error('Araç eklenemedi, lütfen eksik alanları doldurun.');
+      }
+    } catch (error) {
+      toast.error('Bilinmeyen bir hata oluştu.');
+    }
+  };
+
+  const handleFormSubmit = (formikSubmit: (values?: AddCarRequest) => void) => {
+    if (!imagePath) {
+      toast.error('Lütfen önce bir resim ekleyin!');
+      return;
+    }
+
+    formikSubmit(); // Formik form submit işlemini gerçekleştir
+  };
 
   return (
     <div className='container' style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -47,41 +74,27 @@ const AddCar: React.FC = () => {
       <BaseFetcher service={() => colorService.getAll()} onBaseFetched={setColors} />
       <BaseFetcher service={() => modelService.getAll()} onBaseFetched={setModels} />
 
-
       <Formik
         initialValues={AddInitialValues}
-        onSubmit={async (values: AddCarRequest, { resetForm }) => {
-          try {
-            const carDataWithImage = { ...values, imagePath };
-            const response = await carService.add(carDataWithImage);
-            if (response.status === 201) {
-              toast.success('Araç Başarı ile eklendi!');
-              return;
-            } else
-              toast.error('Araç eklenemedi eksik alanları doldurun');
-              return;
-          } catch (error) {
-            toast.error('Bilinmedik Hata.');
-          }
-        }}
+        onSubmit={handleSubmit}
         validationSchema={carSchema}
       >
-        <Form>
-          {FormikInfo.map((formikInfo) => {
-            if (formikInfo.formikType === "FormikInput") {
-              return <FormikInput key={`input-${formikInfo.name}`} label={formikInfo.label} name={formikInfo.name} type={formikInfo.type ?? ''} placeholder={formikInfo.placeholder ?? ''} />;
-            } else if (formikInfo.formikType === "FormikSelect") {
-              return <FormikSelect key={`select-${formikInfo.name}`} label={formikInfo.label} name={formikInfo.name} options={formikInfo.options ?? []} />;
-            }
-          })}
-          <label className='form-label'>
-            Image Path
-            <br />
-            <input name="image" type="file" onChange={handleImageChange} />
-          </label><br />
-
-          <button className='btn btn-success' type="submit">Submit</button>
-        </Form>
+        {({ handleSubmit: formikSubmit }) => (
+          <Form>
+            {getFormikInfo(models, colors, locations, transmissionTypeOptions, fuelTypeOptions, categoryOptions).map((formikInfo) => {
+              if (formikInfo.formikType === "FormikInput") {
+                return <FormikInput key={`input-${formikInfo.name}`} label={formikInfo.label} name={formikInfo.name} type={formikInfo.type ?? ''} placeholder={formikInfo.placeholder ?? ''} />;
+              } else if (formikInfo.formikType === "FormikSelect") {
+                return <FormikSelect key={`select-${formikInfo.name}`} label={formikInfo.label} name={formikInfo.name} options={formikInfo.options ?? []} />;
+              }
+            })}
+            <label className='form-label'>
+              Image Path
+              <input className='form-control' name="image" type="file" onChange={handleImageChange} />
+            </label>
+            <button className='btn btn-success form-control' type="button" onClick={() => formikSubmit()}>Submit</button>
+          </Form>
+        )}
       </Formik>
     </div>
   );

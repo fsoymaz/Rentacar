@@ -4,16 +4,13 @@ import { Button, Menu } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logoutSuccess } from '../../store/user/userSlice';
-import SignedIn from './SignedIn';
+import { useSelector} from 'react-redux';
 
 
 export default function SignedOut({ signIn }: { signIn: () => void }) {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state: any) => state.auth);
   const email = useSelector((state: any) => state.auth.email);
-  const dispatch = useDispatch();
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.style.color = 'white';
@@ -27,16 +24,8 @@ export default function SignedOut({ signIn }: { signIn: () => void }) {
     navigate('/register');
   };
 
-
-  
   const handleLoginClick = () => {
     navigate('/login');
-  };
-
-
-  const handleLogout = () => {
-    dispatch(logoutSuccess());
-    localStorage.removeItem('token');
   };
 
   return (
@@ -65,14 +54,6 @@ export default function SignedOut({ signIn }: { signIn: () => void }) {
           <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
           Kayıt Ol
         </Button>
-      )}
-
-      {isAuthenticated.id !== 0 &&  (
-        <>
-          <span>
-            <SignedIn/>
-          </span>
-        </>
       )}
     </Menu.Item>
   );

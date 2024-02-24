@@ -7,9 +7,9 @@ import axios from 'axios';
 import carService from '../../service/baseSevice/carService';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
-import axiosInstance from '../../utils/Interceptors';
-import LocationFetcher from '../Fetch/FetchLocations';
 import { locationModels } from '../../models/locations/locationModels';
+import BaseFetcher from '../Fetch/BaseFetcher';
+import locationService from '../../service/baseSevice/locationService';
 
 
 const RentACarForm: React.FC = () => {
@@ -61,7 +61,7 @@ const RentACarForm: React.FC = () => {
       <h1>Hadi Şimdi Kirala</h1>
       <form onSubmit={handleSubmit}>
         <label > Araç Lokasyonu</label>
-        <LocationFetcher  onLocationsFetched={setLocations} />
+        <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
         <select id="pickupLocation" onChange={(e) => {
           const locationId = parseInt(e.target.value);
           setSelectedLocation(locationId);

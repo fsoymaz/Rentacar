@@ -1,48 +1,47 @@
 .table-container {
 	margin-top: 20px;
-  }
-  
-  .table-container table {
+}
+
+.table-container table {
 	width: 100%;
 	border-collapse: collapse;
-  }
-  
-  .table-container th,
-  .table-container td {
-	padding: 8px;
-	border: 1px solid #ddd;
-  }
-  
-  .table-container th {
-	background-color: #f2f2f2;
-  }
-  
-  .button-group {
+}
+
+.table-container th,
+.table-container td {
+	padding: 6px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+
+
+.button-group {
 	margin-top: 20px;
-  }
-  
-  .button-group button {
-	margin-right: 10px;
-  }
-  
+}
 
-  /* Admin.css */
+.button-group button {
+	margin-right: 20px;
+}
 
-/* Tablo stilini ayarla */
-.table-container {
-	overflow-x: auto; /* Yatay kaydırma */
-	max-width: 100%; /* Tablonun maksimum genişliği */
+.category-economy {
+	color: rgb(137, 60, 208); /* ECONOMY kategorisi için renk */
+}
+
+.category-comfort {
+	color: rgb(213, 78, 215); /* COMFORT kategorisi için renk */
+}
+
+.category-luxury {
+	color: rgb(37, 109, 191); /* LUXURY kategorisi için renk */
+}
+
+
+.even-row {
+	background-color: #f2f2f2; /* Gri */
   }
   
-  /* Buton grubunu yatay hizala */
-  .button-group {
-	display: flex;
-	justify-content: space-between; /* Butonları eşit aralıklı olarak hizala */
-	margin-top: 20px; /* Üst boşluk ekle */
-  }
-  
-  /* Modalı ortala */
-  .modal-dialog {
-	margin: 10% auto;
+  .odd-row {
+	background-color: #ffffff; /* Beyaz */
   }
   

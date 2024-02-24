@@ -20,13 +20,6 @@ const CustomNavbar = () => {
   };
 
 
-  const signOut = () => {
-    dispatch(isAuthenticated(false))
-    localStorage.removeItem('isAuthenticated');
-    navigate('/');
-  
-  };
-
   const signIn = () => {
     dispatch(isAuthenticated(true))
     localStorage.setItem('isAuthenticated', 'true');
