@@ -28,6 +28,10 @@ class RentalService extends BaseService<
 			throw new Error('Kiralama Oluşturulamadı. Lütfen tekrar deneyiniz.');
 		}
 	}
+
+	getRentalUser(email: string): Promise<AxiosResponse<any, any>> {
+		return axiosInstance.get<any>(this.apiUrl +`/getAllRental?email=${email}`);
+	}
 }
 
 export default new RentalService();

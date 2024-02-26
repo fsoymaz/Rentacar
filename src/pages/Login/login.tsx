@@ -70,7 +70,7 @@ const LoginForm = () => {
             alt="User Icon"
           />
         </div>
-        <SignedIn />
+        {/* <SignedIn /> */}
         <form  onSubmit={handleSubmit}>
           <input
             type="text"

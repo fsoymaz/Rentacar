@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import brandService from '../../../../service/baseSevice/brandService';
-import axiosInstance from '../../../../utils/Interceptors';
 
 const DeleteBrand: React.FC = () => {
   const [brandName, setBrandName] = useState<string>('');

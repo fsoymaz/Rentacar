@@ -6,14 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faGasPump, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 import { BrandModel } from '../../models/brandModels/GetAllBrandModel';
 import { modelModels } from '../../models/modelModels/GetAllModelsModel';
-import FetchAvailableCars from '../../components/Fetch/FetchAvailableCars';
 import { GetAllCarResponse } from '../../models/cars/response/getAllCarResponse';
 import { handleCarId, handleEndDate, handleLocationId, handleStartDate, selectRental } from '../../store/rental/rentalSlice';
 import { RootState } from '../../store/configureStore';
-import BaseFetcher from '../../components/Fetch/BaseFetcher';
 import modelService from '../../service/baseSevice/modelService';
 import brandService from '../../service/baseSevice/brandService';
 import locationService from '../../service/baseSevice/locationService';
+import BaseFetcher from '../../components/Fetch/BaseFetcher';
+import FetchAvailableCars from '../../components/Fetch/FetchAvailableCars';
 
 const AvailableCars: React.FC = () => {
     const initialState = {
