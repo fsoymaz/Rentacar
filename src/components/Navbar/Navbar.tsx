@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { Nav, NavDropdown, Navbar } from 'react-bootstrap';
 
 const CustomNavbar = () => {
   const [logo, setLogo] = useState('/logo/LOGOROSSO.png');
@@ -48,7 +48,7 @@ const CustomNavbar = () => {
           <Nav.Link as={Link} to="/about" onClick={handleLinkClick}>
             Hakkımızda
           </Nav.Link>
-          <NavDropdown title="Araçlar">
+          <NavDropdown  title="Araçlar">
             <NavDropdown.Item as={Link} to="/cars" onClick={handleLinkClick}>
               Tüm Kiralık Araçlar
             </NavDropdown.Item>

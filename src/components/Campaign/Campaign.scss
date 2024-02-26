@@ -38,7 +38,6 @@
   &__car-content {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
 
     @media (max-width: 1050px) {
       flex-direction: column;
