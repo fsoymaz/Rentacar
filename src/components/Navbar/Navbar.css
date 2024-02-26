@@ -52,7 +52,8 @@
 
 
 .profile {
-  font-size: 15px;
+  font-size: 17px;
+	font-weight: bold;
   color: rgb(246, 239, 242);
   font-family: 'Roboto', sans-serif;
   padding: 0 20px;
