@@ -12,9 +12,6 @@ export function loadState(key: string, defaultState: any) {
   }
 }
 
-export function storeAuthState(auth:any) {
-    localStorage.setItem("auth", JSON.stringify(auth));
-  }
 
   export function loadAuthState() {
     const defaultState = { id: 0 ,role:" "};

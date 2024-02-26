@@ -14,7 +14,7 @@ const Sidebar = () => {
       <header>
         <div className="image-text">
           <span className="image">
-            <img src="/logo/LogoBlu.png" alt="logo" />
+            <img className='w-50' src="/logo/LogoBlu.png" alt="logo" />
           </span>
         </div>
         <i className={`bx ${isSidebarClosed ? 'bx-chevron-left' : 'bx-chevron-right'} toggle`} onClick={handleSidebarToggle}></i>

@@ -36,6 +36,7 @@ const CustomNavbar = () => {
           src={logo}
           alt="logo"
           className="logo"
+          style={{width: '60%'}}
           onClick={handleLinkClick}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background: linear-gradient(to left, rgb(96, 142, 172) 40%, rgb(243, 244, 250) 80%);
+  /* background: linear-gradient(to left, rgb(96, 142, 172) 40%, rgb(243, 244, 250) 80%); */
+  background-color: rgba(123, 136, 161, 0.653);
   min-height: 100vh;
 }
 

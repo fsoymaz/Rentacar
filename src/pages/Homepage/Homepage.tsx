@@ -7,6 +7,7 @@ import RentACarForm from '../../components/RentacarForm/RentacarForm';
 import { useDispatch } from 'react-redux';
 import { log } from 'console';
 import { logoutRental } from '../../store/rental/rentalSlice';
+import Campaign from '../../components/Campaign/Campaign';
 
 const Homepage: React.FC = () => {
   localStorage.setItem("navi", "/");
@@ -25,8 +26,9 @@ const Homepage: React.FC = () => {
         </Col>
       </Row>
       <Col md={12}>
-      <SliderComp />
+      {/* <SliderComp /> */}
       </Col>
+      <Campaign />
     </div>
   );
 };

@@ -4,7 +4,8 @@
   top: 0%;
 	width: 100%;
 	z-index: 999;
-  background: linear-gradient(to left, rgb(6, 49, 78) 40%, rgb(243, 244, 250) 80%);
+  /* background: linear-gradient(to left, rgb(6, 49, 78) 40%, rgb(243, 244, 250) 80%); */
+  background-color: rgb(5, 14, 14);
 }
 
 .Nav {
