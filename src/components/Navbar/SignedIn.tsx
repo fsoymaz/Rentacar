@@ -26,9 +26,9 @@ export default function SignedIn({ }: {}) {
               <Icon name='user' />
               <strong>Hesabım</strong>
             </Dropdown.Item>
-            <Dropdown.Item>
+            <Dropdown.Item onClick={() => {navigate('/userRentals');}}>
               <Icon name='money' />
-              <strong>Faturalar</strong>
+              <strong>Kiralama</strong>
             </Dropdown.Item>
             <Dropdown.Item>
               <Icon name='help' />
