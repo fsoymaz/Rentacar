@@ -21,11 +21,12 @@ export const getFormikInfo = (
         { formikType: "FormikSelect", label: "Fuel Type", name: "fuelType", options: fuelTypeOptions ? [initialOption, ...fuelTypeOptions] : [] },
         { formikType: "FormikSelect", label: "Category", name: "category", options: categoryOptions ? [initialOption, ...categoryOptions] : [] },
         { formikType: "FormikInput", label: "Passenger Capacity", name: "passengerCapacity", type: "number", placeholder: "Passenger Capacity giriniz" },
+        { formikType: "FormikInput", label: "İndirim Ordanı", name: "discount", type: "number", placeholder: "İndirim Oranı giriniz" },
     ];
 
     if (isUpdate) {
-        formikInfo.unshift({ formikType: "FormikInput", label: "ID", name: "id", type: "number", placeholder: "ID giriniz" });
-        formikInfo.push({ formikType: "FormikInput", label: "Image Path", name: "imagePath", type: "string", placeholder: "Image Path giriniz" });
+        formikInfo.unshift({ formikType: "FormikInput", label: "Image Path", name: "imagePath", type: "string", placeholder: "Image Path giriniz" });
+        // formikInfo.unshift({ formikType: "FormikInput", label: "ID", name: "id", type: "number", placeholder: "ID giriniz" });
     } else {
         formikInfo.push(
             { formikType: "FormikSelect", label: "Model", name: "modelId", options: models ? [initialOption, ...models] : [] },

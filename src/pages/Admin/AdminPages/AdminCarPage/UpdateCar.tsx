@@ -40,6 +40,7 @@ const UpdateCar: React.FC = () => {
       const carData = response.data;
       setInitialValues({
         id: carData.id,
+        imagePath: carData.imagePath,
         modelYear: carData.modelYear,
         plate: carData.plate,
         minFindeksRate: carData.minFindeksRate,
@@ -49,7 +50,7 @@ const UpdateCar: React.FC = () => {
         fuelType: carData.fuelType,
         category: carData.category,
         passengerCapacity: carData.passengerCapacity,
-        imagePath: carData.imagePath
+        discount: carData.discount,
       });
       setIsVisible(true);
     } catch (error) {
@@ -123,6 +124,11 @@ const UpdateCar: React.FC = () => {
           validationSchema={validationSchema}
         >
           <Form>
+            <label className='form-label'>
+              Image Path
+              <br />
+              <input name="image" type="file" onChange={handleImageChange} />
+            </label>
             {FormikInfo.map((formikInfo, index) => {
               if (formikInfo.formikType === "FormikInput") {
                 return <FormikInput key={index} label={formikInfo.label} name={formikInfo.name} type={formikInfo.type ?? ''} placeholder={formikInfo.placeholder ?? ''} />;
@@ -130,11 +136,6 @@ const UpdateCar: React.FC = () => {
                 return <FormikSelect key={index} label={formikInfo.label} name={formikInfo.name} options={formikInfo.options ?? []} />;
               }
             })}
-            <label className='form-label'>
-              Image Path
-              <br />
-              <input name="image" type="file" onChange={handleImageChange} />
-            </label>
             <br />
             <button className='btn btn-success' type="submit">Değiştir</button>
           </Form>

@@ -10,4 +10,5 @@ export interface UpdateCarRequest {
     fuelType: string;
     category: string;
     passengerCapacity: number;
+    discount: number;
 }

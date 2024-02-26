@@ -13,4 +13,5 @@ export interface AddCarRequest {
     category: string;
     passengerCapacity: number;
     locationId?: number;
+    discount?: number;
 }

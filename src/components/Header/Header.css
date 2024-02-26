@@ -1,15 +1,19 @@
 .header-title {
 	font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .header-content {
-    color: #F3F3F3;
+    color: #0c0707;
     font-size: 1rem;
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .header-content:hover {

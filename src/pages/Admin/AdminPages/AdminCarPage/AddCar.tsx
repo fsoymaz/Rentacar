@@ -81,6 +81,10 @@ const AddCar: React.FC = () => {
       >
         {({ handleSubmit: formikSubmit }) => (
           <Form>
+            <label className='form-label'>
+              Image Path
+              <input className='form-control' name="image" type="file" onChange={handleImageChange} />
+            </label>
             {getFormikInfo(models, colors, locations, transmissionTypeOptions, fuelTypeOptions, categoryOptions).map((formikInfo) => {
               if (formikInfo.formikType === "FormikInput") {
                 return <FormikInput key={`input-${formikInfo.name}`} label={formikInfo.label} name={formikInfo.name} type={formikInfo.type ?? ''} placeholder={formikInfo.placeholder ?? ''} />;
@@ -88,10 +92,6 @@ const AddCar: React.FC = () => {
                 return <FormikSelect key={`select-${formikInfo.name}`} label={formikInfo.label} name={formikInfo.name} options={formikInfo.options ?? []} />;
               }
             })}
-            <label className='form-label'>
-              Image Path
-              <input className='form-control' name="image" type="file" onChange={handleImageChange} />
-            </label>
             <button className='btn btn-success form-control' type="button" onClick={() => formikSubmit()}>Submit</button>
           </Form>
         )}

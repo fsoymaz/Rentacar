@@ -29,5 +29,6 @@ export const UpdateInitialValues: UpdateCarRequest = {
     fuelType: '',
     category: '',
     passengerCapacity: 0,
-    imagePath: ''
+    imagePath: '',
+    discount: 0
 };

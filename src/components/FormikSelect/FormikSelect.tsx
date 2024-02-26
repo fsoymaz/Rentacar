@@ -26,8 +26,8 @@ const FormikSelect = ({ label, name, options, placeholder, }: Props) => {
           <option value="" disabled>
             {placeholder}
           </option>
-          {options.map((option) => (
-            <option key={option.id} value={option.id}>
+          {options.map((option, index) => (
+            <option key={option.id || index} value={option.value}>
               {option.name}
             </option>
           ))}
