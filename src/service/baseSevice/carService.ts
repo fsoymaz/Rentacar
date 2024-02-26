@@ -28,7 +28,6 @@ class CarService extends BaseService<
       const response = await axiosInstance.get<GetAllCarResponse[]>(`/cars/category?category=${category}`);
       return response;
     } catch (error) {
-      console.error('An error occurred while fetching cars by category.', error);
       this.showAlert('An error occurred while fetching cars by category.');
       throw new Error('An error occurred while fetching cars by category.');
     }
@@ -59,7 +58,6 @@ class CarService extends BaseService<
       throw new Error('getavailablecars api\'sine ulaşamadı');
     }
   }
-  // Yardımcı bir fonksiyon, alert gösterimi için
   private showAlert(message: string): void {
     alert(`Error: ${message}`);
   }

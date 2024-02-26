@@ -1,49 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../configureStore';
-
-export interface AuthState {
-  id: number;
-  username: string;
-  role: string;
-  isAuthenticated: boolean;
-  email: string;
-}
-
 export interface RentalState {
   startDate: string;
   endDate: string;
   carId: number;
-  locationId: number; // Değişiklik
+  locationId: number;
 }
 
 const initialRentalState: RentalState = {
   startDate: "",
   endDate: "",
   carId: 0,
-  locationId: 0, // Değişiklik
+  locationId: 0,
 };
 
-const initialState: AuthState = {
-  id: 0,
-  username: "",
-  role: "",
-  isAuthenticated: false,
-  email: ""
-};
 
-export const authSlice = createSlice({
-  name: 'auth',
-  initialState: initialState,
-  reducers: {
-    logoutSuccess: (state) => {
-      state.id = 0;
-      state.username = "";
-	  state.email = "";
-      state.role = "";
-      state.isAuthenticated = false;
-    },
-  },
-});
 
 export const rentalSlice = createSlice({
   name: "rental",
@@ -62,17 +33,17 @@ export const rentalSlice = createSlice({
       state.locationId = action.payload;
     },
    
-    resetRentalState: (state) => {
-      return initialRentalState;
+    logoutRental: (state) => {
+      state.startDate = "";
+      state.endDate= "";
+      state.carId = 0;
+      state.locationId = 0;
     },
   },
 });
 
-export const { handleStartDate, handleEndDate, handleCarId, resetRentalState, handleLocationId } = rentalSlice.actions;
-export const {  logoutSuccess } = authSlice.actions;
+export const { handleStartDate, handleEndDate, handleCarId, logoutRental, handleLocationId } = rentalSlice.actions;
 
-export const authReducer = authSlice.reducer;
 export const rentalReducer = rentalSlice.reducer;
 
-export const selectAuth = (state: RootState) => state.auth;
 export const selectRental = (state: RootState) => state.rental;

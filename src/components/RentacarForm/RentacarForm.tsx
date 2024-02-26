@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './RentACarForm.css';
 import { useNavigate } from 'react-router-dom';
-import { handleEndDate, handleStartDate, selectRental, handleLocationId, resetRentalState } from '../../store/rental/rentalSlice'; // changeLocationId import edildi
+import { handleEndDate, handleStartDate, selectRental, handleLocationId } from '../../store/rental/rentalSlice'; // changeLocationId import edildi
 import axios from 'axios';
 import carService from '../../service/baseSevice/carService';
 import * as Yup from 'yup';

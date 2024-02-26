@@ -4,9 +4,13 @@ import {Row, Col} from 'react-bootstrap';
 import SliderComp from '../../components/SliderComp/SliderComp';
 import Header from '../../components/Header/Header';
 import RentACarForm from '../../components/RentacarForm/RentacarForm';
+import { useDispatch } from 'react-redux';
+import { log } from 'console';
+import { logoutRental } from '../../store/rental/rentalSlice';
 
 const Homepage: React.FC = () => {
   localStorage.setItem("navi", "/");
+  const dispatch = useDispatch();
   return (
     <div>
       <Header

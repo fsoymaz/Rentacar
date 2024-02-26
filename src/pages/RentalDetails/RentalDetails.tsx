@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import userService from '../../service/baseSevice/userService';
 import rentalService from '../../service/baseSevice/rentalService';
 import './rental.css';
-import { selectRental } from '../../store/rental/rentalSlice';
+import { logoutRental, selectRental } from '../../store/rental/rentalSlice';
 
 const RentalDetail = () => {
   const rental = useSelector(selectRental);
@@ -67,8 +67,7 @@ const RentalDetail = () => {
       try {
         const userId = auth.id;
         const rentalResponse = await rentalService.createRental(userId, rental);
-        const rentalData = rentalResponse.data;
-
+        const rentalData = rentalResponse.data;      
         alert('Kiralama Başarıyla tamamlandı.');
         navigate('/invoice', {
           state: { info: rentalData }

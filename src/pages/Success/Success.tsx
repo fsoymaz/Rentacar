@@ -1,8 +1,8 @@
 import { useLocation } from 'react-router-dom';
 import html2pdf from 'html2pdf.js';
 import './styles.css';
-import { selectRental } from '../../store/rental/rentalSlice';
-import { useSelector } from 'react-redux';
+import { logoutRental, selectRental } from '../../store/rental/rentalSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 type Props = {};
@@ -11,9 +11,16 @@ const Success = (props: Props) => {
   const location = useLocation();
   const { info } = location.state || {};
   const rental = useSelector(selectRental);
+  const dispatch = useDispatch();
 
   const [startDate, setStartDate] = useState(new Date()); // Başlangıç tarihini useState ile başlatıyoruz
   const [endDate, setEndDate] = useState(new Date()); // Bitiş tarihini useState ile başlatıyoruz
+
+  useEffect(() => {
+    return () => {
+      dispatch(logoutRental());
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     // Redux store'dan alınan başlangıç ve bitiş tarihlerini set ediyoruz
@@ -45,6 +52,7 @@ const Success = (props: Props) => {
       };
 
       html2pdf().from(element).set(opt).save();
+      dispatch(logoutRental());
     } else {
       console.error('PDF oluşturmak için element bulunamadı.');
     }

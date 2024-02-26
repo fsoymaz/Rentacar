@@ -2,7 +2,7 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutSuccess } from '../../store/user/userSlice';
-import { resetRentalState } from '../../store/rental/rentalSlice';
+import { logoutRental } from '../../store/rental/rentalSlice';
 
 export default function SignedIn({ }: {}) {
   const isAuthenticated = useSelector((state: any) => state.auth);
@@ -12,7 +12,7 @@ export default function SignedIn({ }: {}) {
 
   const handleLogout = () => {
     dispatch(logoutSuccess());
-    dispatch(resetRentalState());
+    dispatch(logoutRental());
     localStorage.removeItem('token');
     navigate('/');
   };
