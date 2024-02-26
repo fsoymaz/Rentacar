@@ -2,7 +2,7 @@ import React from 'react';
 import { Category } from '../../Enum/CategoryEnum';
 import { BrandModel } from '../../models/brandModels/GetAllBrandModel';
 import { modelModels } from '../../models/modelModels/GetAllModelsModel';
-
+import './Car.css';
 interface FilterProps {
     category: string;
     brands: BrandModel[];
@@ -40,14 +40,17 @@ const Filter: React.FC<FilterProps> = ({
 }) => (
     <div className={`filter-menu ${filterMenuVisible ? 'active' : ''}`}>
         <div className="filter-item">
-        <label>Location:</label>
-      <select value={locationId} onChange={onLocationChange}>
-        {locations.map((location) => (
-          <option key={location.id} value={location.id}>
-            {location.name}
-          </option>
-        ))}
-      </select>
+            <label>Location:</label>
+            <select value={locationId} onChange={onLocationChange}>
+                {locations.map((location) => (
+                    <option key={location.id} value={location.id}>
+                        {location.name}
+                    </option>
+                ))}
+            </select>
+        </div>
+        <div className="filter-item">
+
             <label>Ketegory:</label>
             <select value={category} onChange={(e) => onCategoryChange(e.target.value)}>
                 <option value={""}>Hepsi</option>

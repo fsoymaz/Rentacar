@@ -14,6 +14,7 @@ import brandService from '../../service/baseSevice/brandService';
 import locationService from '../../service/baseSevice/locationService';
 import BaseFetcher from '../../components/Fetch/BaseFetcher';
 import FetchAvailableCars from '../../components/Fetch/FetchAvailableCars';
+import { motion } from "framer-motion";
 
 const AvailableCars: React.FC = () => {
     const initialState = {
@@ -68,15 +69,15 @@ const AvailableCars: React.FC = () => {
     const handleRentButtonClick = (carId: number) => {
         dispatch(handleCarId(carId));
         if (!isAuthenticated) {
-          localStorage.setItem('navi', '/availableCars');
-          navigate('/login');
-          return;
+            localStorage.setItem('navi', '/availableCars');
+            navigate('/login');
+            return;
         }
         navigate('/paymentDetail');
-      };
+    };
 
     return (
-        <div className="container pt-5">
+        <div className="available">
             <header>
                 <div>
                     <div className="mnu">
@@ -108,51 +109,49 @@ const AvailableCars: React.FC = () => {
                     locationId={rental.locationId}
                     onLocationChange={(e) => {
                         dispatch(handleLocationId(parseInt(e.target.value)));
-                    } }
+                    }}
                     locations={locations} toggleFilterMenu={function (): void {
                         throw new Error('Function not implemented.');
-                    } } filterMenuVisible={false}                />
+                    }} filterMenuVisible={false} />
 
                 <BaseFetcher service={() => brandService.getAll()} onBaseFetched={setBrands} />
                 <BaseFetcher service={() => modelService.getAll()} onBaseFetched={setModels} />
                 <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
             </header>
-            <div className="mt-5 p-5 row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                {state.cars.map((car) => (
-                    <div key={car.id} className="col mb-4">
-                        <div className="card h-100" onClick={() => handleCarClick(car.id)}>
-                            <img
-                                src={car?.imagePath}
-                                alt="Car Image"
-                                className="card-img-top"
-                            />
-                            <div className="card-body">
-                                <h5 className="card-title">
-                                    {car.modelYear} {car.model?.brand?.name}{' '}
-                                    {car.model?.name}
-                                </h5>
-                                <h1>{car.category}</h1>
-                                <div className="icon-section">
-                                    <div className="icons">
-                                        <FontAwesomeIcon icon={faGasPump} /> {car.fuelType}
-                                    </div>
-                                    <div className="icons">
-                                        <FontAwesomeIcon icon={faCar} />{car.transmissionType}
-                                    </div>
-                                    <div className="icons">
-                                        <FontAwesomeIcon icon={faPaintBrush} /> {car.color?.name}
-                                    </div>
-                                </div>
+            <div className="car-list p-5">
+            {state.cars.map((car) => (
+                <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">
+                    <img
+                        src={car?.imagePath}
+                        alt={`Car Image - ${car.imagePath}`}
+                        className="card-img"
+                    />
+                    <div className="card-body">
+                        <h3 className="card-title">
+                            {car.modelYear} {car.model?.brand?.name}{" "}
+                            {car.model?.name}
+                        </h3>
+                        <h1>{car.plate}</h1>
+                        <div className="icon-section">
+                            <div className="icons">
+                                <FontAwesomeIcon icon={faGasPump} /> {car.fuelType}
                             </div>
-                            <div className="card-footer">
-                                <button type="submit" className="btn btn-success" onClick={() => handleRentButtonClick(car.id)}> {car.dailyPrice}₺ Kiralama Yap</button>
+                            <div className="icons">
+                                <FontAwesomeIcon icon={faCar} />{car.transmissionType}
+                            </div>
+                            <div className="icons">
+                                <FontAwesomeIcon icon={faPaintBrush} /> {car.color?.name}
                             </div>
                         </div>
                     </div>
-                ))}
-            </div>
+                    <div className="card-footer">
+                        <button type="submit" className="btn btn-success" onClick={() => handleRentButtonClick(car.id)}> {car.dailyPrice}₺ Kiralama Yap</button>
+                    </div>
+                </motion.div>
+            ))}
         </div>
-    );
-};
+    </div>
+);
+}
 
 export default AvailableCars;
