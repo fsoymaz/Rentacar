@@ -1,11 +1,24 @@
+import { useEffect, useState } from "react";
 import SingleCard from "../../components/SingleCard/SingleCard";
 import './Dashboard.css';
+import axiosInstance from "../../utils/Interceptors";
 const Admin = () => {
 
+  const [totalCars, setTotalCars] = useState(0);
+
+  useEffect(() => {
+    axiosInstance.get('http://localhost:8080/api/cars/total')
+      .then(response => {
+        setTotalCars(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
+  }, []);
 
   const carObj = {
     title: "Total Cars",
-    totalNumber: 750,
+    totalNumber: totalCars,
     icon: "ri-police-car-line",
   };
   

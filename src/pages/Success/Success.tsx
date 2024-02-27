@@ -19,6 +19,7 @@ const Success = (props: Props) => {
   useEffect(() => {
     return () => {
       dispatch(logoutRental());
+      window.location.reload();
     };
   }, [dispatch]);
 
