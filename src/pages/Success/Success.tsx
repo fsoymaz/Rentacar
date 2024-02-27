@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import html2pdf from 'html2pdf.js';
 import './styles.css';
 import { logoutRental, selectRental } from '../../store/rental/rentalSlice';
@@ -12,6 +12,7 @@ const Success = (props: Props) => {
   const { info } = location.state || {};
   const rental = useSelector(selectRental);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [startDate, setStartDate] = useState(new Date()); // Başlangıç tarihini useState ile başlatıyoruz
   const [endDate, setEndDate] = useState(new Date()); // Bitiş tarihini useState ile başlatıyoruz
@@ -19,7 +20,9 @@ const Success = (props: Props) => {
   useEffect(() => {
     return () => {
       dispatch(logoutRental());
-      window.location.reload();
+      localStorage.removeItem('rental');
+      navigate("/");
+      
     };
   }, [dispatch]);
 
