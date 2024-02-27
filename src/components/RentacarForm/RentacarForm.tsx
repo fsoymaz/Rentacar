@@ -2,24 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './RentACarForm.css';
 import { useNavigate } from 'react-router-dom';
-import { handleEndDate, handleStartDate, selectRental, handleLocationId } from '../../store/rental/rentalSlice'; // changeLocationId import edildi
-import axios from 'axios';
+import { handleEndDate, handleStartDate, selectRental, handleLocationId } from '../../store/rental/rentalSlice';
 import carService from '../../service/baseSevice/carService';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { locationModels } from '../../models/locations/locationModels';
 import BaseFetcher from '../Fetch/BaseFetcher';
 import locationService from '../../service/baseSevice/locationService';
-
+import rentalService from '../../service/baseSevice/rentalService'; // rentalService import edildi
 
 const RentACarForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { startDate, endDate, locationId } = useSelector(selectRental); // locationId eklendi
+  const { startDate, endDate, locationId } = useSelector(selectRental);
   const [pickupDate, setPickupDate] = useState<string>(startDate);
   const [deliveryDate, setDeliveryDate] = useState<string>(endDate);
   const [locations, setLocations] = useState<locationModels[]>([]);
-  const [selectedLocation, setSelectedLocation] = useState<number | undefined>(locationId); // locationId ile başlatıldı
+  const [selectedLocation, setSelectedLocation] = useState<number | undefined>(locationId);
+  const authState = useSelector((store: any) => store.auth.email);
 
   const RentACarFormSchema = Yup.object().shape({
     pickupDate: Yup.date().min(new Date(), 'Pickup date must be today or later').required('Pickup date is required'),
@@ -38,6 +38,26 @@ const RentACarForm: React.FC = () => {
         return;
       }
       await RentACarFormSchema.validate({ pickupDate, deliveryDate });
+      
+      // Rental verilerini almak için rentalService kullanılıyor
+      const rentalResponse = await rentalService.getRentalUser(authState); // email buradan gelmeli
+      const rentals = rentalResponse.data;
+
+      // Başlangıç ve bitiş tarihlerini kontrol et
+      const hasExistingRental = rentals.some((rental: any) => {
+        const rentalStartDate = new Date(rental.startDate);
+        const rentalEndDate = new Date(rental.endDate);
+        const selectedStartDate = new Date(pickupDate);
+        const selectedEndDate = new Date(deliveryDate);
+        console.log(rentalStartDate, rentalEndDate, selectedStartDate, selectedEndDate);
+        return (selectedStartDate >= rentalStartDate && selectedStartDate <= rentalEndDate) || (selectedEndDate >= rentalStartDate && selectedEndDate <= rentalEndDate);
+      });
+
+      if (hasExistingRental) {
+        toast.error('There is an existing rental within selected dates. Please choose different dates.');
+        return;
+      }
+
       const response = await carService.getAvailableCars(pickupDate, deliveryDate, selectedLocation);
       dispatch(handleLocationId(selectedLocation));
       navigate(`/availableCars`);
@@ -45,7 +65,6 @@ const RentACarForm: React.FC = () => {
       toast.error('Form validation error');
     }
   };
-
 
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;

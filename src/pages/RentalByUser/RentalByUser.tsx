@@ -27,15 +27,10 @@ const RentalByUser = () => {
 
 
             {rentals.length > 0 ? (
-                rentals.map((rental:any) => (
-                    <div key={rental.id}>
-                        {rental.startDate}
+                rentals.map((rental:any, index) => (
+                    <div key={index}>
+                        {rental.startDate} {' '}
                         {rental.endDate}
-
-  
-
-
-                       
                     </div>
                 ))) :(
                 <div>No rentals found</div>)}

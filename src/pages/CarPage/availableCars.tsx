@@ -12,9 +12,11 @@ import { RootState } from '../../store/configureStore';
 import modelService from '../../service/baseSevice/modelService';
 import brandService from '../../service/baseSevice/brandService';
 import locationService from '../../service/baseSevice/locationService';
+import rentalService from '../../service/baseSevice/rentalService'; // rentalService import edildi
 import BaseFetcher from '../../components/Fetch/BaseFetcher';
 import FetchAvailableCars from '../../components/Fetch/FetchAvailableCars';
 import { motion } from "framer-motion";
+import { toast } from 'react-toastify';
 
 const AvailableCars: React.FC = () => {
     const initialState = {
@@ -31,6 +33,7 @@ const AvailableCars: React.FC = () => {
     const rental = useSelector(selectRental);
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+    const email = useSelector((state: RootState) => state.auth.email);
 
     const [brands, setBrands] = useState<BrandModel[]>([]);
     const [models, setModels] = useState<modelModels[]>([]);
@@ -66,16 +69,52 @@ const AvailableCars: React.FC = () => {
         dispatch(handleCarId(carId));
     };
 
-    const handleRentButtonClick = (carId: number) => {
+    const handleRentButtonClick = async (carId: number) => {
         dispatch(handleCarId(carId));
         if (!isAuthenticated) {
             localStorage.setItem('navi', '/availableCars');
             navigate('/login');
             return;
         }
-        navigate('/paymentDetail');
+    
+        try {
+            // Filtrelenmiş araç listesini Redux store'dan alın
+            const filteredCars = state.cars;
+    
+            // Filtreleme işlemi sırasında seçilen başlangıç ve bitiş tarihlerini Redux store'dan alın
+            const { startDate, endDate } = rental;
+    
+            // Kiralama bilgilerini Redux store'dan alın
+            const rentalResponse = await rentalService.getRentalUser(email);
+            const rentals = rentalResponse.data;
+    
+            // Filtrelenmiş araçlar içinde dönerek, her bir aracın kiralama tarihlerini kontrol edin
+            const hasExistingRental = rentals.some((rental: any) => {
+                const rentalStartDate = new Date(rental.startDate);
+                const rentalEndDate = new Date(rental.endDate);
+                const selectedStartDate = new Date(startDate);
+                const selectedEndDate = new Date(endDate);
+                
+                // Seçilen tarih aralığı ile kiralama tarihleri arasında çakışma kontrolü yapın
+                return (
+                    (selectedStartDate >= rentalStartDate && selectedStartDate <= rentalEndDate) || 
+                    (selectedEndDate >= rentalStartDate && selectedEndDate <= rentalEndDate)
+                );
+            });
+    
+            if (hasExistingRental) {
+                toast.error('There is an existing rental within selected dates. Please choose different dates.');
+                return;
+            }
+    
+            navigate('/paymentDetail');
+        } catch (error) {
+            console.error('Error while fetching rental data:', error);
+            toast.error('An error occurred while fetching rental data.');
+        }
     };
-
+    
+    
     return (
         <div className="available">
             <header>
@@ -119,39 +158,39 @@ const AvailableCars: React.FC = () => {
                 <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
             </header>
             <div className="car-list p-5">
-            {state.cars.map((car) => (
-                <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">
-                    <img
-                        src={car?.imagePath}
-                        alt={`Car Image - ${car.imagePath}`}
-                        className="card-img"
-                    />
-                    <div className="card-body">
-                        <h3 className="card-title">
-                            {car.modelYear} {car.model?.brand?.name}{" "}
-                            {car.model?.name}
-                        </h3>
-                        <h1>{car.plate}</h1>
-                        <div className="icon-section">
-                            <div className="icons">
-                                <FontAwesomeIcon icon={faGasPump} /> {car.fuelType}
-                            </div>
-                            <div className="icons">
-                                <FontAwesomeIcon icon={faCar} />{car.transmissionType}
-                            </div>
-                            <div className="icons">
-                                <FontAwesomeIcon icon={faPaintBrush} /> {car.color?.name}
+                {state.cars.map((car) => (
+                    <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">
+                        <img
+                            src={car?.imagePath}
+                            alt={`Car Image - ${car.imagePath}`}
+                            className="card-img"
+                        />
+                        <div className="card-body">
+                            <h3 className="card-title">
+                                {car.modelYear} {car.model?.brand?.name}{" "}
+                                {car.model?.name}
+                            </h3>
+                            <h1>{car.plate}</h1>
+                            <div className="icon-section">
+                                <div className="icons">
+                                    <FontAwesomeIcon icon={faGasPump} /> {car.fuelType}
+                                </div>
+                                <div className="icons">
+                                    <FontAwesomeIcon icon={faCar} />{car.transmissionType}
+                                </div>
+                                <div className="icons">
+                                    <FontAwesomeIcon icon={faPaintBrush} /> {car.color?.name}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="card-footer">
-                        <button type="submit" className="btn btn-success" onClick={() => handleRentButtonClick(car.id)}> {car.dailyPrice}₺ Kiralama Yap</button>
-                    </div>
-                </motion.div>
-            ))}
+                        <div className="card-footer">
+                            <button type="submit" className="btn btn-success" onClick={() => handleRentButtonClick(car.id)}> {car.dailyPrice}₺ Kiralama Yap</button>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
         </div>
-    </div>
-);
+    );
 }
 
 export default AvailableCars;
