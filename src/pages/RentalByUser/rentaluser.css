@@ -1,0 +1,97 @@
+.rentaluser-container {
+    max-width: 800px;
+    margin: 20px auto 0;
+    padding: 20px;
+
+}
+
+.card.card-style1 {
+    box-shadow: 0px 0px 10px 0px rgba(89, 75, 128, 0.09);
+}
+
+.card-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+}
+
+.card {
+    border: 0;
+    padding: 0; 
+    margin: 10px;
+}
+
+.card-body {
+    height: 300px;
+    padding: 20px;
+    text-align: left;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    
+}
+
+.social-icon-style1.list-unstyled {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon-style1.list-unstyled li {
+    list-style: none;
+}
+
+.social-icon-style1.list-unstyled li a {
+    color: #333;
+    font-size: 20px;
+}
+
+.social-icon-style1.list-unstyled li a:hover {
+    color: #ceaa4d;
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.circle.active-rental {
+    background-color: green;
+}
+
+.circle.past-rental {
+    background-color: red;
+}
+
+.rental-status-text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cancel-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #cc0000;
+}
+
+@media screen and (max-width: 768px) {
+    .card-body {
+        height: 400px;
+        padding: 20px;
+        text-align: left;
+    }
+  }

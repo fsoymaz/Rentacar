@@ -14,6 +14,7 @@ export default function SignedIn({ }: {}) {
     dispatch(logoutSuccess());
     dispatch(logoutRental());
     localStorage.removeItem('token');
+    window.location.reload();
     navigate('/');
   };
 

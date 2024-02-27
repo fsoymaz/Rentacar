@@ -1,7 +1,7 @@
 @use "/src/global/" as *;
 
 .pick-section {
-  padding: 10rem 0;
+  margin-top: 10%;
 }
 
 .pick-container {
@@ -41,7 +41,6 @@
 
     @media (max-width: 1050px) {
       flex-direction: column;
-      gap: 5rem;
     }
   }
 }
@@ -70,7 +69,7 @@
 }
 
 .pick-car {
-  width: 50rem;
+  width: 100%;
   position: relative;
 
   @media (max-width: 700px) {
@@ -79,19 +78,14 @@
 
   img {
     width: 100%;
-    margin-top: 6rem;
-    height: 100%;
-    padding: 10%;
   }
 }
 
 .pick-description {
-  width: 25rem;
+  width: 20rem;
 
   &__price {
-    width: 100%;
     background-color: $text-orange;
-    font-size: 1.8rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -151,19 +145,15 @@
 }
 
 .box-cars {
-  gap: 7rem;
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 1200px) {
-    gap: 2rem;
-  }
+
 
   @media (max-width: 700px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
   }
 }
 
