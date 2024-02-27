@@ -18,9 +18,9 @@ export const authSlice = createSlice({
     },
     logoutSuccess: (state) => {
       state.id = 0;
-      state.role = " ";
-      state.email = " ";
-      state.username = " ";
+      state.role = "";
+      state.email = "";
+      state.username = "";
       setToken()
       state.isAuthenticated = false;
     },
