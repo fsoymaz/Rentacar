@@ -40,8 +40,9 @@ const Footer = () => {
                         <div className="col-xl-6 col-lg-6 mb-50">
                             <div className="footer-widget">
                                 <div className="footer-logo">
-                                    <a href="index.html"><img src="/logo/LOGOBLU.png" className="img-fluid w-50" alt="logo" /></a>
-                                </div>
+                                    <span style={{ fontSize: '2.5rem', fontWeight: '800', userSelect: 'none', cursor: 'pointer' }}>Rent</span>
+                                    <span style={{ color: 'red', fontSize: '2.5rem', fontWeight: '800', userSelect: 'none', cursor: 'pointer' }}>A</span>
+                                    <span style={{ fontSize: '2.5rem', fontWeight: '800', userSelect: 'none', cursor: 'pointer' }}>Car</span>                                </div>
                                 <div className="footer-social-icon">
                                     <span style={{ color: '#fff' }}>Follow us</span>
                                     <a href="#"><i className="fab fa-facebook-f facebook-bg"></i></a>

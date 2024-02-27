@@ -15,7 +15,9 @@ const Sidebar = () => {
       </div>
       <Col xs={12} sm={2} className={`${mobileOpenState ? 'sidebarActive' : 'sidebar'}`} style={{}}>
         <div className="sidebar__top">
-          <img style={{ width: '60%' }} src="/logo/LogoBlu.png" alt="" />
+        <span style={{fontSize : '1.5rem' , fontWeight : '800', userSelect: 'none', cursor: 'pointer'}}>Rent</span>
+        <span style={{color : 'red', fontSize : '1.5rem' , fontWeight : '800', userSelect: 'none', cursor: 'pointer'}}>A</span>
+        <span style={{fontSize : '1.5rem' , fontWeight : '800', userSelect: 'none', cursor: 'pointer'}}>Car</span>
         </div>
 
         <div className="sidebar__content">

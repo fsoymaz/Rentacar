@@ -61,7 +61,8 @@
 }
 
 .filter-menu {
-  background-color: black;
+  top: 10%;
+  background-color: rgba(237, 237, 243, 0.949);
   position: absolute;
   width: 100%;
   box-shadow: 0 2px 4px rgba(208, 167, 167, 0.942);

@@ -53,7 +53,7 @@ const CreditCardForm: React.FC = () => {
 
     try {
       const response = await creditCardService.ad(cardData, userId);
-      
+
       if (response.status === 201) {
         alert('Kart bilgileri başarıyla kaydedildi.');
         navigate('/paymentDetail');
@@ -85,9 +85,6 @@ const CreditCardForm: React.FC = () => {
               <div className="flip">
                 <div className="front">
                   <div className="chip"></div>
-                  <div className="logo">
-                    <img src="/logo/LogoBlu.png" style={{width: '75px', height: '30px'}} alt="" />
-                  </div>
                   <div className="number">{cardNumber}</div>
                   <div className="card-holder">
                     <label>Card holder</label>

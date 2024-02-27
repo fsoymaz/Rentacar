@@ -64,8 +64,9 @@ const Success = (props: Props) => {
         <div className="card-body">
           <div className="container mb-5 mt-3">
             <div className="container justify-content-center">
-              <img src="/logo/LOGOBLU.png" alt="logo" className="mb-5 mt- col-xl-6 logo" style={{}} />
-
+              <span style={{ fontSize: '1.5rem', fontWeight: '800', userSelect: 'none', cursor: 'pointer' }}>Rent</span>
+              <span style={{ color: 'red', fontSize: '1.5rem', fontWeight: '800', userSelect: 'none', cursor: 'pointer' }}>A</span>
+              <span style={{ fontSize: '1.5rem', fontWeight: '800', userSelect: 'none', cursor: 'pointer' }}>Car</span>
               <div className="row my-2 mx-1 justify-content-center">
                 <table className="table table-striped table-borderless">
                   <thead style={{ backgroundColor: '#84B0CA' }} className="text-white">
