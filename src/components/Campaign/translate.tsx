@@ -12,18 +12,10 @@ const translate = (data: any) => {
             return 'Elektrikli';
         case 'HYBRID':
             return 'Hibrit';
-        case 'LPG':
-            return 'LPG';
         case 'ECONOMY':
             return 'Ekonomik';
-        case 'MIDRANGE':
-            return 'Orta';
         case 'LUXURY':
             return 'Lüks';
-        case 'PRESTIGE':
-            return 'Prestij';
-        case 'COMMERCIAL':
-            return 'Ticari';
         case 'COMFORT':
             return 'Konfor';
     }

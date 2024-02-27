@@ -29,18 +29,23 @@ const RentACarForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await RentACarFormSchema.validate({ pickupDate, deliveryDate });
-      if (selectedLocation !== undefined) {
-        const response = await carService.getAvailableCars(pickupDate, deliveryDate, selectedLocation);
-        dispatch(handleLocationId(selectedLocation)); // Redux store'a seçilen lokasyonu gönder
-        navigate(`/availableCars`);
-      } else {
-        toast.error('Please select a location');
+      if (!pickupDate || !deliveryDate) {
+        toast.error('Please select pickup and delivery dates');
+        return;
       }
+      if (!selectedLocation) {
+        toast.error('Please select a location');
+        return;
+      }
+      await RentACarFormSchema.validate({ pickupDate, deliveryDate });
+      const response = await carService.getAvailableCars(pickupDate, deliveryDate, selectedLocation);
+      dispatch(handleLocationId(selectedLocation));
+      navigate(`/availableCars`);
     } catch (error) {
       toast.error('Form validation error');
     }
   };
+
 
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -68,7 +73,7 @@ const RentACarForm: React.FC = () => {
         }}>
           <option value="">Lokasyon Seç</option>
           {locations.map(location => (
-            <option  key={location.id} value={location.id}>{location.name}</option>
+            <option key={location.id} value={location.id}>{location.name}</option>
           ))}
         </select>
         <div className="fechas">
