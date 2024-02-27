@@ -21,13 +21,10 @@ const Homepage: React.FC = () => {
         scrollTo='formik-form'
       />
       <Row className="justify-content-md-center">
-        <Col id='formik-form' md={8}>
+        <Col id='formik-form' >
       <RentACarForm />        
         </Col>
       </Row>
-      <Col md={12}>
-      {/* <SliderComp /> */}
-      </Col>
       <Campaign />
     </div>
   );

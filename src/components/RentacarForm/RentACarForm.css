@@ -2,20 +2,22 @@
 
 
 .blanco {
-    background: white;
+    margin: 0 auto;
+    width: 80%;
+    background: rgba(255, 255, 255, 0.787);
     border-radius: 1.5em;
-    padding: 3em;
+    padding: 2em;
     display: flex;
     flex-direction: column;
     position: relative;
 	margin-bottom: 200px;
-    top: 10%;
+    top: 30%;
 
 }
 
 .blanco h1 {
-    font-family: 'Bree Serif', serif;
-    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     margin-bottom: 1em;
     margin-top: 1em;
 }
@@ -39,7 +41,7 @@
 
 .fecha input[type="date"] {
     padding: 1em;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-bottom: .4em;
 }
 
@@ -71,22 +73,21 @@ form input[type="time"] {
 
 form input[placeholder] {
     color: rgb(35, 34, 34);
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 form input[type="submit"] {
     margin-top: 2%;
     width: 100%;
-    border-radius: 1em;
     background: rgb(6, 49, 78);
-    padding: 4%;
+    padding: 2%;
     color: white;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
 }
 
 
 #pickupLocation {
-  padding: 10px; /* İçeriğin etrafındaki dolgu miktarını ayarlar */
-  font-size: 16px; /* Yazı tipi boyutunu ayarlar */
+  padding: 10px;
+  font-size: 16px;
 }

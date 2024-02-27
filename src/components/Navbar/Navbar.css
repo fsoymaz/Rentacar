@@ -3,8 +3,8 @@
 .Navbar {
   top: 0%;
 	width: 100%;
-	z-index: 999;
-  background-color: rgba(83, 99, 99, 0.18);
+	z-index: 999999;
+  background-color: rgb(88, 98, 98);
 }
 
 .Nav {
@@ -28,7 +28,7 @@
 
 @media (max-width: 990px) {
   .Nav a {
-    background-color: rgb(5, 14, 14);
+    background-color: rgba(83, 99, 99, 0.18);
     color: rgb(11, 148, 197);
   }
   .Nav a:hover {
@@ -53,11 +53,12 @@
 .profile {
   font-size: 17px;
 	font-weight: bold;
-  color: rgb(246, 239, 242);
-  font-family: 'Roboto', sans-serif;
+  color: rgb(11, 148, 197);
+    font-family: 'Roboto', sans-serif;
   padding: 0 20px;
 }
 
 .profile:hover {
-  color: rgb(216, 229, 234);
+  color: rgb(7, 78, 103);
+
 }

@@ -13,7 +13,7 @@ export const authSlice = createSlice({
       state.id = action.payload.id;
       state.email = action.payload.sub;
       state.username = action.payload.username;
-      state.role = action.payload.role[0].authority;
+      state.role = action.payload.role;
       state.isAuthenticated = true;
     },
     logoutSuccess: (state) => {

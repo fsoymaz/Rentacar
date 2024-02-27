@@ -31,7 +31,6 @@ const AdminPageApplication: React.FC<Props> = ({ service, Table, AddData, Update
     try {
       const fetchedData = await service.getAll();
       setData(fetchedData.data);
-      console.log('fetchedData:', data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }

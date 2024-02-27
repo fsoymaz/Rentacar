@@ -20,21 +20,17 @@ export default function SignedIn({ }: {}) {
   return (
     <>
       {isAuthenticated ? (
-        <Dropdown text={username} pointing className='link item profile'>
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={() => { navigate('/profile'); }}>
+        <Dropdown  text={username} pointing className='link item profile'>
+          <Dropdown.Menu >
+            <Dropdown.Item className='bg-white'  onClick={() => { navigate('/profile'); }}>
               <Icon name='user' />
               <strong>Hesabım</strong>
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => {navigate('/userRentals');}}>
+            </Dropdown.Item >
+            <Dropdown.Item className='bg-white' onClick={() => {navigate('/userRentals');}}>
               <Icon name='money' />
               <strong>Kiralama</strong>
             </Dropdown.Item>
-            <Dropdown.Item>
-              <Icon name='help' />
-              <strong>Destek</strong>
-            </Dropdown.Item>
-            <Dropdown.Item onClick={handleLogout}>
+            <Dropdown.Item className='bg-white' onClick={handleLogout}>
               <Icon name='sign out' />
               <strong>Çıkış yap</strong>
             </Dropdown.Item>

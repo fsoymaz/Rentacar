@@ -8,7 +8,9 @@ type NestedKeysInGetAllCarResponse = keyof GetAllCarResponse | keyof GetAllCarRe
 const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
   const [filter, setFilter] = useState<string>('');
   const [sortConfig, setSortConfig] = useState<{ key: NestedKeysInGetAllCarResponse, direction: 'ascending' | 'descending' } | null>({ key: 'modelYear', direction: 'ascending' });
-  const [sortedCars, setSortedCars] = useState<GetAllCarResponse[]>(data);
+  const [sortedCars, setSortedCars] = useState<GetAllCarResponse[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
   useEffect(() => {
     setSortedCars(data);
@@ -107,10 +109,26 @@ const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
     setSortedCars(filteredCars);
   };
 
+  // Mevcut sayfadaki araba öğelerini al
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = sortedCars.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Sayfa numaralarını oluştur
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(sortedCars.length / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  // Sayfa değiştirme işlevi
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div>
-      <input className='form-control'
+      <input
+        className='form-control'
         type="text"
         placeholder="Plaka filtresi..."
         value={filter}
@@ -127,7 +145,7 @@ const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
           </tr>
         </thead>
         <tbody>
-          {sortedCars.map((car: GetAllCarResponse, index) => (
+          {currentItems.map((car: GetAllCarResponse, index) => (
             <tr key={car.id} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
               <td>{car.modelYear}</td>
               <td>{car.plate}</td>
@@ -153,6 +171,14 @@ const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
           ))}
         </tbody>
       </table>
+      {/* Sayfalama düğmeleri */}
+      <div>
+        {pageNumbers.map((number) => (
+          <button key={number} onClick={() => handlePageChange(number)}>
+            {number}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
