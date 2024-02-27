@@ -9,7 +9,7 @@ import AdminPageApplication from '../AdminPageAplication';
 
 const Car = () => {
   return (
-    <div className="Car">
+    <div className="Car col-10">
       <AdminPageApplication service={carService} Table={CarTable} AddData={AddCar} UpdateData={UpdateCar} DeleteData={DeleteCar} />
     </div>
   );

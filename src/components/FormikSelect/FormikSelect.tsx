@@ -27,7 +27,7 @@ const FormikSelect = ({ label, name, options, placeholder, }: Props) => {
             {placeholder}
           </option>
           {options.map((option, index) => (
-            <option key={option.id || index} value={option.value}>
+            <option key={option.id || index} value={option.id}>
               {option.name}
             </option>
           ))}

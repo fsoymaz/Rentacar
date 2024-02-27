@@ -69,7 +69,7 @@ const AddCar: React.FC = () => {
   };
 
   return (
-    <div className='container' style={{ justifyContent: 'center', alignItems: 'center' }}>
+    <div className='container'>
       <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
       <BaseFetcher service={() => colorService.getAll()} onBaseFetched={setColors} />
       <BaseFetcher service={() => modelService.getAll()} onBaseFetched={setModels} />

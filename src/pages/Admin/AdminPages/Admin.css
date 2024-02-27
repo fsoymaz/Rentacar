@@ -70,4 +70,8 @@
 	}
   }
   
-  
+  .Car, .Brand{
+    margin-left: auto;
+    padding: 0px 30px;
+    padding-bottom: 50px;
+  }

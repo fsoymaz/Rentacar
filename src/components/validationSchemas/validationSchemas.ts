@@ -32,6 +32,9 @@ export const carSchema = Yup.object().shape({
     .required("Yolcu Kapasitesi zorunludur")
     .positive("Yolcu Kapasitesi pozitif bir sayı olmalıdır")
     .integer("Yolcu Kapasitesi tam sayı olmalıdır"),
+    discount: Yup.number()
+    .required("İndirim oranı zorunludur")
+    .min(0, "İndirim oranı minimum sıfır olmalıdır")
 });
 
 

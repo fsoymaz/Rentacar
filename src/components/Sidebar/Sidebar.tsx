@@ -1,50 +1,41 @@
-import React, { useState } from 'react';
-import './Sidebar.css';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import "./Sidebar.css";
+import navLinks from "./Navlink";
 
 const Sidebar = () => {
-  const [isSidebarClosed, setIsSidebarClosed] = useState(true);
-
-  const handleSidebarToggle = () => {
-    setIsSidebarClosed(!isSidebarClosed);
-  };
-
   return (
-    <div className='col'>
-    <nav className={`sidebar  ${isSidebarClosed ? 'close' : ''}`}>
-      <header>
-        <div className="image-text">
-          <span className="image">
-            <img className='w-50' src="/logo/LogoBlu.png" alt="logo" />
-          </span>
-        </div>
-        <i className={`bx ${isSidebarClosed ? 'bx-chevron-left' : 'bx-chevron-right'} toggle`} onClick={handleSidebarToggle}></i>
-      </header>
+    <div className="sidebar col-2">
+      <div className="sidebar__top">
+        <img style={{ width: '60%' }} src="/logo/LogoBlu.png" alt="" />
+      </div>
 
-      <div className="menu-bar">
+      <div className="sidebar__content">
         <div className="menu">
-          <ul className="menu-links">
-            <li className="nav-link">
-              <a href="/admin">
-                <i className="bx bx-home-alt icons"></i>
-                <span className="text nav-text">Dashboard</span>
-              </a>
-            </li>
-            <li className="nav-link">
-              <a href="/admin/admincar">
-                <i className="bx bx-car icons"></i>
-                <span className="text nav-text">Add Car</span>
-              </a>
-            </li>
-            <li className="nav-link">
-              <a href="/admin/addBrand">
-                <i className="bx bx-tag icons"></i>
-                <span className="text nav-text">Add Brand</span>
-              </a>
-            </li>
+          <ul className="nav__list">
+            {navLinks.map((item, index) => (
+              <li className="nav__item" key={index}>
+                <NavLink
+                  to={item.path}
+                  className={(navClass) =>
+                    navClass.isActive ? "nav__active nav__link" : "nav__link"
+                  }
+                >
+                  {item.display}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
+
+        <div className="sidebar__bottom">
+          <Link to="/">
+            <span>
+              <i className="fas fa-sign-out-alt"></i> Logout
+            </span>
+          </Link>
+        </div>
       </div>
-    </nav>
     </div>
   );
 };

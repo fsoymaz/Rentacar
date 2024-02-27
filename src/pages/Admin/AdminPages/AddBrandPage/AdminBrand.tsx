@@ -10,7 +10,7 @@ import DeleteBrand from "./DeleteBrand";
 const AdminBrand = () => {
   const [brands, setBrands] = useState<any>([]); // Değişken adı cars olarak değiştirildi
   return (
-    <div className="Brand">
+    <div className="Brand col-10">
       <AdminPageApplication service={brandService} Table={BrandTable} AddData={AddBrand} UpdateData={BrandUpdate} DeleteData={DeleteBrand} />
     </div>
   );
