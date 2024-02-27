@@ -5,15 +5,11 @@ const navLinks = [
     },
     {
       path: "/admin/admincar",
-      display: "Araç İşlemleri",
+      display: "Araç",
     },
     {
       path: "/admin/addBrand",
-      display: "Marka İşlemleri",
-    },
-    {
-      path: "/settings",
-      display: "Settings",
+      display: "Marka",
     },
   ];
   
