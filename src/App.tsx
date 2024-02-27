@@ -43,7 +43,7 @@ function App(): ReactElement {
     <div className='App'>
       <ToastContainer position="bottom-right" autoClose={3000} />
       {!isOnAdminPage && <Navbar />}
-      <div className="content-wrapper row">
+      <div className="content-wrapper">
         {isOnAdminPage && <Sidebar />}
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -67,6 +67,7 @@ function App(): ReactElement {
           <Route path="/paymentDetail" element={<UserRoute><RentalDetail/> </UserRoute>} />
           <Route path="/invoice" element={<UserRoute><Succsess/></UserRoute>} />
           <Route path="/userRentals" element={<RentalByUser/> }/>
+          <Route path="*" element={<div>Hata: Bu sayfa bulunamadı!</div>} />
         </Routes>
       </div>
       {!isOnAdminPage && <CustomFooter />}

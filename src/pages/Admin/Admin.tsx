@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SingleCard from "../../components/SingleCard/SingleCard";
 import './Dashboard.css';
 import axiosInstance from "../../utils/Interceptors";
+import { Col } from "react-bootstrap";
 const Admin = () => {
 
   const [totalCars, setTotalCars] = useState(0);
@@ -42,14 +43,14 @@ const Admin = () => {
   
 
   return (
-       <div className="dashboard col-10">
+       <Col xs={12} sm={10} className="dashboard col-10 pt-5 sm:col-12">
         <div className="dashboard__cards">
           <SingleCard item={carObj} />
           <SingleCard item={tripObj} />
           <SingleCard item={clientObj} />
           <SingleCard item={distanceObj} />
         </div>
-    </div>
+    </Col>
   );
 };
 

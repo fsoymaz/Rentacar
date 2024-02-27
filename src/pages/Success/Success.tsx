@@ -24,7 +24,6 @@ const Success = (props: Props) => {
   }, [dispatch]);
 
   useEffect(() => {
-    // Redux store'dan alınan başlangıç ve bitiş tarihlerini set ediyoruz
     if (rental) {
       setStartDate(new Date(rental.startDate));
       setEndDate(new Date(rental.endDate));

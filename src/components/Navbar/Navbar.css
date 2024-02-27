@@ -1,25 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-.Navbar {
-  top: 0%;
-	width: 100%;
-	z-index: 999999;
+#MainNavbar{
   background-color: rgb(123, 136, 161);
 }
 
-.Nav {
-	flex-grow: 1;
+.Navbar {
+  height:3rem;
+}
+
+#firstDiv{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  gap: 0 2rem;
+  align-items:center;
+  flex : 1 1 0%;
 }
 
 .Nav a {
 	font-size: 17px;
 	font-weight: bold;
-	color: rgb(223, 232, 238);
   font-family: 'Roboto', sans-serif;
+  height: 100%;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  position:relative;
+  height:4rem;
+}
+
+.Nav a::before{
+  content: '';
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  left:0;
+  height:40%;
+  border-radius:0.5rem;
+  border-top: 1px solid black;
+  background-color: #222222;
+  width:0px;
+  transition: all .5s;
+  z-index: -1;
+}
+
+.Nav a:hover::before{
+  width:100%;
 }
 
 .Nav a:hover {
-	color: rgb(4, 4, 5);
+	color: white;
 }
 
 
@@ -28,7 +58,10 @@
 
 @media (max-width: 768px) {
   .navbar-toggler.collapsed .navbar-toggler-icon {
-    background-image: url('data:image/svg+xml;charset=utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(11, 148, 197, 4)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+  background-image: url('data:image/svg+xml;charset=utf8,<svg viewBox="0 0 30 30" width="10px" height="10px" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(11, 148, 197, 4)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+  }
+  #firstDiv{
+    flex-direction:column;
   }
 }
 
@@ -41,12 +74,11 @@
 .profile {
   font-size: 17px;
 	font-weight: bold;
-  color: rgb(250, 252, 253);
-    font-family: 'Roboto', sans-serif;
-  padding: 0 20px;
+  color: rgb(16, 20, 21);
+  font-family: 'Roboto', sans-serif;
 }
 
 .profile:hover {
-  color: rgb(16, 20, 21);
-
+  
+  color: rgb(250, 252, 253);
 }
