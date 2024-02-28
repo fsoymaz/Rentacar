@@ -22,6 +22,9 @@ UserModel
 		return axiosInstance.get<any>(this.apiUrl +`/getCreditCardById?id=${id}`);
 	}
 
+    getUserCount(): Promise<AxiosResponse<any, any>> {
+        return axiosInstance.get<any>(this.apiUrl +`/userCount`);
+    }
 }
 
 export default new UserService();

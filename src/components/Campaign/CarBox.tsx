@@ -17,7 +17,7 @@ const CarBox: React.FC<CarBoxProps> = ({ data }: CarBoxProps): JSX.Element => {
 
   return (
     <>
-     {carsArray.map((car: any, id: any) => (
+      {carsArray.map((car: any, id: any) => (
         <div key={id} className="box-cars">
           {/* car */}
           <div className="pick-car">
@@ -32,8 +32,11 @@ const CarBox: React.FC<CarBoxProps> = ({ data }: CarBoxProps): JSX.Element => {
           {/* description */}
           <div className="pick-description">
             <div className="pick-description__price">
-              <span>₺{car.dailyPrice}</span>/ Günlük ücret
+              <span style={{ fontSize: "0.8em", color: "red", marginRight: "5px" }}>{car.discount}% </span>
+              <span style={{ textDecoration: "line-through", textDecorationColor: "red", marginRight: "10px" }}>₺{car.dailyPrice}</span>
+              <span>₺{Math.floor(car.dailyPrice - (car.dailyPrice * car.discount / 100))}</span>
             </div>
+
             <div className="pick-description__table">
 
               <div className="pick-description__table__col">
@@ -49,7 +52,7 @@ const CarBox: React.FC<CarBoxProps> = ({ data }: CarBoxProps): JSX.Element => {
 
               <div className="pick-description__table__col">
                 <span>Yıl</span>
-                <span>{car.year}</span>
+                <span>{car.modelYear}</span>
               </div>
 
               <div className="pick-description__table__col">
@@ -59,7 +62,7 @@ const CarBox: React.FC<CarBoxProps> = ({ data }: CarBoxProps): JSX.Element => {
 
               <div className="pick-description__table__col">
                 <span>Vites</span>
-                <span>{translate(car.gearType)} </span>
+                <span>{translate(car.transmissionType)} </span>
               </div>
 
               <div className="pick-description__table__col">

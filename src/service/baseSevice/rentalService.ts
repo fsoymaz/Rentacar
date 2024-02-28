@@ -32,6 +32,19 @@ class RentalService extends BaseService<
 	getRentalUser(email: string): Promise<AxiosResponse<any, any>> {
 		return axiosInstance.get<any>(this.apiUrl +`/getAllRental?email=${email}`);
 	}
+
+	getDailyRentals(date: string): Promise<AxiosResponse<any, any>> {
+		return axiosInstance.get<any>(this.apiUrl + `/daily?date=${date}`);
+	}
+
+	getMonthlyIncome(month: string, year: string): Promise<AxiosResponse<any, any>> {
+        return axiosInstance.get<any>(this.apiUrl + `/incomeMonthly?month=${month}&year=${year}`);
+    }
+	getYearlyIncome(year: number): Promise<AxiosResponse<any, any>>
+	{
+        return axiosInstance.get<any>(this.apiUrl + `/incomeYearly?year=${year}`);
+	}
+	
 }
 
 export default new RentalService();

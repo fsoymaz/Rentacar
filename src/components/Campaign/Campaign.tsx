@@ -42,7 +42,7 @@ const Campaign: React.FC<CampaignProps> = (
             <div className="pick-container__title">
                 <h1>Kampanya</h1>
                 <h2>Fırsatları Kaçırma!</h2>
-                <p>Kampanya kapsamında, seçili araçlarda %20 indirim fırsatını kaçırma!</p>
+                <p>Kampanya kapsamında, seçili araçlarda %20'ye varan indirim fırsatını kaçırma!</p>
             </div>
             <div className="pick-container__car-content">
               <div className="pick-box">

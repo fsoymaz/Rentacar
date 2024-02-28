@@ -66,7 +66,7 @@ function App(): ReactElement {
           <Route path="/card" element={<UserRoute><CreditCardForm/></UserRoute>} />
           <Route path="/paymentDetail" element={<UserRoute><RentalDetail/> </UserRoute>} />
           <Route path="/invoice" element={<UserRoute><Succsess/></UserRoute>} />
-          <Route path="/userRentals" element={<RentalByUser/> }/>
+          <Route path="/userRentals" element={<UserRoute><RentalByUser/></UserRoute>}/>
           <Route path="*" element={<div>Hata: Bu sayfa bulunamadı!</div>} />
         </Routes>
       </div>

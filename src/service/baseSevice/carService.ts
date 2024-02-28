@@ -32,7 +32,7 @@ class CarService extends BaseService<
       throw new Error('An error occurred while fetching cars by category.');
     }
   }
-  
+
   async getAvailableCarsByCategory(startDate: string, endDate: string, locationId: number, category: string, brandId: string, modelId: string, minPrice: number | null, maxPrice: number | null) {
     const response = await axiosInstance.get('/cars/availableByCategory', {
       params: {
@@ -63,10 +63,15 @@ class CarService extends BaseService<
   }
 
   async getByPlate(plate: string): Promise<AxiosResponse<any>> {
-    const response =  axiosInstance.get(`/cars/${plate}`);
+    const response = axiosInstance.get(`/cars/${plate}`);
     console.log(response);
     return response;
-}
+  }
+
+  async getTotalCars(): Promise<AxiosResponse<any>> {
+    const response = axiosInstance.get(`/cars/total`);
+    return response;
+  }
 
 }
 
