@@ -8,7 +8,7 @@ import 'react-slideshow-image/dist/styles.css'
 import CustomFooter from './components/Footer/Footer';
 import About from './pages/About/About';
 import Admin from './pages/Admin/Admin';
-import AddCar from './pages/Admin/AdminPages/AdminCarPage/AddCar';
+import AddCar from './components/Car/AddCar';
 import AddModel from './pages/Admin/AdminPages/AddModel';
 import Sidebar from './components/Sidebar/Sidebar';
 import { ToastContainer } from 'react-toastify';

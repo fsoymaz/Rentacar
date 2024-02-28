@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import SingleCard from "../../components/SingleCard/SingleCard";
+import SingleCard from "../../components/Admin/SingleCard/SingleCard";
 import './Dashboard.css';
 import { Col } from "react-bootstrap";
 import BaseFetcher from "../../components/Fetch/BaseFetcher";
 import carService from "../../service/baseSevice/carService";
 import userService from "../../service/baseSevice/userService";
 import rentalService from "../../service/baseSevice/rentalService";
-import MileChart from "../../components/MileChart/MileChart";
+import MileChart from "../../components/Admin/MileChart/MileChart";
 
 const Admin = () => {
   const [totalCars, setTotalCars] = useState(0);

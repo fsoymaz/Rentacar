@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { GetAllCarResponse } from '../../../../models/cars/response/getAllCarResponse';
+import { GetAllCarResponse } from '../../models/cars/response/getAllCarResponse';
 import { FaCarSide, FaChair, FaCog, FaCrown, FaGasPump, FaLeaf, FaMoneyBillAlt, FaOilCan, FaPlane, FaPlug, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
-import '../Admin.css';
+ import './Car.css';
 
 type NestedKeysInGetAllCarResponse = keyof GetAllCarResponse | keyof GetAllCarResponse['model'] | 'model.brand' | 'location' | 'color';
 

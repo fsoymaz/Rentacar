@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import carService from '../../../../service/baseSevice/carService';
-import { handleCarId } from '../../../../store/rental/rentalSlice';
-import axiosInstance from '../../../../utils/Interceptors';
+import carService from '../../service/baseSevice/carService';
+import { handleCarId } from '../../store/rental/rentalSlice';
+import axiosInstance from '../../utils/Interceptors';
 
 const DeleteCar: React.FC = () => {
   const [plate, setPlate] = useState<string>('');

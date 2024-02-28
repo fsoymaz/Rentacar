@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ResponsiveContainer, BarChart, Bar, XAxis, Tooltip } from "recharts";
-import rentalService from "../../service/baseSevice/rentalService";
+import rentalService from "../../../service/baseSevice/rentalService";
 
 interface MonthlyIncomeData {
   name: string;
@@ -18,8 +18,8 @@ const MileChart: React.FC = () => {
         const response = await rentalService.getYearlyIncome(year);
         const monthlyData: MonthlyIncomeData[] = [];
         const monthNames = [
-          "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+          "Oca", "Şub", "Mar", "Nis", "May", "Haz",
+          "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara",
         ];
 
         // Default data for all months

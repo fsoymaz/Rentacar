@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import CarTable from './CarTable';
+import CarTable from '../../../../components/Car/CarTable';
 import carService from '../../../../service/baseSevice/carService';
-import AddCar from './AddCar';
-import UpdateCar from './UpdateCar';
-import '../Admin.css'; // Import CSS file
-import DeleteCar from './DeleteCar';
+import AddCar from '../../../../components/Car/AddCar';
+import UpdateCar from '../../../../components/Car/UpdateCar';
+import DeleteCar from '../../../../components/Car/DeleteCar';
 import AdminPageApplication from '../AdminPageAplication';
 
 const Car = () => {

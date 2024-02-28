@@ -3,17 +3,17 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
-import FormikInput from '../../../../components/FormikInput/FormikInput';
-import FormikSelect from '../../../../components/FormikSelect/FormikSelect';
-import carService from '../../../../service/baseSevice/carService';
-import { Category } from '../../../../Enum/CategoryEnum';
-import { FuelType } from '../../../../Enum/FuelType';
-import { TransmissionType } from '../../../../Enum/TransmissionType';
-import { Option, generateOptions } from '../../../../components/GenerateOptions/GenerateOptions';
-import { UpdateCarRequest } from '../../../../models/cars/request/updateCarRequest';
-import imageDataService from '../../../../service/baseSevice/imageDataService';
-import { getFormikInfo } from '../../../../utils/getFormikInfo';
-import { UpdateInitialValues } from '../../../../initialValues/CarInitialValues';
+import FormikInput from '../FormikInput/FormikInput';
+import FormikSelect from '../FormikSelect/FormikSelect';
+import carService from '../../service/baseSevice/carService';
+import { Category } from '../../Enum/CategoryEnum';
+import { FuelType } from '../../Enum/FuelType';
+import { TransmissionType } from '../../Enum/TransmissionType';
+import { Option, generateOptions } from '../GenerateOptions/GenerateOptions';
+import { UpdateCarRequest } from '../../models/cars/request/updateCarRequest';
+import imageDataService from '../../service/baseSevice/imageDataService';
+import { getFormikInfo } from '../../utils/getFormikInfo';
+import { UpdateInitialValues } from '../../initialValues/CarInitialValues';
 
 interface plateValue {
   plate: string;
