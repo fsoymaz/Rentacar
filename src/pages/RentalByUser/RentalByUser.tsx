@@ -47,8 +47,8 @@ const RentalByUser = () => {
                     <div className="row">
                         {filteredRentals.map((rental: any, index) => (
                             <div key={index} className="col-lg-4 mb-4 mb-sm-2">
-                                <div className={`card card-style1 border-0`}>
-                                    <div className="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                                <div className={`crd card-style1 border-0`}>
+                                    <div className="crd-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                                         <div className="row align-items-center">
                                             <div className="col-lg-6 mb-4 mb-lg-0">
                                                 <img src={rental.carResponse.imagePath} alt="..." />

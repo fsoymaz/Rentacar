@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { log } from 'console';
 import { logoutRental } from '../../store/rental/rentalSlice';
 import Campaign from '../../components/Campaign/Campaign';
+import { Sidebar } from 'semantic-ui-react';
 
 const Homepage: React.FC = () => {
   localStorage.setItem("navi", "/");

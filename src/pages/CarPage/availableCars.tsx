@@ -159,34 +159,39 @@ const AvailableCars: React.FC = () => {
             </header>
             <div className="car-list p-5">
                 {state.cars.map((car) => (
-                    <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">
-                        <img
-                            src={car?.imagePath}
-                            alt={`Car Image - ${car.imagePath}`}
-                            className="card-img"
-                        />
-                        <div className="card-body">
-                            <h3 className="card-title">
-                                {car.modelYear} {car.model?.brand?.name}{" "}
-                                {car.model?.name}
-                            </h3>
-                            <h1>{car.plate}</h1>
-                            <div className="icon-section">
-                                <div className="icons">
-                                    <FontAwesomeIcon icon={faGasPump} /> {car.fuelType}
-                                </div>
-                                <div className="icons">
-                                    <FontAwesomeIcon icon={faCar} />{car.transmissionType}
-                                </div>
-                                <div className="icons">
-                                    <FontAwesomeIcon icon={faPaintBrush} /> {car.color?.name}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-footer">
-                            <button type="submit" className="btn btn-success" onClick={() => handleRentButtonClick(car.id)}> {car.dailyPrice}₺ Kiralama Yap</button>
-                        </div>
-                    </motion.div>
+                  <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card mb-3">
+                  <img
+                    src={car?.imagePath}
+                    alt={`Car Image - ${car.imagePath}`}
+                    className="card-img-top"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      {car.modelYear} {car.model?.brand?.name} {car.model?.name}
+                    </h5>
+                    <p className="card-text">Plate: {car.plate}</p>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <p className="mb-0">
+                          <FontAwesomeIcon icon={faGasPump} /> {car.fuelType}
+                        </p>
+                        <p className="mb-0">
+                          <FontAwesomeIcon icon={faCar} /> {car.transmissionType}
+                        </p>
+                        <p className="mb-0">
+                          <FontAwesomeIcon icon={faPaintBrush} /> {car.color?.name}
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        className="btn btn-success"
+                        onClick={() => handleRentButtonClick(car.id)}
+                      >
+                        {car.dailyPrice}₺ Kiralama Yap
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
                 ))}
             </div>
         </div>

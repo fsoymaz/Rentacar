@@ -1,56 +1,23 @@
-.rentaluser-container {
-    max-width: 800px;
-    margin: 20px auto 0;
-    padding: 20px;
 
-}
 
-.card.card-style1 {
-    box-shadow: 0px 0px 10px 0px rgba(89, 75, 128, 0.09);
-}
-
-.card-container {
-
-    display: flex;
-    flex-wrap: wrap;
-    margin: -10px;
-}
-
-.card {
-    border: 0;
-    padding: 0; 
+.crd {
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 10px; 
     margin: 10px;
 }
 
-.card-body {
-    height: 300px;
-    padding: 20px;
-    text-align: left;
-}
 
-.card img {
+
+.crd img {
     width: 100%;
     height: auto;
     
 }
 
-.social-icon-style1.list-unstyled {
-    display: flex;
-    gap: 10px;
-}
 
-.social-icon-style1.list-unstyled li {
-    list-style: none;
-}
 
-.social-icon-style1.list-unstyled li a {
-    color: #333;
-    font-size: 20px;
-}
 
-.social-icon-style1.list-unstyled li a:hover {
-    color: #ceaa4d;
-}
 
 .circle {
     width: 10px;
@@ -87,11 +54,3 @@
 .cancel-button:hover {
     background-color: #cc0000;
 }
-
-@media screen and (max-width: 768px) {
-    .card-body {
-        height: 400px;
-        padding: 20px;
-        text-align: left;
-    }
-  }
