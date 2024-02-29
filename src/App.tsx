@@ -49,24 +49,22 @@ function App(): ReactElement {
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/cars" element={<Cars />} />
-          <Route path="/cars/category" element={<CategoryCars />} /> 
-          <Route path='/contact' element={<ContactUs/>} />
-         
-          <Route path="/admin" element={<AdminRoute><Admin/></AdminRoute>} />
-              <Route path="/admin/addBrand" element={<AdminRoute><AdminBrand /></AdminRoute>} />
-              <Route path="/admin/addModel" element={<AdminRoute><AddModel /></AdminRoute>} />
-              <Route path="/admin/admincar" element={<AdminRoute><Car/></AdminRoute>} />
+          <Route path="/cars/category" element={<CategoryCars />} />
+          <Route path='/contact' element={<ContactUs />} />
+          <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
+          <Route path="/admin/addBrand" element={<AdminRoute><AdminBrand /></AdminRoute>} />
+          <Route path="/admin/addModel" element={<AdminRoute><AddModel /></AdminRoute>} />
+          <Route path="/admin/admincar" element={<AdminRoute><Car /></AdminRoute>} />
 
-          
           <Route path="/register" element={<RegisterCustomer />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/availableCars" element={<AvailableCars />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/availableCars" element={<UserRoute><AvailableCars /></UserRoute>} />
           <Route path="/rental" element={<UserRoute><RentalForm /></UserRoute>} />
-          <Route path="/card" element={<UserRoute><CreditCardForm/></UserRoute>} />
-          <Route path="/paymentDetail" element={<UserRoute><RentalDetail/> </UserRoute>} />
-          <Route path="/invoice" element={<UserRoute><Succsess/></UserRoute>} />
-          <Route path="/userRentals" element={<UserRoute><RentalByUser/></UserRoute>}/>
+          <Route path="/card" element={<UserRoute><CreditCardForm /></UserRoute>} />
+          <Route path="/paymentDetail" element={<UserRoute><RentalDetail /> </UserRoute>} />
+          <Route path="/invoice" element={<UserRoute><Succsess /></UserRoute>} />
+          <Route path="/userRentals" element={<RentalByUser />} />
           <Route path="*" element={<div>Hata: Bu sayfa bulunamadı!</div>} />
         </Routes>
       </div>

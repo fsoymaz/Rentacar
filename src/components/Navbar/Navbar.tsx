@@ -49,9 +49,6 @@ const CustomNavbar = () => {
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3 Nav">
               <div id="firstDiv">
-                <Nav.Link as={Link} to="/about" onClick={handleLinkClick}>
-                  Hakkımızda
-                </Nav.Link>
                 <NavDropdown title="Araçlar">
                   <NavDropdown.Item as={Link} to="/cars" onClick={handleLinkClick}>
                     Tüm Kiralık Araçlar
@@ -66,11 +63,11 @@ const CustomNavbar = () => {
                     Konfor Araçlar
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link as={Link} to="/services" onClick={handleLinkClick}>
-                  Hizmetler
-                </Nav.Link>
                 <Nav.Link as={Link} to="/contact" onClick={handleLinkClick}>
                   İletişim
+                </Nav.Link>
+                <Nav.Link as={Link} to="/about" onClick={handleLinkClick}>
+                  Hakkımızda
                 </Nav.Link>
               </div>
               <Nav.Link>

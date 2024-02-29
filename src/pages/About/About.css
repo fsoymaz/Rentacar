@@ -19,7 +19,7 @@
     position: relative;
     padding: 10px;
     background: #2694af;
-    color: #fff;
+    color: #fff9f9;
     cursor: pointer;
 }
 .accordion .context-box .label::before{
@@ -87,7 +87,7 @@
 }
 
 .content{
-    color: white;
+    color: rgb(5, 3, 3);
     font-style: italic;
     font-size: 25px;
 }

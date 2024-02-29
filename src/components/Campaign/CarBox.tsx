@@ -32,8 +32,8 @@ const CarBox: React.FC<CarBoxProps> = ({ data }: CarBoxProps): JSX.Element => {
           {/* description */}
           <div className="pick-description">
             <div className="pick-description__price">
-              <span style={{ fontSize: "0.8em", color: "red", marginRight: "5px" }}>{car.discount}% </span>
-              <span style={{ textDecoration: "line-through", textDecorationColor: "red", marginRight: "10px" }}>₺{car.dailyPrice}</span>
+              <span style={{ fontSize: "0.8em", color: "black", marginRight: "5px" }}>{car.discount}% </span>
+              <span style={{ textDecoration: "line-through", textDecorationColor: "black", marginRight: "10px" }}>₺{car.dailyPrice}</span>
               <span>₺{Math.floor(car.dailyPrice - (car.dailyPrice * car.discount / 100))}</span>
             </div>
 

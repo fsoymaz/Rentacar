@@ -1,6 +1,6 @@
 import axios from "axios";
 import { loadToken, storeToken } from "../store/user/storage";
-import { logoutSuccess } from '../store/user/userSlice';
+import { logoutSuccess } from '../store/user/userSlice'; // import increaseRequestCount
 import { toast } from "react-toastify";
 
 const axiosInstance = axios.create({
@@ -43,7 +43,5 @@ export function setToken(token?: any) {
   authToken = token;
   storeToken(token);
 }
-
-
 
 export default axiosInstance;
