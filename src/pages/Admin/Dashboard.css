@@ -146,3 +146,14 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 768px) { /* Örnek bir breakpoint (telefon boyutu) */
+  .stats {
+    margin-top: 20px; /* Grafikler arasına biraz boşluk bırakır */
+  }
+
+  .stats--mile-chart,
+  .stats--car-stats-chart {
+    width: 100%; /* Grafiklerin genişliğini doldurur */
+  }
+}

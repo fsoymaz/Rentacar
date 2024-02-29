@@ -4,7 +4,7 @@
 .blanco {
     margin: 0 auto;
     width: 80%;
-    background: rgba(255, 255, 255, 0.787);
+    background-color: rgb(206, 0, 38);
     border-radius: 1.5em;
     padding: 2em;
     display: flex;

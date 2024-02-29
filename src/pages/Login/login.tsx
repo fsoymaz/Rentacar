@@ -22,9 +22,9 @@ const LoginForm = () => {
     password: "",
   });
 
-  useEffect(() => {
-    console.log("authState", authState);
-  }, [authState]);
+  // useEffect(() => {
+  //   console.log("authState", authState);
+  // }, [authState]);
 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

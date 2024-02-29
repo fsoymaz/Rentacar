@@ -18,7 +18,7 @@ const BaseFetcher: React.FC<BaseFetcherProps> = ({ service, onBaseFetched, param
         };
 
         fetchBase();
-    }, [service, params]); // useEffect bağımlılıklarına params ekleyin
+    }, []); // useEffect bağımlılıklarına params ekleyin
 
     return null;
 };

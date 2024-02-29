@@ -35,7 +35,7 @@ const CustomNavbar = () => {
       <Container fluid className="Navbar">
         <Navbar.Brand href="/">
         <span style={{fontSize : '1.5rem' , fontWeight : '800', userSelect: 'none', cursor: 'pointer'}}>Rent</span>
-        <span style={{color : 'red', fontSize : '1.5rem' , fontWeight : '800', userSelect: 'none', cursor: 'pointer'}}>A</span>
+        <span style={{color : 'white', fontSize : '1.5rem' , fontWeight : '800', userSelect: 'none', cursor: 'pointer'}}>A</span>
         <span style={{fontSize : '1.5rem' , fontWeight : '800', userSelect: 'none', cursor: 'pointer'}}>Car</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />

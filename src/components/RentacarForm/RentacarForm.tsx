@@ -82,9 +82,9 @@ const RentACarForm: React.FC = () => {
     <div className="blanco">
       <div className="amarillo"></div>
       <div className="naranja"></div>
-      <h1>Hadi Şimdi Kirala</h1>
+      <h1 style={{color: 'white', fontSize: '2.5rem'}}>Hadi Şimdi Kirala</h1>
       <form onSubmit={handleSubmit}>
-        <label > Araç Lokasyonu</label>
+        <label style={{color: 'white', fontSize: '1.2rem'}}> Araç Lokasyonu</label>
         <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
         <select id="pickupLocation" onChange={(e) => {
           const locationId = parseInt(e.target.value);
@@ -97,15 +97,15 @@ const RentACarForm: React.FC = () => {
         </select>
         <div className="fechas">
           <div className="fecha">
-            <label htmlFor="pickupDate">A. Tarihi</label>
+            <label style={{color: 'white', fontSize: '1.2rem'}} htmlFor="pickupDate">A. Tarihi</label>
             <input id="pickupDate" type="date" value={pickupDate} onChange={handleStartDateChange} />
           </div>
           <div className="fecha">
-            <label htmlFor="deliveryDate">D. Tarihi</label>
+            <label style={{color: 'white', fontSize: '1.2rem'}} htmlFor="deliveryDate">D. Tarihi</label>
             <input id="deliveryDate" type="date" value={deliveryDate} onChange={handleEndDateChange} />
           </div>
         </div>
-        <input type="submit" value="Search" />
+        <input type="submit" value="Kirala" />
       </form>
     </div>
   );

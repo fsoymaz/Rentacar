@@ -11,23 +11,20 @@ const DeleteCar: React.FC = () => {
 
   const handleDelete = async () => {
     try {
-      // Plakanın varlığını kontrol et
       const response = await carService.getByPlate(plate);
       if (!response.data) {
-        toast.error('Car with the provided plate does not exist');
+        toast.error('Bu Plakada Araç bulunmamaktadır');
         return;
       }
       
       const carData = response.data;
-      console.log('carData:', carData);
-      const confirm = window.confirm(`Are you sure you want to delete the car with plate number ${plate}?`);
+      const confirm = window.confirm(`${plate} plakalı aracı silmek istediğinden emin misin?`);
       if (confirm) {
-        await axiosInstance.delete(`http://localhost:8080/api/cars/${carData.id}`);
-        toast.success('Car deleted successfully');
+        await carService.delete(carData.id);
+        toast.success('Araç Başarılı bir Şekilde silindi');
       }
     } catch (error) {
-      console.error('Error deleting car:', error);
-      toast.error('Error deleting car');
+      toast.error('Hata Araç Silinemedi');
     }
   };
 

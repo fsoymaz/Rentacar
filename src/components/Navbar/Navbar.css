@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 #MainNavbar{
-  background-color: rgb(123, 136, 161);
+  background-color: rgb(206, 0, 37);
 }
 
 .Navbar {
@@ -67,9 +67,12 @@
 
 .transparent-button {
   background-color: transparent !important;
-  color: rgb(254, 255, 255) !important;
+  color: rgb(5, 7, 7) !important;
 }
-
+.transparent-button:hover {
+  background-color: transparent !important;
+  color: white !important;
+}
 
 .profile {
   font-size: 17px;

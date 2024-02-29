@@ -7,6 +7,7 @@ import carService from "../../service/baseSevice/carService";
 import userService from "../../service/baseSevice/userService";
 import rentalService from "../../service/baseSevice/rentalService";
 import MileChart from "../../components/Admin/MileChart/MileChart";
+import CarStatsChart from "../../components/Admin/CartStatsChart/CartStatsChart";
 
 const Admin = () => {
   const [totalCars, setTotalCars] = useState(0);
@@ -22,7 +23,7 @@ const Admin = () => {
     totalNumber: totalNumber,
     icon: icon,
   });
-  
+
   return (
     <Col xs={12} sm={10} className="dashboard col-10 pt-5 sm:col-12">
       <BaseFetcher service={() => carService.getTotalCars()} onBaseFetched={setTotalCars} />
@@ -31,15 +32,19 @@ const Admin = () => {
       <BaseFetcher service={() => userService.getUserCount()} onBaseFetched={setTotalUsers} />
 
       <div className="dashboard__cards">
-        <SingleCard item={carObj("Araç Toplamı", totalCars+'+', "ri-police-car-line")} />
+        <SingleCard item={carObj("Araç Toplamı", totalCars + '+', "ri-police-car-line")} />
         <SingleCard item={carObj("Günlük Sürüş", dailyTrips + '+', "ri-steering-2-line")} />
         <SingleCard item={carObj("Kullanıcı Sayısı", totalUser + '+', "ri-user-line")} />
         <SingleCard item={carObj("Aylık Kazanç", monthlyIncome + '₺', "ri-timer-flash-line")} />
       </div>
       <div className="statics">
-        <div className="stats" >
-        <h3 className="stats__title "><strong>AY/YIL&nbsp;&nbsp;&nbsp;SATIŞ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRAFİĞİ</strong></h3>
+        <div className="stats stats--mile-chart"> {/* Added a class for styling */}
+          <h3 className="stats__title"><strong>AY/YIL SATIŞ GRAFİĞİ</strong></h3>
           <MileChart />
+        </div>
+        <div className="stats stats--car-stats-chart"> {/* Added a class for styling */}
+          <h3 className="stats__title">HAFTALIK SATIŞ GRAFİĞİ</h3>
+          <CarStatsChart/>
         </div>
       </div>
     </Col >
