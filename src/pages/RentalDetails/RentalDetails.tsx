@@ -104,6 +104,7 @@ const RentalDetail = () => {
             <div className="card mt-3">
               <div className="card-body">
                 {renderDetailItem('Günlük Ücreti', `${carDetails.dailyPrice}₺`)}
+                {renderDetailItem('İndirim Oranı', `${carDetails.discount}%`)}
                 {renderDetailItem('Kiralanacak Gün Sayısı', rentalDays)}
                 {renderDetailItem('Kdv Oranı', '%18')}
               </div>
