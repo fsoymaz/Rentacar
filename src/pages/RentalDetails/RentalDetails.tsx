@@ -58,7 +58,7 @@ const RentalDetail = () => {
   const rentalDays = carDetails
     ? differenceInDays(new Date(rental.endDate), new Date(rental.startDate))
     : 0;
-  const totalCost = rentalDays * (carDetails ? (carDetails.dailyPrice -  carDetails.dailyPrice * carDetails.discount / 100) : 0);
+  const totalCost = rentalDays * (carDetails ? (carDetails.dailyPrice - carDetails.dailyPrice * carDetails.discount / 100) : 0);
 
   const handlePaymentRedirect = async () => {
     if (creditCard?.cardCvc === undefined) {
@@ -67,7 +67,7 @@ const RentalDetail = () => {
       try {
         const userId = auth.id;
         const rentalResponse = await rentalService.createRental(userId, rental);
-        const rentalData = rentalResponse.data;      
+        const rentalData = rentalResponse.data;
         alert('Kiralama Başarıyla tamamlandı.');
         navigate('/invoice', {
           state: { info: rentalData }
@@ -104,7 +104,9 @@ const RentalDetail = () => {
             <div className="card mt-3">
               <div className="card-body">
                 {renderDetailItem('Günlük Ücreti', `${carDetails.dailyPrice}₺`)}
-                {renderDetailItem('İndirim Oranı', `${carDetails.discount}%`)}
+
+                {carDetails.discount > 0
+                  && renderDetailItem('İndirim Oranı', `${carDetails.discount}%`)}
                 {renderDetailItem('Kiralanacak Gün Sayısı', rentalDays)}
                 {renderDetailItem('Kdv Oranı', '%18')}
               </div>

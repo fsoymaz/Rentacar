@@ -35,6 +35,7 @@ export const carSchema = Yup.object().shape({
     discount: Yup.number()
     .required("İndirim oranı zorunludur")
     .min(0, "İndirim oranı minimum sıfır olmalıdır")
+    .max(20, "İndirim oranı maksimum yirmi olmalıdır"),
 });
 
 
