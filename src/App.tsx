@@ -23,7 +23,6 @@ import CreditCardForm from './pages/card/CreditCardForm';
 import { useSelector } from 'react-redux';
 import AdminRoute from './contexts/AdminRoute';
 import UserRoute from './contexts/UserRoute';
-import RentalForm from './pages/Rental/rental';
 import RentalDetail from './pages/RentalDetails/RentalDetails';
 import Succsess from './pages/Success/Success';
 import Car from './pages/Admin/AdminPages/AdminCarPage/Car';
@@ -59,8 +58,7 @@ function App(): ReactElement {
           <Route path="/register" element={<RegisterCustomer />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/availableCars" element={<UserRoute><AvailableCars /></UserRoute>} />
-          <Route path="/rental" element={<UserRoute><RentalForm /></UserRoute>} />
+          <Route path="/availableCars" element={<AvailableCars />} />
           <Route path="/card" element={<UserRoute><CreditCardForm /></UserRoute>} />
           <Route path="/paymentDetail" element={<UserRoute><RentalDetail /> </UserRoute>} />
           <Route path="/invoice" element={<UserRoute><Succsess /></UserRoute>} />
