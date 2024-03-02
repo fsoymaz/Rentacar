@@ -3,8 +3,8 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
-import FormikInput from '../FormikInput/FormikInput';
-import brandService from '../../service/baseSevice/brandService';
+import FormikInput from '../../FormikInput/FormikInput';
+import brandService from '../../../service/baseSevice/brandService';
 
 const BrandUpdate: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);

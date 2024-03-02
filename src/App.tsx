@@ -8,7 +8,7 @@ import 'react-slideshow-image/dist/styles.css'
 import CustomFooter from './components/Footer/Footer';
 import About from './pages/About/About';
 import Admin from './pages/Admin/Admin';
-import AddCar from './components/Car/AddCar';
+import AddCar from './components/Admin/Car/AddCar';
 import AddModel from './pages/Admin/AdminPages/AddModel';
 import Sidebar from './components/Sidebar/Sidebar';
 import { ToastContainer } from 'react-toastify';
@@ -28,6 +28,8 @@ import Succsess from './pages/Success/Success';
 import Car from './pages/Admin/AdminPages/AdminCarPage/Car';
 import RentalByUser from './pages/RentalByUser/RentalByUser';
 import AdminBrand from './pages/Admin/AdminPages/AddBrandPage/AdminBrand';
+import PrivateRoute from './contexts/PrivateRoute';
+import CampaignCarsPage from './pages/CarPage/CampaignCarsPage';
 
 function App(): ReactElement {
   const isOnAdminPage = window.location.pathname.indexOf('/admin') === 0;
@@ -57,12 +59,13 @@ function App(): ReactElement {
 
           <Route path="/register" element={<RegisterCustomer />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/availableCars" element={<AvailableCars />} />
+          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+          <Route path="/availableCars" element={<PrivateRoute><AvailableCars /></PrivateRoute>} />
           <Route path="/card" element={<UserRoute><CreditCardForm /></UserRoute>} />
-          <Route path="/paymentDetail" element={<UserRoute><RentalDetail /> </UserRoute>} />
+          <Route path="/paymentDetail" element={<PrivateRoute><RentalDetail /> </PrivateRoute>} />
           <Route path="/invoice" element={<UserRoute><Succsess /></UserRoute>} />
-          <Route path="/userRentals" element={<RentalByUser />} />
+          <Route path="/userRentals" element={<UserRoute><RentalByUser /></UserRoute>} />
+          <Route path="/campainCar" element={<CampaignCarsPage />} />
           <Route path="*" element={<div>Hata: Bu sayfa bulunamadı!</div>} />
         </Routes>
       </div>

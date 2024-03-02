@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 import { toast } from 'react-toastify';
 
-import FormikInput from '../FormikInput/FormikInput';
-import FormikSelect from '../FormikSelect/FormikSelect';
-import carService from '../../service/baseSevice/carService';
-import { AddCarRequest } from '../../models/cars/request/addCarRequest';
-import { Category } from '../../Enum/CategoryEnum';
-import { FuelType } from '../../Enum/FuelType';
-import { TransmissionType } from '../../Enum/TransmissionType';
-import { Option, generateOptions } from '../GenerateOptions/GenerateOptions';
-import imageDataService from '../../service/baseSevice/imageDataService';
-import { getFormikInfo } from '../../utils/getFormikInfo';
-import { AddInitialValues } from '../../initialValues/CarInitialValues';
-import locationService from '../../service/baseSevice/locationService';
-import BaseFetcher from '../Fetch/BaseFetcher';
-import colorService from '../../service/baseSevice/colorService';
-import modelService from '../../service/baseSevice/modelService';
-import { carSchema } from '../validationSchemas/validationSchemas';
+import FormikInput from '../../FormikInput/FormikInput';
+import FormikSelect from '../../FormikSelect/FormikSelect';
+import carService from '../../../service/baseSevice/carService';
+import { AddCarRequest } from '../../../models/cars/request/addCarRequest';
+import { Category } from '../../../Enum/CategoryEnum';
+import { FuelType } from '../../../Enum/FuelType';
+import { TransmissionType } from '../../../Enum/TransmissionType';
+import { Option, generateOptions } from '../../GenerateOptions/GenerateOptions';
+import imageDataService from '../../../service/baseSevice/imageDataService';
+import { getFormikInfo } from '../../../utils/getFormikInfo';
+import { AddInitialValues } from '../../../initialValues/CarInitialValues';
+import locationService from '../../../service/baseSevice/locationService';
+import BaseFetcher from '../../Fetch/BaseFetcher';
+import colorService from '../../../service/baseSevice/colorService';
+import modelService from '../../../service/baseSevice/modelService';
+import { carSchema } from '../../validationSchemas/validationSchemas';
 
 const AddCar: React.FC = () => {
   const [models, setModels] = useState<Option[]>([]);

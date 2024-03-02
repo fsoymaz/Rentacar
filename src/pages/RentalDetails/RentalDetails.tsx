@@ -58,7 +58,7 @@ const RentalDetail = () => {
   const rentalDays = carDetails
     ? differenceInDays(new Date(rental.endDate), new Date(rental.startDate))
     : 0;
-  const totalCost = rentalDays * (carDetails ? carDetails.dailyPrice : 0);
+  const totalCost = rentalDays * (carDetails ? (carDetails.dailyPrice -  carDetails.dailyPrice * carDetails.discount / 100) : 0);
 
   const handlePaymentRedirect = async () => {
     if (creditCard?.cardCvc === undefined) {

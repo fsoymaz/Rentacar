@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { PostBrandModel } from '../../models/brandModels/GetAllBrandModel';
+import { PostBrandModel } from '../../../models/brandModels/GetAllBrandModel';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import brandService from '../../service/baseSevice/brandService';
+import brandService from '../../../service/baseSevice/brandService';
 
 const AddBrand: React.FC = () => {
   const [brandName, setBrandName] = useState<string>('');

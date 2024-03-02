@@ -1,4 +1,4 @@
-import { modelModels } from "../../models/modelModels/GetAllModelsModel";
+import { modelModels, postModelModels } from "../../models/modelModels/GetAllModelsModel";
 import { BaseService } from "./baseService";
 
 
@@ -6,7 +6,7 @@ class ModelService extends BaseService<
 
 modelModels,
 modelModels,
-modelModels,
+postModelModels,
 modelModels,
 modelModels,
 modelModels

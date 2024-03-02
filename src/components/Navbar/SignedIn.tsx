@@ -15,18 +15,23 @@ export default function SignedIn({ }: {}) {
     dispatch(logoutRental());
     localStorage.removeItem('token');
     navigate('/');
-    // window.location.reload();
   };
 
   return (
     <>
       {isAuthenticated ? (
-        <Dropdown  text={username} pointing className='link item profile'>
+        <Dropdown  text={username} pointing className='link item profile px-3'>
           <Dropdown.Menu >
             <Dropdown.Item className='bg-white'  onClick={() => { navigate('/profile'); }}>
               <Icon name='user' />
               <strong>Hesabım</strong>
             </Dropdown.Item >
+            {isAuthenticated.role === 'ADMIN' &&
+              <Dropdown.Item className='bg-white' onClick={() => { navigate('/admin'); }}>
+                <Icon name='user' />
+                <strong>Admin Panel</strong>
+              </Dropdown.Item>
+            }
             <Dropdown.Item className='bg-white' onClick={() => {navigate('/userRentals');}}>
               <Icon name='money' />
               <strong>Kiralama</strong>

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./Campaign.scss";
 import translate from "./translate";
+import { handleCarId } from "../../store/rental/rentalSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,9 +14,16 @@ interface CarBoxProps {
 
 const CarBox: React.FC<CarBoxProps> = ({ data }: CarBoxProps): JSX.Element => {
   const [carLoad, setCarLoad] = useState(true);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // data undefined değilse devam et, aksi halde boş bir dizi kullan
   const carsArray = Array.isArray(data) ? data : [data];
+
+  const handleRentNowClick = (carId: number) => {
+    dispatch(handleCarId(carId));
+    navigate("/campainCar");
+  }
 
   return (
     <>
@@ -71,9 +81,9 @@ const CarBox: React.FC<CarBoxProps> = ({ data }: CarBoxProps): JSX.Element => {
               </div>
             </div>
             {/* btn cta */}
-            <a className="cta-btn" href="/model">
-              Şimdi Kirala
-            </a>
+            <button className="cta-btn" onClick={() => handleRentNowClick(car.id)}>
+            Şimdi Kirala
+          </button>
           </div>
         </div>
       ))}

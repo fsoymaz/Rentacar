@@ -78,65 +78,6 @@ const CustomNavbar = () => {
         </Navbar.Offcanvas>
       </Container>
     </Navbar>
-    // <Navbar expand='lg' className='Navbar'>
-    //   <Container className="NavbarContainer">
-    //     <Navbar.Brand as={Link} to="/">
-    //       <img
-    //         src={logo}
-    //         alt="logo"
-    //         className="logo"
-    //         style={{width: '60%'}}
-    //         onClick={handleLinkClick}
-    //         onMouseEnter={handleMouseEnter}
-    //         onMouseLeave={handleMouseLeave}
-    //       />
-    //     </Navbar.Brand>
-    //     <Navbar.Offcanvas id={`offcanvasNavbar-expand-sm`}
-    //           aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
-    //           placement="end">
-    //       <Offcanvas.Header closeButton>
-    //         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
-    //           Title
-    //         </Offcanvas.Title>
-    //       </Offcanvas.Header>
-    //       <Offcanvas.Body>
-    //         <Navbar.Collapse id="responsive-navbar-nav">
-    //           <Nav className="Nav">
-    //             <Nav.Link as={Link} to="/about" onClick={handleLinkClick}>
-    //               Hakkımızda
-    //             </Nav.Link>
-    //             <NavDropdown  title="Araçlar">
-    //               <NavDropdown.Item as={Link} to="/cars" onClick={handleLinkClick}>
-    //                 Tüm Kiralık Araçlar
-    //               </NavDropdown.Item>
-    //               <NavDropdown.Item as={Link} to="/cars/category?category=ECONOMY" onClick={handleLinkClick}>
-    //                 Ekonomik Araçlar
-    //               </NavDropdown.Item>
-    //               <NavDropdown.Item as={Link} to="/cars/category?category=LUXURY" onClick={handleLinkClick}>
-    //                 Lüks Araçlar
-    //               </NavDropdown.Item>
-    //               <NavDropdown.Item as={Link} to="/cars/category?category=COMFORT" onClick={handleLinkClick}>
-    //                 Konfor Araçlar
-    //               </NavDropdown.Item>
-    //             </NavDropdown>
-    //             <Nav.Link as={Link} to="/services" onClick={handleLinkClick}>
-    //               Hizmetler
-    //             </Nav.Link>
-    //             <Nav.Link as={Link} to="/contact" onClick={handleLinkClick}>
-    //               İletişim
-    //             </Nav.Link>
-    //           </Nav>
-    //           <Nav >
-    //             <Nav.Link>
-    //               {isAuthenticated ? <SignedIn /> : <SignedOut signIn={signIn} />}
-    //             </Nav.Link>
-    //           </Nav>
-    //         </Navbar.Collapse>
-    //       </Offcanvas.Body>
-    //     </Navbar.Offcanvas>
-    //   <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-    //   </Container>
-    // </Navbar>
   );
 };
 

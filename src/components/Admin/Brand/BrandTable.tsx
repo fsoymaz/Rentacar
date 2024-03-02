@@ -1,5 +1,5 @@
-import { BrandModel } from '../../models/brandModels/GetAllBrandModel';
-import { GetAllCarResponse } from '../../models/cars/response/getAllCarResponse';
+import { BrandModel } from '../../../models/brandModels/GetAllBrandModel';
+import { GetAllCarResponse } from '../../../models/cars/response/getAllCarResponse';
 
 const BrandTable = ({ data }: { data: BrandModel[] }) => {
   return (
