@@ -103,14 +103,14 @@ const AvailableCars: React.FC = () => {
             });
     
             if (hasExistingRental) {
-                toast.error('There is an existing rental within selected dates. Please choose different dates.');
+                toast.error('Seçilen tarihler arasında mevcut bir kiralama var. Lütfen farklı tarihler seçiniz.');
                 return;
             }
     
             navigate('/paymentDetail');
         } catch (error) {
             console.error('Error while fetching rental data:', error);
-            toast.error('An error occurred while fetching rental data.');
+            toast.error('Kiralama verileri alınırken bir hata oluştu.');
         }
     };
     

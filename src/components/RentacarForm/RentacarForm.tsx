@@ -22,19 +22,19 @@ const RentACarForm: React.FC = () => {
   const authState = useSelector((store: any) => store.auth.email);
 
   const RentACarFormSchema = Yup.object().shape({
-    pickupDate: Yup.date().min(new Date(), 'Pickup date must be today or later').required('Pickup date is required'),
-    deliveryDate: Yup.date().min(Yup.ref('pickupDate'), 'Delivery date must be after pickup date').required('Delivery date is required'),
+    pickupDate: Yup.date().min(new Date(), 'Teslim alma tarihi bugün veya daha sonra olmalıdır').required('Teslim alma tarihi gereklidir'),
+    deliveryDate: Yup.date().min(Yup.ref('pickupDate'), 'Teslimat tarihi teslim alma tarihinden sonra olmalıdır').required('Teslim tarihi gereklidir'),
   });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       if (!pickupDate || !deliveryDate) {
-        toast.error('Please select pickup and delivery dates');
+        toast.error('Lütfen teslim alma ve teslim etme tarihlerini seçin');
         return;
       }
       if (!selectedLocation) {
-        toast.error('Please select a location');
+        toast.error('Lütfen bir konum seçin');
         return;
       }
       await RentACarFormSchema.validate({ pickupDate, deliveryDate });
@@ -54,7 +54,7 @@ const RentACarForm: React.FC = () => {
       });
 
       if (hasExistingRental) {
-        toast.error('There is an existing rental within selected dates. Please choose different dates.');
+        toast.error('Seçilen tarihler arasında mevcut bir kiralama var. Lütfen farklı tarihler seçiniz.');
         return;
       }
 
@@ -62,7 +62,7 @@ const RentACarForm: React.FC = () => {
       dispatch(handleLocationId(selectedLocation));
       navigate(`/availableCars`);
     } catch (error) {
-      toast.error('Form validation error');
+      toast.error(' Lütfen Alış Tarihi ve Dönüş tarihini doğru seçiniz.');
     }
   };
 

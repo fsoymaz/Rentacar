@@ -59,102 +59,59 @@ const Profile = () => {
   };
 
   return (
+
+    
     <section >
       <div className="container py-5">
-        <div className="row">
-          <div className="col">
-            <nav
-              aria-label="breadcrumb"
-              className="bg-light rounded-3 p-3 mb-4"
-            >
-              <ol className="breadcrumb mb-0">
-                <li className="breadcrumb-item">
-                  <a href="#">Profil</a>
-                </li>
-              </ol>
-            </nav>
-          </div>
-        </div>
+      <div className="container">
+            <div className="row">
+                <div className="col-lg-4">
+                    <div className="profile-card-4 z-depth-3">
+                        <div className="card">
+                            <div className="card-body text-center bg-danger rounded-top">
+                                <div className="user-box">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user avatar" />
+                                </div>
+                                <h5 className="mb-1 text-white">{user?.firstName + " " + user?.lastName}</h5>
+                               
+                            </div>
+                            <div className="card-body">
+                                <ul className="list-group shadow-none">
+                                    <li className="list-group-item">
+                                        <div className="list-icon">
+                                        <i className="fa fa-envelope"></i>
+                                        </div>
+                                        <div className="list-details">
+                                            <span>{user?.email}</span>
+                                            <small>Email</small>
+                                        </div>
+                                    </li>
+                                    <li className="list-group-item">
+                                        <div className="list-icon">
+                                        <i className="fa fa-birthday-cake"></i>
+                                        </div>
+                                        <div className="list-details">
+                                            <span>{user?.birthDate}</span>
+                                            <small>Doğum Tarihi</small>
+                                        </div>
+                                    </li>
+                                   
+                                </ul>
+                                <div className="row text-center mt-4">
+                                <button type="button"className="btn btn-outline-primary ms-1"
+                                        onClick={() => setShowForm(!showForm)}>
+                                              Düzenle
+                                                       </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div className="row">
-          <div className="col-lg-4">
-            <div className=" mb-4">
-              <div className="cards text-center">
-                <img
-                  src="https://static.vecteezy.com/system/resources/previews/003/543/444/non_2x/male-and-female-symbol-human-profile-icon-or-people-icon-man-and-woman-sign-and-symbol-free-vector.jpg"
-                  alt="avatar"
-                  className="rounded-circle img-fluid"
-                  style={{ width: "115px" }}
-                />
-                <h5 >
-                  {user?.firstName + " " + user?.lastName}
-                </h5>
-
-                <div className="d-flex justify-content-center">
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary ms-1"
-                    onClick={() => setShowForm(!showForm)}
-                  >
-                    Düzenle
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-8">
-            <div className="cards mb-4">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Adı</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">{user?.firstName}</p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Soyadı</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">{user?.lastName}</p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Doğum Tarihi</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">{user?.birthDate}</p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Email</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">{user?.email}</p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Kullanıcı Adı</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">{user?.username}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-12">
+                <div className="col-lg-8">
+                    <div className="card z-depth-3">
+                        <div className="card-body">
+                          <div className="col-lg-12">
             {showForm && (
               <div className="mb-4">
                 <div className="card-body">
@@ -215,8 +172,15 @@ const Profile = () => {
               </div>
             )}
           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+ 
       </div>
+
+
     </section>
   );
 };

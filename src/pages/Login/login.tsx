@@ -87,15 +87,15 @@ const LoginForm = () => {
             value={credentials.password}
             onChange={handleChange}
             className="fadeIn third"
-            placeholder="Password"
+            placeholder="Şifre"
           />
           <br />
-          <input type="submit" className="fadeIn fourth" value="Log In" />
+          <input type="submit" className="fadeIn fourth" value="Giriş Yap" />
         </form>
 
         <div id="formFooter">
           <a className="underlineHover" href="#">
-            Forgot Password?
+            Şifre mi Unuttum ?
           </a>
         </div>
       </div>
