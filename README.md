@@ -16,18 +16,18 @@ RentACar projesi, araç kiralama işlemlerini yönetmek için bir web uygulamas�
 - Kullanıcıların araçları filtreleyebilmesini ve karşılaştırabilmesini sağlamak.
 
 <div style="text-align: center; margin-left: 30%">
-  <table >
+  <table style="border: none">
     <tr>
-      <td align="center"><a href="https://reactjs.org/"><img src=".markdown/imgs/icons8-react-a-javascript-library-for-building-user-interfaces-24.png" width="40" height="40" /><br /><p>React</p></a></td>
-      <td align="center"><a href="https://redux.js.org/"><img src=".markdown/imgs/icons8-redux-48.png" width="40" height="40" /><br /><p>Redux</p></a></td>
-      <td align="center"><a href="https://www.typescriptlang.org/"><img src=".markdown/imgs/icons8-typescript-48.png" width="40" height="40" /><br /><p>Typescript</p></a></td>
-      <td align="center"><a href="https://getbootstrap.com/"><img src=".markdown/imgs/icons8-bootstrap-48.png" width="40" height="40" /><br /><p>Bootstrap</p></a></td>
+      <td style="border: none;" align="center"><a href="https://reactjs.org/"><img src=".markdown/imgs/icons8-react-a-javascript-library-for-building-user-interfaces-24.png" width="40" height="40" /><br /><p>React</p></a></td>
+      <td style="border: none;" align="center"><a href="https://redux.js.org/"><img src=".markdown/imgs/icons8-redux-48.png" width="40" height="40" /><br /><p>Redux</p></a></td>
+      <td style="border: none;" align="center"><a href="https://www.typescriptlang.org/"><img src=".markdown/imgs/icons8-typescript-48.png" width="40" height="40" /><br /><p>Typescript</p></a></td>
+      <td style="border: none;" align="center"><a href="https://getbootstrap.com/"><img src=".markdown/imgs/icons8-bootstrap-48.png" width="40" height="40" /><br /><p>Bootstrap</p></a></td>
     </tr>
   </table>
 </div>
 
 - [React](https://reactjs.org/): JavaScript için bir kullanıcı arayüzü kütüphanesi. Kullanıcı arayüzlerini oluşturmak için kullanılır.
-- [Redux](.markdown/redux.md): JavaScript uygulamaları için bir durum yönetim kütüphanesi. Uygulamanın durumunu yönetmek ve güncellemek için kullanılır.
+- [Redux](.markdown/redux.md): JavaScript uygulamaları için bir durum yönetim kütüphanesi. Uygulamanın durumunu yönetmek ve güncellemek için kullanılır. Redux ile ilgili notlarımı okumak için lütfen linke tıklayınız.
 - [TypeScript](https://www.typescriptlang.org/): JavaScript için statik tip tanımlamaları sağlayan bir süperset. Büyük ölçekli uygulamaların geliştirilmesini kolaylaştırır.
 - [Bootstrap](https://getbootstrap.com/): En popüler HTML, CSS ve JS kütüphanesi. Hızlı ve kolay bir şekilde duyarlı, mobil-ilk projeler geliştirmek için kullanılır.
 # Özellikler
