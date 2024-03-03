@@ -15,25 +15,16 @@ RentACar projesi, araç kiralama işlemlerini yönetmek için bir web uygulamas�
 - Müşteri memnuniyetini artırmak için kullanıcı dostu bir arayüz sunmak.
 - Kullanıcıların araçları filtreleyebilmesini ve karşılaştırabilmesini sağlamak.
 
-<div style="display: flex; margin: 10px;  justify-content: center; align=" align="center">
-  <div style="margin: 10px;">
-    <a href="https://reactjs.org/"><img src=".markdown/imgs/icons8-react-a-javascript-library-for-building-user-interfaces-24.png" width="40" height="40" /></a>
-    <p>React</p>
-  </div>
-  <div style="margin: 10px;">
-    <a href="https://redux.js.org/"><img src=".markdown/imgs/icons8-redux-48.png" width="40" height="40" /></a>
-    <p>Redux</p>
-  </div>
-  <div style="margin: 10px;">
-    <a href="https://www.typescriptlang.org/"><img src=".markdown/imgs/icons8-typescript-48.png" width="40" height="40" /></a>
-    <p>Typescript</p>
-  </div>
-  <div style="margin: 10px;">
-    <a href="https://getbootstrap.com/"><img src=".markdown/imgs/icons8-bootstrap-48.png" width="40" height="40" /></a>
-    <p>Bootscrap</p>
-  </div>
+<div style="text-align: center;">
+  <table style="margin: auto;">
+    <tr>
+      <td align="center"><a href="https://reactjs.org/"><img src=".markdown/imgs/icons8-react-a-javascript-library-for-building-user-interfaces-24.png" width="40" height="40" /><br /><p>React</p></a></td>
+      <td align="center"><a href="https://redux.js.org/"><img src=".markdown/imgs/icons8-redux-48.png" width="40" height="40" /><br /><p>Redux</p></a></td>
+      <td align="center"><a href="https://www.typescriptlang.org/"><img src=".markdown/imgs/icons8-typescript-48.png" width="40" height="40" /><br /><p>Typescript</p></a></td>
+      <td align="center"><a href="https://getbootstrap.com/"><img src=".markdown/imgs/icons8-bootstrap-48.png" width="40" height="40" /><br /><p>Bootstrap</p></a></td>
+    </tr>
+  </table>
 </div>
-
 
 - [React](https://reactjs.org/): JavaScript için bir kullanıcı arayüzü kütüphanesi. Kullanıcı arayüzlerini oluşturmak için kullanılır.
 - [Redux](.markdown/redux.md): JavaScript uygulamaları için bir durum yönetim kütüphanesi. Uygulamanın durumunu yönetmek ve güncellemek için kullanılır.
@@ -45,7 +36,7 @@ RentACar projesi aşağıdaki özellikleri içerir:
 
 - **Kullanıcı Kaydı ve Girişi:** Kullanıcılar, araçları kiralayabilmek için kayıt olabilir ve giriş yapabilir.
 - **Araç Filtreleme ve Karşılaştırma:** Kullanıcılar, araçları fiyat, marka, model vb. kriterlere göre filtreleyebilir ve karşılaştırabilir.
-- **Araç Kiralama ve İade İşlemleri:** Kullanıcılar, seçtikleri araçları kolayca kiralayabilir ve iade edebilir.
+- **Araç Kiralama İşlemleri:** Kullanıcılar, seçtikleri araçları kolayca kiralayabilir.
 - **Kullanıcı Profili Yönetimi:** Kullanıcılar, profil bilgilerini görüntüleyebilir ve güncelleyebilir.
 
 
