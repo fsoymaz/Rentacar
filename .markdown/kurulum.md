@@ -9,4 +9,4 @@
 4. `npm start` ile projeyi başlatınız.
 5. Artık web sitemi<> `localhost:3000` portu ile çalışıyor.
 
-<-- oncekı                   [sonraki](login.md) --> 
+<-- [README](../README.md)                   [Login](login.md) --> 

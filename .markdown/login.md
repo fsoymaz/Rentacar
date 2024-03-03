@@ -30,4 +30,4 @@ axios.interceptors.request.use(request => {
 ![alt text](imgs/authorization.png)
 
 
-<-- [onceki](kurulum.md)                  [sonraki](demo.md) --> 
+<-- [Kurulum](kurulum.md)                  [Demo](demo.md) --> 
