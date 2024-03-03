@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# ![alt text](.markdown/imgs/icons8-rent-a-car-64.png)RENTACAR PROJESİ ![alt text](.markdown/imgs/icons8-rent-a-car-64.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Proje Amaçları
+RentACar projesi, araç kiralama işlemlerini yönetmek için bir web uygulamasıdır. Temel amaçlar şunlardır:
 
-## Available Scripts
+- Müşterilerin araçları kolayca kiralayabilmesini sağlamak.
+- Araç kiralama işlemlerini otomatize etmek ve yönetmek.
+- Müşteri memnuniyetini artırmak için kullanıcı dostu bir arayüz sunmak.
+- Kullanıcıların araçları filtreleyebilmesini ve karşılaştırabilmesini sağlamak.
+## Kullanılan Teknolojiler
 
-In the project directory, you can run:
 
-### `npm start`
+<img src=".markdown/imgs/icons8-react-a-javascript-library-for-building-user-interfaces-24.png" width=40>
+<img src=".markdown/imgs/icons8-redux-48.png" width=40> 
+<img src=".markdown/imgs/icons8-typescript-48.png" width=40>
+<img src=".markdown/imgs/icons8-bootstrap-48.png" width=40>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Özellikler
+RentACar projesi aşağıdaki özellikleri içerir:
 
-### `npm test`
+Kullanıcı Kaydı ve Girişi: Kullanıcılar, araçları kiralayabilmek için kayıt olabilir ve giriş yapabilir.
+Araç Filtreleme ve Karşılaştırma: Kullanıcılar, araçları fiyat, marka, model vb. kriterlere göre filtreleyebilir ve karşılaştırabilir.
+Araç Kiralama ve İade İşlemleri: Kullanıcılar, seçtikleri araçları kolayca kiralayabilir ve iade edebilir.
+Kullanıcı Profili Yönetimi: Kullanıcılar, profil bilgilerini görüntüleyebilir ve güncelleyebilir.
+Proje Geliştirme Süreci
+RentACar projesi, aşağıdaki adımları izleyerek geliştirilmiştir:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Gereksinim Analizi: Müşteri ihtiyaçları ve proje gereksinimleri belirlenmiştir.
+Tasarım: Kullanıcı arayüzü tasarlanmış ve frontend için bileşen hiyerarşisi oluşturulmuştur.
+Geliştirme: React, Redux, TypeScript ve Bootstrap kullanılarak frontend geliştirilmiştir.
+Test: Uygulama üzerinde bir dizi test yapılmış ve hatalar giderilmiştir.
+<!-- Dağıtım: Uygulama, canlı ortama dağıtılmış ve kullanıcılar tarafından erişilebilir hale getirilmiştir. -->
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Uygulamanın demo gösterimine gitmek için tıklayınız...](.markdown/demo.md)
