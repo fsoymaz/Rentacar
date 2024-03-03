@@ -30,6 +30,7 @@ import RentalByUser from './pages/RentalByUser/RentalByUser';
 import AdminBrand from './pages/Admin/AdminPages/AddBrandPage/AdminBrand';
 import PrivateRoute from './contexts/PrivateRoute';
 import CampaignCarsPage from './pages/CarPage/CampaignCarsPage';
+import AdminModel from './pages/Admin/AdminModelPage/AdminModel';
 
 function App(): ReactElement {
   const isOnAdminPage = window.location.pathname.indexOf('/admin') === 0;
@@ -54,13 +55,13 @@ function App(): ReactElement {
           <Route path='/contact' element={<ContactUs />} />
           <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
           <Route path="/admin/addBrand" element={<AdminRoute><AdminBrand /></AdminRoute>} />
-          <Route path="/admin/addModel" element={<AdminRoute><AddModel /></AdminRoute>} />
+          <Route path="/admin/addModel" element={<AdminRoute><AdminModel /></AdminRoute>} />
           <Route path="/admin/admincar" element={<AdminRoute><Car /></AdminRoute>} />
 
           <Route path="/register" element={<RegisterCustomer />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-          <Route path="/availableCars" element={<PrivateRoute><AvailableCars /></PrivateRoute>} />
+          <Route path="/availableCars" element={<AvailableCars />} />
           <Route path="/card" element={<UserRoute><CreditCardForm /></UserRoute>} />
           <Route path="/paymentDetail" element={<PrivateRoute><RentalDetail /> </PrivateRoute>} />
           <Route path="/invoice" element={<UserRoute><Succsess /></UserRoute>} />

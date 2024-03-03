@@ -20,9 +20,9 @@ const RentACarForm: React.FC = () => {
   const [locations, setLocations] = useState<locationModels[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<number | undefined>(locationId);
   const authState = useSelector((store: any) => store.auth.email);
-
+  const today = new Date().toISOString().split('T')[0];
   const RentACarFormSchema = Yup.object().shape({
-    pickupDate: Yup.date().min(new Date(), 'Teslim alma tarihi bugün veya daha sonra olmalıdır').required('Teslim alma tarihi gereklidir'),
+    pickupDate: Yup.date().min(today, 'Teslim alma tarihi bugün veya daha sonra olmalıdır').required('Teslim alma tarihi gereklidir'),
     deliveryDate: Yup.date().min(Yup.ref('pickupDate'), 'Teslimat tarihi teslim alma tarihinden sonra olmalıdır').required('Teslim tarihi gereklidir'),
   });
 
@@ -40,7 +40,7 @@ const RentACarForm: React.FC = () => {
       await RentACarFormSchema.validate({ pickupDate, deliveryDate });
       
       // Rental verilerini almak için rentalService kullanılıyor
-      const rentalResponse = await rentalService.getRentalUser(authState); // email buradan gelmeli
+      const rentalResponse = await rentalService.getRentalUser(authState);
       const rentals = rentalResponse.data;
 
       // Başlangıç ve bitiş tarihlerini kontrol et
@@ -49,7 +49,6 @@ const RentACarForm: React.FC = () => {
         const rentalEndDate = new Date(rental.endDate);
         const selectedStartDate = new Date(pickupDate);
         const selectedEndDate = new Date(deliveryDate);
-        console.log(rentalStartDate, rentalEndDate, selectedStartDate, selectedEndDate);
         return (selectedStartDate >= rentalStartDate && selectedStartDate <= rentalEndDate) || (selectedEndDate >= rentalStartDate && selectedEndDate <= rentalEndDate);
       });
 
