@@ -108,7 +108,7 @@ const CreditCardForm: React.FC = () => {
             </div>
             <form className="form" onSubmit={handleSubmit} autoComplete="off" noValidate>
               <div className="form-group">
-                <label htmlFor="card-number">Card Number</label>
+                <label htmlFor="card-number">Kart Numarası</label>
                 <input
                   type="text"
                   id="card-number"
@@ -119,7 +119,7 @@ const CreditCardForm: React.FC = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="card-holder">Card holder</label>
+                <label htmlFor="card-holder">Kart İsmi</label>
                 <input
                   type="text"
                   id="card-holder"
@@ -129,7 +129,7 @@ const CreditCardForm: React.FC = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="card-expiration-month">Expiration date</label>
+                <label htmlFor="card-expiration-month">Son Kullanma Tarihi</label>
                 <div className="d-flex">
                   <select
                     id="card-expiration-month"
@@ -137,7 +137,7 @@ const CreditCardForm: React.FC = () => {
                     value={expirationMonth}
                     onChange={handleExpirationMonthChange}
                   >
-                    <option value="">Month</option>
+                    <option value="">Ay</option>
                     {months}
                   </select>
                   <select
@@ -146,7 +146,7 @@ const CreditCardForm: React.FC = () => {
                     value={expirationYear}
                     onChange={handleExpirationYearChange}
                   >
-                    <option value="">Year</option>
+                    <option value="">Yıl</option>
                     {years}
                   </select>
                 </div>

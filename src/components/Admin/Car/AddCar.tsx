@@ -59,14 +59,6 @@ const AddCar: React.FC = () => {
     }
   };
 
-  const handleFormSubmit = (formikSubmit: (values?: AddCarRequest) => void) => {
-    if (!imagePath) {
-      toast.error('Lütfen önce bir resim ekleyin!');
-      return;
-    }
-
-    formikSubmit();
-  };
 
   return (
     <div className='container'>

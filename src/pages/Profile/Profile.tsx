@@ -122,13 +122,13 @@ const Profile = () => {
                   >
                     <Form>
                       <FormikInput
-                        label="First Name"
+                        label="Ad"
                         name="firstName"
                         type="text"
                         placeholder="First Name"
                       />
                       <FormikInput
-                        label="Last Name"
+                        label="Soyad"
                         name="lastName"
                         type="text"
                         placeholder="Last Name"
@@ -140,25 +140,25 @@ const Profile = () => {
                         placeholder="email"
                       />
                       <FormikInput
-                        label="Birth Date"
+                        label="Doğum Tarihi"
                         name="birthDate"
                         type="date"
                         placeholder="Birth Date"
                       />
                       <FormikInput
-                        label="Username"
+                        label="Kullanıcı Adı"
                         name="username"
                         type="text"
                         placeholder="User Name"
                       />
                       <FormikInput
-                        label="Password"
+                        label="Şifre"
                         name="password"
                         type="password"
                         placeholder="Password"
                       />
                       <FormikInput
-                        label="Confirm Password"
+                        label="Şifreyi Tekrarla"
                         name="confirmPassword"
                         type="password"
                         placeholder="confirm password"
