@@ -40,4 +40,4 @@ Test: Uygulama üzerinde bir dizi test yapılmış ve hatalar giderilmiştir.
 <!-- Dağıtım: Uygulama, canlı ortama dağıtılmış ve kullanıcılar tarafından erişilebilir hale getirilmiştir. -->
 
 
-[Uygulamanın demo gösterimine gitmek için tıklayınız...](.markdown/kurulum.md)
+[Kurulum Sayfasına gidiniz...](.markdown/kurulum.md)
