@@ -1,7 +1,5 @@
 #Projenin Demosu
-Aşağıda proje hakkında bilgi sahibi olabileceğiz videolar vardır lütfen izleyiniz
-![Demo](./imgs/kiralamademo.mp4)
-
-<video controls src="imgs/kiralamademo.mp4" title="Title"></video>
+Aşağıda projede araç kiralama işlemini gösterdiğim bir demo videosu var lütfen izleyiniz...
+[![Demo](imgs/kirala.png)](https://youtu.be/--QjAys2ZuQ)
 
 <--[Login](login.md)  [README](../README.md)-->

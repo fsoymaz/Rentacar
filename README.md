@@ -7,15 +7,22 @@ RentACar projesi, araç kiralama işlemlerini yönetmek için bir web uygulamas�
 - Araç kiralama işlemlerini otomatize etmek ve yönetmek.
 - Müşteri memnuniyetini artırmak için kullanıcı dostu bir arayüz sunmak.
 - Kullanıcıların araçları filtreleyebilmesini ve karşılaştırabilmesini sağlamak.
-## Kullanılan Teknolojiler
 
 
-<img src=".markdown/imgs/icons8-react-a-javascript-library-for-building-user-interfaces-24.png" width=40>
-<img src=".markdown/imgs/icons8-redux-48.png" width=40> 
-<img src=".markdown/imgs/icons8-typescript-48.png" width=40>
-<img src=".markdown/imgs/icons8-bootstrap-48.png" width=40>
 
 
+<p align="center">
+  <a href=".markdown/login.md"><img src=".markdown/imgs/icons8-react-a-javascript-library-for-building-user-interfaces-24.png" width="40" height="40" /></a>
+  <img src=".markdown/imgs/icons8-redux-48.png" width="40" height="40" />
+  <img src=".markdown/imgs/icons8-typescript-48.png" width="40" height="40" />
+  <img src=".markdown/imgs/icons8-bootstrap-48.png" width="40" height="40" />
+</p>
+
+
+- [React](https://reactjs.org/): JavaScript için bir kullanıcı arayüzü kütüphanesi. Kullanıcı arayüzlerini oluşturmak için kullanılır.
+- [Redux](https://redux.js.org/): JavaScript uygulamaları için bir durum yönetim kütüphanesi. Uygulamanın durumunu yönetmek ve güncellemek için kullanılır.
+- [TypeScript](https://www.typescriptlang.org/): JavaScript için statik tip tanımlamaları sağlayan bir süperset. Büyük ölçekli uygulamaların geliştirilmesini kolaylaştırır.
+- [Bootstrap](https://getbootstrap.com/): En popüler HTML, CSS ve JS kütüphanesi. Hızlı ve kolay bir şekilde duyarlı, mobil-ilk projeler geliştirmek için kullanılır.
 # Özellikler
 RentACar projesi aşağıdaki özellikleri içerir:
 
