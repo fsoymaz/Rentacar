@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, Row, Col } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { handleCarId, selectRental } from '../../../store/rental/rentalSlice'; // Redux'dan carId'yi alın
 
 type Props = {
   service: any;
