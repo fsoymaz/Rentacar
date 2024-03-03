@@ -15,8 +15,8 @@ RentACar projesi, araç kiralama işlemlerini yönetmek için bir web uygulamas�
 - Müşteri memnuniyetini artırmak için kullanıcı dostu bir arayüz sunmak.
 - Kullanıcıların araçları filtreleyebilmesini ve karşılaştırabilmesini sağlamak.
 
-<div style="text-align: center;">
-  <table style="margin: auto;">
+<div style="text-align: center; margin-left: 30%">
+  <table >
     <tr>
       <td align="center"><a href="https://reactjs.org/"><img src=".markdown/imgs/icons8-react-a-javascript-library-for-building-user-interfaces-24.png" width="40" height="40" /><br /><p>React</p></a></td>
       <td align="center"><a href="https://redux.js.org/"><img src=".markdown/imgs/icons8-redux-48.png" width="40" height="40" /><br /><p>Redux</p></a></td>
