@@ -104,7 +104,6 @@ const RentalDetail = () => {
             <div className="card mt-3">
               <div className="card-body">
                 {renderDetailItem('Günlük Ücreti', `${carDetails.dailyPrice}₺`)}
-
                 {carDetails.discount > 0
                   && renderDetailItem('İndirim Oranı', `${carDetails.discount}%`)}
                 {renderDetailItem('Kiralanacak Gün Sayısı', rentalDays)}

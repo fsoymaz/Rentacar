@@ -64,7 +64,7 @@ function App(): ReactElement {
           <Route path="/availableCars" element={<AvailableCars />} />
           <Route path="/card" element={<UserRoute><CreditCardForm /></UserRoute>} />
           <Route path="/paymentDetail" element={<PrivateRoute><RentalDetail /> </PrivateRoute>} />
-          <Route path="/invoice" element={<UserRoute><Succsess /></UserRoute>} />
+          <Route path="/invoice" element={<PrivateRoute><Succsess /></PrivateRoute>} />
           <Route path="/userRentals" element={<PrivateRoute><RentalByUser /></PrivateRoute>} />
           <Route path="/campainCar" element={<CampaignCarsPage />} />
           <Route path="*" element={<div>Hata: Bu sayfa bulunamadı!</div>} />

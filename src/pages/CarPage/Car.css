@@ -130,3 +130,47 @@
   }
   
 }
+
+
+/*campain*/
+.campaign-cars-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.campaign-cars-page h2 {
+  color: #007bff;
+}
+
+.campaign-cars-page p {
+  color: #666;
+}
+
+.campaign-cars-page img {
+  max-width: 100%;
+  height: auto;
+}
+
+.campaign-cars-page input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.campaign-cars-page button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.campaign-cars-page button:hover {
+  background-color: #0056b3;
+}
