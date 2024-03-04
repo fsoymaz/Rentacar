@@ -16,6 +16,7 @@ export const AddInitialValues: AddCarRequest = {
     passengerCapacity: 0,
     imagePath: '',
     locationId: 0,
+    discount: 0
 };
 
 export const UpdateInitialValues: UpdateCarRequest = {

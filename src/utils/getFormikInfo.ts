@@ -21,7 +21,7 @@ export const getFormikInfo = (
         { formikType: "FormikSelect", label: "Fuel Type", name: "fuelType", options: fuelTypeOptions ? [initialOption, ...fuelTypeOptions] : [] },
         { formikType: "FormikSelect", label: "Category", name: "category", options: categoryOptions ? [initialOption, ...categoryOptions] : [] },
         { formikType: "FormikInput", label: "Passenger Capacity", name: "passengerCapacity", type: "number", placeholder: "Passenger Capacity giriniz" },
-        { formikType: "FormikInput", label: "İndirim Ordanı", name: "discount", type: "number", placeholder: "İndirim Oranı giriniz" },
+        { formikType: "FormikInput", label: "İndirim Oranı", name: "discount", type: "number", placeholder: "İndirim Oranı giriniz", defaultValue: 0 },
     ];
 
     if (isUpdate) {
