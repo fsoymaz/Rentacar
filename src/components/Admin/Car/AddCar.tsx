@@ -33,13 +33,14 @@ const AddCar: React.FC = () => {
     const formData = new FormData();
     if (event.currentTarget.files && event.currentTarget.files[0]) {
       formData.append('image', event.currentTarget.files[0]);
+
+      // Image yüklendiğinde direkt olarak isteği gönder
+      const response = await imageDataService.add(formData);
+      setImagePath(response.data);
     }
-
-    const response = await imageDataService.add(formData);
-    setImagePath(response.data);
   };
-
-  const handleSubmit = async (values: AddCarRequest, { resetForm }: FormikHelpers<AddCarRequest>) => {
+  
+  const handleSubmit = async (values: AddCarRequest) => {
     if (!imagePath) {
       toast.error('Lütfen önce bir resim ekleyin!');
       return;
@@ -50,7 +51,6 @@ const AddCar: React.FC = () => {
       const response = await carService.add(carDataWithImage);
       if (response.status === 201) {
         toast.success('Araç Başarı ile eklendi!');
-        resetForm();
       } else {
         toast.error('Araç eklenemedi, lütfen eksik alanları doldurun.');
       }
@@ -58,7 +58,6 @@ const AddCar: React.FC = () => {
       toast.error('Bilinmeyen bir hata oluştu.');
     }
   };
-
 
   return (
     <div className='container'>
@@ -84,7 +83,7 @@ const AddCar: React.FC = () => {
                 return <FormikSelect key={`select-${formikInfo.name}`} label={formikInfo.label} name={formikInfo.name} options={formikInfo.options ?? []} />;
               }
             })}
-            <button className='btn btn-success form-control' type="button" onClick={() => formikSubmit()}>Submit</button>
+            <button className='btn btn-success form-control' type="submit">Submit</button>
           </Form>
         )}
       </Formik>
