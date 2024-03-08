@@ -31,14 +31,14 @@ const Cars: React.FC<CarsPageProps> = () => {
         {cars.map((car) => (
           <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">
             <img
-              src={car?.imagePath}
-              alt={`Car Image - ${car.imagePath}`}
+              src={car?.imageUrl}
+              alt={`Car Image - ${car.imageUrl}`}
               className="card-img"
             />
             <div className="card-body">
               <h3 className="card-title">
-                {car.modelYear} {car.model?.brand?.name}{" "}
-                {car.model?.name}
+                {car.modelYear} {car.brandName}{" "}
+                {car.modelName}
               </h3>
               <h1>{car.plate}</h1>
               <div className="icon-section">
@@ -49,7 +49,7 @@ const Cars: React.FC<CarsPageProps> = () => {
                   <FontAwesomeIcon icon={faCar} />{car.transmissionType}
                 </div>
                 <div className="icons">
-                  <FontAwesomeIcon icon={faPaintBrush} /> {car.color?.name}
+                  <FontAwesomeIcon icon={faPaintBrush} /> {car.colorName}
                 </div>
               </div>
             </div>

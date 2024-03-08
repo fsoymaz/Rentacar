@@ -3,7 +3,7 @@ import { GetAllCarResponse } from '../../../models/cars/response/getAllCarRespon
 import { FaCarSide, FaChair, FaCog, FaCrown, FaGasPump, FaLeaf, FaMoneyBillAlt, FaOilCan, FaPlane, FaPlug, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
  import './Car.css';
 
-type NestedKeysInGetAllCarResponse = keyof GetAllCarResponse | keyof GetAllCarResponse['model'] | 'model.brand' | 'location' | 'color';
+type NestedKeysInGetAllCarResponse = keyof GetAllCarResponse | keyof GetAllCarResponse['modelName'] | 'brandName' | 'location' | 'color';
 
 const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
   const [filter, setFilter] = useState<string>('');
@@ -48,8 +48,8 @@ const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
     'Kredi Notu': 'minFindeksRate',
     'Kilometre': 'kilometer',
     'Günlük Fiyat': 'dailyPrice',
-    'Marka': 'model.brand',
-    'Model': 'model',
+    'Marka': 'brandName',
+    'Model': 'modelName',
     'Renk': 'color',
     'Vites Tipi': 'transmissionType',
     'Yakıt Tipi': 'fuelType',
@@ -70,18 +70,18 @@ const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
       let aValue;
       let bValue;
 
-      if (key === 'model.brand') {
-        aValue = a.model.brand?.name;
-        bValue = b.model.brand?.name;
-      } else if (key === 'model') {
-        aValue = a.model?.name;
-        bValue = b.model?.name;
+      if (key === 'brandName') {
+        aValue = a.brandName;
+        bValue = b.brandName;
+      } else if (key === 'modelName') {
+        aValue = a.modelName;
+        bValue = b.modelName;
       } else if (key === 'location') {
-        aValue = a.location?.name;
-        bValue = b.location?.name;
+        aValue = a.location.name;
+        bValue = b.location.name;
       } else if (key === 'color') {
-        aValue = a.color?.name;
-        bValue = b.color?.name;
+        aValue = a.colorName;
+        bValue = b.colorName;
       } else {
         aValue = a[key as keyof GetAllCarResponse];
         bValue = b[key as keyof GetAllCarResponse];
@@ -152,9 +152,9 @@ const CarTable = ({ data }: { data: GetAllCarResponse[] }) => {
               <td>{car.minFindeksRate}</td>
               <td>{car.kilometer}</td>
               <td>{car.dailyPrice}₺</td>
-              <td>{car.model.brand?.name}</td>
-              <td>{car.model?.name}</td>
-              <td>{car.color.name}</td>
+              <td>{car.brandName}</td>
+              <td>{car.modelName}</td>
+              <td>{car.colorName}</td>
               <td style={{ color: transmissionTypeTranslations[car.transmissionType].color, fontFamily: transmissionTypeTranslations[car.transmissionType].font }}>
                 {transmissionTypeTranslations[car.transmissionType].icon} {transmissionTypeTranslations[car.transmissionType].name}
               </td>

@@ -1,6 +1,4 @@
 import { ErrorMessage, Field } from 'formik';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 type Option = {
   id: string;

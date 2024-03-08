@@ -45,7 +45,7 @@ const CampaignCarsPage = (props: Props) => {
       <BaseFetcher service={() => carService.getById(rental.carId)} onBaseFetched={setCar} params={[rental.carId]} />
       {car && (
         <>
-          <img src={car.imagePath} alt={car.model.name} />
+          <img src={car.imageUrl} alt={car.modelName} />
           <p>Year: {car.modelYear}</p>
           <p>Plate: {car.plate}</p>
           <p>Price: {car.dailyPrice}</p>

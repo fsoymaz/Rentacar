@@ -41,13 +41,13 @@ const fetchCars = async () => {
 								<div className="col-md-6">
 									<div>
 										<h2>
-											{cars[index].model.brand?.name} {cars[index].model.name}
+											{cars[index].brandName} {cars[index].modelName}
 										</h2>
 										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, delectus?</p>
 									</div>
 								</div>
 								<div className="col-md-6">
-									<img src={cars[index].imagePath} alt={`Car Image - ${cars[index].imagePath}`} />
+									<img src={cars[index].imageUrl} alt={`Car Image - ${cars[index].imageUrl}`} />
 								</div>
 							</div>
 						)}

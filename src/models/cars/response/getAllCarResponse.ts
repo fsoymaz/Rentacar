@@ -9,12 +9,14 @@ export interface GetAllCarResponse {
     minFindeksRate: number;
     kilometer: number;
     dailyPrice: number;
-    model: modelModels;
-    color: colorModel;
-    imagePath: string;
+    modelName: string;
+    brandName: string;
+    colorName: string;
+    imageUrl: string;
     transmissionType: string;
     fuelType: string;
     category: string;
     passengerCapacity: number;
     location: locationModels;
+    
 }

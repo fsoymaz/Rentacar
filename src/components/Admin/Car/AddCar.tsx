@@ -1,61 +1,64 @@
 import React, { useState } from 'react';
-import { Formik, Form, FormikHelpers } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { toast } from 'react-toastify';
-
+import axios from 'axios';
+import { AddCarRequest } from '../../../models/cars/request/addCarRequest';
+import { carSchema } from '../../validationSchemas/validationSchemas';
+import BaseFetcher from '../../Fetch/BaseFetcher';
+import locationService from '../../../service/baseSevice/locationService';
+import colorService from '../../../service/baseSevice/colorService';
+import modelService from '../../../service/baseSevice/modelService';
+import { getFormikInfo } from '../../../utils/getFormikInfo';
 import FormikInput from '../../FormikInput/FormikInput';
 import FormikSelect from '../../FormikSelect/FormikSelect';
-import carService from '../../../service/baseSevice/carService';
-import { AddCarRequest } from '../../../models/cars/request/addCarRequest';
+import { Option, generateOptions } from '../../GenerateOptions/GenerateOptions';
 import { Category } from '../../../Enum/CategoryEnum';
 import { FuelType } from '../../../Enum/FuelType';
 import { TransmissionType } from '../../../Enum/TransmissionType';
-import { Option, generateOptions } from '../../GenerateOptions/GenerateOptions';
-import imageDataService from '../../../service/baseSevice/imageDataService';
-import { getFormikInfo } from '../../../utils/getFormikInfo';
+import axiosInstance from '../../../utils/Interceptors';
 import { AddInitialValues } from '../../../initialValues/CarInitialValues';
-import locationService from '../../../service/baseSevice/locationService';
-import BaseFetcher from '../../Fetch/BaseFetcher';
-import colorService from '../../../service/baseSevice/colorService';
-import modelService from '../../../service/baseSevice/modelService';
-import { carSchema } from '../../validationSchemas/validationSchemas';
 
 const AddCar: React.FC = () => {
-  const [models, setModels] = useState<Option[]>([]);
-  const [colors, setColors] = useState<Option[]>([]);
-  const [locations, setLocations] = useState<Option[]>([]);
-  const [imagePath, setImagePath] = useState<string>('');
+  const [file, setFile] = useState<File | null>(null);
+  const [models, setModels] = useState([]);
+  const [colors, setColors] = useState([]);
+  const [locations, setLocations] = useState([]);
+
 
   const categoryOptions: Option[] = generateOptions(Category);
   const fuelTypeOptions: Option[] = generateOptions(FuelType);
   const transmissionTypeOptions: Option[] = generateOptions(TransmissionType);
 
-  const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const formData = new FormData();
-    if (event.currentTarget.files && event.currentTarget.files[0]) {
-      formData.append('image', event.currentTarget.files[0]);
 
-      // Image yüklendiğinde direkt olarak isteği gönder
-      const response = await imageDataService.add(formData);
-      setImagePath(response.data);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setFile(event.target.files[0]);
     }
   };
-  
-  const handleSubmit = async (values: AddCarRequest) => {
-    if (!imagePath) {
-      toast.error('Lütfen önce bir resim ekleyin!');
-      return;
-    }
 
+  const handleSubmit = async (values: AddCarRequest) => {
+    const formData = new FormData();
+    // 'car' olarak JSON.stringify(values) ekliyoruz ama 'imageUrl' dahil etmiyoruz
+    formData.append('car', JSON.stringify(values));
+    if (file) {
+      formData.append('file', file);
+    }
+  
     try {
-      const carDataWithImage = { ...values, imagePath };
-      const response = await carService.add(carDataWithImage);
+      const response = await axiosInstance.post('https://rent-a-car-project.azurewebsites.net/api/cars', formData, {
+        headers: {
+          // 'Content-Type': 'multipart/form-data', bu header'i çıkarabilirsiniz, axios otomatik olarak doğru değeri atayacaktır
+        },
+      });
+  
       if (response.status === 201) {
-        toast.success('Araç Başarı ile eklendi!');
+        toast.success('Araç başarıyla eklendi!');
       } else {
-        toast.error('Araç eklenemedi, lütfen eksik alanları doldurun.');
+        toast.error('Araç eklenemedi. Lütfen tekrar deneyin.');
       }
     } catch (error) {
-      toast.error('Bilinmeyen bir hata oluştu.');
+      toast.error('Bir hata oluştu. Lütfen tekrar deneyin.');
+      console.error('Submit Error:', error);
     }
   };
 
@@ -64,17 +67,16 @@ const AddCar: React.FC = () => {
       <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
       <BaseFetcher service={() => colorService.getAll()} onBaseFetched={setColors} />
       <BaseFetcher service={() => modelService.getAll()} onBaseFetched={setModels} />
-
       <Formik
         initialValues={AddInitialValues}
         onSubmit={handleSubmit}
         validationSchema={carSchema}
       >
-        {({ handleSubmit: formikSubmit }) => (
+        {({ isSubmitting }) => (
           <Form>
             <label className='form-label'>
-              Image Path
-              <input className='form-control' name="image" type="file" onChange={handleImageChange} />
+              Image Url
+              <input className='form-control' name="image" type="file" onChange={handleFileChange} />
             </label>
             {getFormikInfo(models, colors, locations, transmissionTypeOptions, fuelTypeOptions, categoryOptions).map((formikInfo) => {
               if (formikInfo.formikType === "FormikInput") {

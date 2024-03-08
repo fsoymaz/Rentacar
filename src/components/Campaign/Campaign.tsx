@@ -21,10 +21,9 @@ const Campaign: React.FC<CampaignProps> = (
   };
 
   useEffect(() => {
-    // Veriyi sadece bir kere çek
     const fetchData = async () => {
       try {
-        const response = await axiosInstance("http://localhost:8080/api/cars/discounted");
+        const response = await axiosInstance("https://rent-a-car-project.azurewebsites.net/api/cars/discounted");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching campaign cars:", error);
@@ -55,7 +54,7 @@ const Campaign: React.FC<CampaignProps> = (
                       btnID(index + 1);
                     }}
                   >
-                    {car.model.brand.name}   {car.model.name}
+                    {car.brandName}   {car.modelName}
                   </button>
                 ))}
               </div>

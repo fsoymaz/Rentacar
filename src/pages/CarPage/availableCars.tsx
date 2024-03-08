@@ -161,13 +161,13 @@ const AvailableCars: React.FC = () => {
                 {state.cars.map((car) => (
                   <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card mb-3">
                   <img
-                    src={car?.imagePath}
-                    alt={`Car Image - ${car.imagePath}`}
+                    src={car?.imageUrl}
+                    alt={`Car Image - ${car.imageUrl}`}
                     className="card-img-top"
                   />
                   <div className="card-body">
                     <h5 className="card-title">
-                      {car.modelYear} {car.model?.brand?.name} {car.model?.name}
+                      {car.modelYear} {car.brandName} {car.modelName}
                     </h5>
                     <p className="card-text">Plate: {car.plate}</p>
                     <div className="d-flex justify-content-between align-items-center">
@@ -179,7 +179,7 @@ const AvailableCars: React.FC = () => {
                           <FontAwesomeIcon icon={faCar} /> {car.transmissionType}
                         </p>
                         <p className="mb-0">
-                          <FontAwesomeIcon icon={faPaintBrush} /> {car.color?.name}
+                          <FontAwesomeIcon icon={faPaintBrush} /> {car.colorName}
                         </p>
                       </div>
                       <button

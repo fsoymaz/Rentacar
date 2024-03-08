@@ -8,9 +8,10 @@ export interface AddCarResponse {
     minFindeksRate: number;
     kilometer: number;
     dailyPrice: number;
-    model: modelModels;
+    modelName: string;
+    brandName: string;
     color: colorModel;
-    imagePath: string;
+    imageUrl: string;
     transmissionType?: string;
     fuelType: string;
     category: string;

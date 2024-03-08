@@ -51,12 +51,12 @@ const CarBox: React.FC<CarBoxProps> = ({ data }: CarBoxProps): JSX.Element => {
 
               <div className="pick-description__table__col">
                 <span>Marka</span>
-                <span>{car.model.brand.name}</span>
+                <span>{car.brandName}</span>
               </div>
 
               <div className="pick-description__table__col">
                 <span>Model</span>
-                <span>{car.model.name}</span>
+                <span>{car.modelName}</span>
               </div>
 
 
