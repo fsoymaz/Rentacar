@@ -33,7 +33,7 @@ class CarService extends BaseService<
     }
   }
 
-  async getAvailableCarsByCategory(startDate: string, endDate: string, locationId: number, category: string, brandId: string, modelId: string, minPrice: number | null, maxPrice: number | null) {
+  async getAvailableCarsByCategory(startDate: string, endDate: string, locationId: number, category: string, brandId: number, modelId: number, minPrice: number | null, maxPrice: number | null) {
     const response = await axiosInstance.get('/cars/availableByCategory', {
       params: {
         startDate,

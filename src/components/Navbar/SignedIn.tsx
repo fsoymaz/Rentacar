@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutSuccess } from '../../store/user/userSlice';
 import { logoutRental } from '../../store/rental/rentalSlice';
+import { logoutFilter } from '../../store/filter/filterSlice';
 
 export default function SignedIn({ }: {}) {
   const isAuthenticated = useSelector((state: any) => state.auth);
@@ -13,7 +14,11 @@ export default function SignedIn({ }: {}) {
   const handleLogout = () => {
     dispatch(logoutSuccess());
     dispatch(logoutRental());
+    dispatch(logoutFilter());
     localStorage.removeItem('token');
+    localStorage.removeItem('auth');
+    localStorage.removeItem('rental');
+    localStorage.removeItem('filter');
     navigate('/');
   };
 

@@ -32,6 +32,7 @@ import PrivateRoute from './contexts/PrivateRoute';
 import CampaignCarsPage from './pages/CarPage/CampaignCarsPage';
 import AdminModel from './pages/Admin/AdminModelPage/AdminModel';
 
+
 function App(): ReactElement {
   const isOnAdminPage = window.location.pathname.indexOf('/admin') === 0;
   const location = useLocation();
@@ -40,6 +41,8 @@ function App(): ReactElement {
   useEffect(() => {
     window.scrollTo(0, 0); // Sayfanın en üstüne scroll yap
   }, [location.pathname]); // Konum değiştiğinde çalış
+// localStorage.clear(); // LocalStorage için
+// sessionStorage.clear(); // SessionStorage için
 
   return (
     <div className='App'>

@@ -1,99 +1,109 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Category } from '../../Enum/CategoryEnum';
-import { BrandModel } from '../../models/brandModels/GetAllBrandModel';
-import { modelModels } from '../../models/modelModels/GetAllModelsModel';
 import './Car.css';
-interface FilterProps {
-    category: string;
-    brands: BrandModel[];
-    models: modelModels[];
-    onCategoryChange: (category: string) => void;
-    onBrandChange: (brand: string) => void;
-    onModelChange: (model: string) => void;
-    onMinPriceChange: (price: number) => void;
-    onMaxPriceChange: (price: number) => void;
-    onStartDateChange: (date: string) => void;
-    onEndDateChange: (date: string) => void;
-    onApplyFilters: () => void;
-    filterMenuVisible: boolean;
-    toggleFilterMenu: () => void;
-    locationId: number;
-    onLocationChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    locations: { id: number; name: string }[];
-}
+import {
+    selectFilter,
+    setBrandId,
+    setCategory,
+    setMaxPrice,
+    setMinPrice,
+    setModelId,
+} from '../../store/filter/filterSlice';
+import { BrandModel } from '../../models/brandModels/GetAllBrandModel';
+import brandService from '../../service/baseSevice/brandService';
+import modelService from '../../service/baseSevice/modelService';
+import locationService from '../../service/baseSevice/locationService';
+import { modelModels } from '../../models/modelModels/GetAllModelsModel';
+import BaseFetcher from '../../components/Fetch/BaseFetcher';
+import { handleEndDate, handleLocationId, handleStartDate, selectRental } from '../../store/rental/rentalSlice';
 
-const Filter: React.FC<FilterProps> = ({
-    locationId,
-    onLocationChange,
-    locations,
-    category,
-    brands,
-    models,
-    onCategoryChange,
-    onBrandChange,
-    onModelChange,
-    onMinPriceChange,
-    onMaxPriceChange,
-    onStartDateChange,
-    onEndDateChange,
-    filterMenuVisible,
-}) => (
-    <div className={`filter-menu ${filterMenuVisible ? 'active' : ''}`}>
-        <div className="filter-item">
-            <label>Location:</label>
-            <select value={locationId} onChange={onLocationChange}>
-                {locations.map((location) => (
-                    <option key={location.id} value={location.id}>
-                        {location.name}
-                    </option>
-                ))}
-            </select>
-        </div>
-        <div className="filter-item">
+const Filter = () => {
+    const dispatch = useDispatch();
+    const [brands, setBrands] = useState<BrandModel[]>([]);
+    const [models, setModels] = useState<modelModels[]>([]);
+    const [locations, setLocations] = useState<{ id: number; name: string }[]>([]);
+    const {
+        category,
+        brandId,
+        modelId,
+        minPrice,
+        maxPrice,
+    } = useSelector(selectFilter);
+    
+    const rental = useSelector(selectRental);
+    const { startDate, endDate, locationId } = rental;
+    const safeBrandId = brandId !== null ? brandId.toString() : '';
+    const safeModelId = modelId !== null ? modelId.toString() : '';
+    const safeMinPrice = minPrice !== null ? minPrice.toString() : '';
+    const safeMaxPrice = maxPrice !== null ? maxPrice.toString() : '';
 
-            <label>Ketegory:</label>
-            <select value={category} onChange={(e) => onCategoryChange(e.target.value)}>
-                <option value={""}>Hepsi</option>
-                <option value={Category.ECONOMY}>Ekonomi</option>
-                <option value={Category.COMFORT}>Konfor</option>
-                <option value={Category.LUXURY}>Lüks</option>
-            </select>
+    return (
+        <div>
+
+            <BaseFetcher service={() => brandService.getAll()} onBaseFetched={setBrands} />
+            <BaseFetcher service={() => modelService.getAll()} onBaseFetched={setModels} />
+            <BaseFetcher service={() => locationService.getAll()} onBaseFetched={setLocations} />
+            <div className="filter-item">
+                <label>Location:</label>
+                <select value={locationId} onChange={(e) => dispatch(handleLocationId(parseInt(e.target.value)))}>
+                    {locations.map(location => (
+                        <option key={location.id} value={location.id}>{location.name}</option>
+                    ))}
+                </select>
+            </div>
+
+            <div className="filter-item">
+                <label>Category:</label>
+                <select value={category} onChange={(e) => dispatch(setCategory(e.target.value))}>
+                    <option value="">All</option>
+                    <option value={Category.ECONOMY}>Economy</option>
+                    <option value={Category.COMFORT}>Comfort</option>
+                    <option value={Category.LUXURY}>Luxury</option>
+                </select>
+            </div>
+
+            <div className="filter-item">
+                <label>Brand:</label>
+                <select value={safeBrandId} onChange={(e) => dispatch(setBrandId(parseInt(e.target.value)))}>
+                    <option value="">All</option>
+                    {brands.map(brand => (
+                        <option key={brand.id} value={brand.id}>{brand.name}</option>
+                    ))}
+                </select>
+            </div>
+
+            <div className="filter-item">
+                <label>Model:</label>
+                <select value={safeModelId} onChange={(e) => dispatch(setModelId(parseInt(e.target.value)))}>
+                    <option value="">All</option>
+                    {models.map(model => (
+                        <option key={model.id} value={model.id}>{model.name}</option>
+                    ))}
+                </select>
+            </div>
+
+            <div className="filter-item">
+                <label>Min Price:</label>
+                <input type="number" value={safeMinPrice} onChange={(e) => dispatch(setMinPrice(parseFloat(e.target.value)))} />
+            </div>
+
+            <div className="filter-item">
+                <label>Max Price:</label>
+                <input type="number" value={safeMaxPrice} onChange={(e) => dispatch(setMaxPrice(parseFloat(e.target.value)))} />
+            </div>
+
+            <div className="filter-item">
+                <label>Pickup Date:</label>
+                <input type="date" value={startDate} onChange={(e) => dispatch(handleStartDate(e.target.value))} />
+            </div>
+
+            <div className="filter-item">
+                <label>Return Date:</label>
+                <input type="date" value={endDate} onChange={(e) => dispatch(handleEndDate(e.target.value))} />
+            </div>
         </div>
-        <div className="filter-item">
-            <label>Marka:</label>
-            <select onChange={(e) => onBrandChange(e.target.value)}>
-                <option value="">Hepsi</option>
-                {brands.map((brand) => (
-                    <option key={brand.id} value={brand.id}>{brand.name}</option>
-                ))}
-            </select>
-        </div>
-        <div className="filter-item">
-            <label>Model:</label>
-            <select onChange={(e) => onModelChange(e.target.value)}>
-                <option value="">Hepsi</option>
-                {models.map((model) => (
-                    <option key={model.id} value={model.id}>{model.name}</option>
-                ))}
-            </select>
-        </div>
-        <div className="filter-item">
-            <label>Min Fiyat:</label>
-            <input type="number" onChange={(e) => onMinPriceChange(parseFloat(e.target.value))} />
-        </div>
-        <div className="filter-item">
-            <label>Max Fiyat:</label>
-            <input type="number" onChange={(e) => onMaxPriceChange(parseFloat(e.target.value))} />
-        </div>
-        <div className="filter-item">
-            <label>Alış Tarihi:</label>
-            <input type="date" onChange={(e) => onStartDateChange(e.target.value)} />
-        </div>
-        <div className="filter-item">
-            <label>Dönüş Tarihi:</label>
-            <input type="date" onChange={(e) => onEndDateChange(e.target.value)} />
-        </div>
-    </div>
-);
+    );
+};
 
 export default Filter;
