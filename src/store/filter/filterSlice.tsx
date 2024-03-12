@@ -4,16 +4,12 @@ import { RootState } from '../configureStore';
 
 interface FilterState {
   category: string;
-  brandId: number | null;
-  modelId: number | null;
   minPrice: number;
   maxPrice: number | null;
 }
 
 const initialState: FilterState = {
   category: '',
-  brandId: 0,
-  modelId: 0,
   minPrice: 0,
   maxPrice: null,
 };
@@ -26,12 +22,7 @@ export const filterSlice = createSlice({
     setCategory: (state, action: PayloadAction<string>) => {
       state.category = action.payload;
     },
-    setBrandId: (state, action: PayloadAction<number | null>) => {
-      state.brandId = action.payload;
-    },
-    setModelId: (state, action: PayloadAction<number | null>) => {
-      state.modelId = action.payload;
-    },
+   
     setMinPrice: (state, action: PayloadAction<number>) => {
       state.minPrice = action.payload;
     },
@@ -40,8 +31,6 @@ export const filterSlice = createSlice({
     },
     logoutFilter: (state) => {
       state.category = '';
-      state.brandId = 0;
-      state.modelId = 0;
       state.minPrice = 0;
       state.maxPrice = null;
     },
@@ -50,4 +39,4 @@ export const filterSlice = createSlice({
 
 export const selectFilter = (state: RootState) => state.filter;
 export const filterReducer = filterSlice.reducer;
-export const {setCategory, setBrandId, setModelId, setMinPrice, setMaxPrice, logoutFilter } = filterSlice.actions;
+export const {setCategory, setMinPrice, setMaxPrice, logoutFilter } = filterSlice.actions;

@@ -24,9 +24,6 @@ const Cars: React.FC<CarsPageProps> = () => {
     <div className="CarPage">
       <BaseFetcher service={() => carService.getAll()} onBaseFetched={setCars} />
       <Header backgroundImage="/logo/carPage.jpg" />
-      {/* <div id="driveParent">
-        <img src="/logo/carPage.jpg" alt="drive&smile" id="drivePNG"/>
-      </div> */}
       <div className="Car-lst p-5">
         {cars.map((car) => (
           <motion.div key={car.id} whileHover={{ scale: 1.05 }} className="card">

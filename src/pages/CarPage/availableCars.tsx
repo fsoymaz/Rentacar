@@ -13,6 +13,8 @@ import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import FormatPaintIcon from '@mui/icons-material/FormatPaint';
 import { selectFilter } from '../../store/filter/filterSlice';
+import BaseFetcher from '../../components/Fetch/BaseFetcher';
+import carService from '../../service/baseSevice/carService';
 
 const AvailableCars: React.FC = () => {
     const initialState = {
@@ -26,7 +28,7 @@ const AvailableCars: React.FC = () => {
 
     };
 
-    
+
 
     const [state, setState] = useState(initialState);
     const dispatch = useDispatch();
@@ -36,12 +38,10 @@ const AvailableCars: React.FC = () => {
     const email = useSelector((state: RootState) => state.auth.email);
     const {
         category,
-        brandId,
-        modelId,
         minPrice,
         maxPrice,
     } = useSelector(selectFilter);
-    
+
     const filter = useSelector(selectFilter); // Retrieve filter state
 
     const handleRentButtonClick = async (carId: number) => {
@@ -93,14 +93,12 @@ const AvailableCars: React.FC = () => {
             <button onClick={handleApplyFilters}>Apply Filters</button>
             <header>
                 <div className="mnu">
-                    <FetchAvailableCars
-                        key={state.applyFilter.toString()} // Re-fetch when applyFilter changes
+                <FetchAvailableCars
+                        key={state.applyFilter.toString()}
                         startDate={rental.startDate}
                         endDate={rental.endDate}
                         locationId={rental.locationId}
                         category={filter.category}
-                        brand={filter.brandId || 0}
-                        model={filter.modelId || 0}
                         minPrice={filter.minPrice}
                         maxPrice={filter.maxPrice}
                         setState={setState}
@@ -108,7 +106,7 @@ const AvailableCars: React.FC = () => {
                 </div>
             </header>
             <Grid container spacing={2}>
-                {state.cars.map((car) => (
+                {state.cars.map((car)  => (
                     <Grid item key={car.id} xs={12} sm={6} md={4} lg={3}>
                         <Card sx={{ maxWidth: 345, m: 2 }}>
                             <CardMedia

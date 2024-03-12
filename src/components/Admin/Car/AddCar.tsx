@@ -45,7 +45,7 @@ const AddCar: React.FC = () => {
     }
   
     try {
-      const response = await axiosInstance.post('http://localhost:8080/api/cars', formData, {
+      const response = await axiosInstance.post('https://rent-a-car-project.azurewebsites.net/api/cars', formData, {
         headers: {
           // 'Content-Type': 'multipart/form-data', bu header'i çıkarabilirsiniz, axios otomatik olarak doğru değeri atayacaktır
         },

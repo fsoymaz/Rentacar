@@ -20,10 +20,10 @@ const CarStatsChart = () => {
   const fetchData = async () => {
     try {
       const response2 = await axios.get<any[]>(
-        "http://localhost:8080/api/rentals/sales/lastWeek"
+        "https://rent-a-car-project.azurewebsites.net/api/rentals/sales/lastWeek"
       );
       const response = await axios.get<any[]>(
-        "http://localhost:8080/api/rentals/sales/thisWeek"
+        "https://rent-a-car-project.azurewebsites.net/api/rentals/sales/thisWeek"
       );
       setThisData(response.data);
       setLastData(response2.data);

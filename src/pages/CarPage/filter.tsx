@@ -4,11 +4,9 @@ import { Category } from '../../Enum/CategoryEnum';
 import './Car.css';
 import {
     selectFilter,
-    setBrandId,
     setCategory,
     setMaxPrice,
     setMinPrice,
-    setModelId,
 } from '../../store/filter/filterSlice';
 import { BrandModel } from '../../models/brandModels/GetAllBrandModel';
 import brandService from '../../service/baseSevice/brandService';
@@ -22,19 +20,17 @@ const Filter = () => {
     const dispatch = useDispatch();
     const [brands, setBrands] = useState<BrandModel[]>([]);
     const [models, setModels] = useState<modelModels[]>([]);
+    const [selectedBrand, setSelectedBrand] = useState('');
+    const [selectedModel, setSelectedModel] = useState('');
     const [locations, setLocations] = useState<{ id: number; name: string }[]>([]);
     const {
         category,
-        brandId,
-        modelId,
         minPrice,
         maxPrice,
     } = useSelector(selectFilter);
-    
+
     const rental = useSelector(selectRental);
     const { startDate, endDate, locationId } = rental;
-    const safeBrandId = brandId !== null ? brandId.toString() : '';
-    const safeModelId = modelId !== null ? modelId.toString() : '';
     const safeMinPrice = minPrice !== null ? minPrice.toString() : '';
     const safeMaxPrice = maxPrice !== null ? maxPrice.toString() : '';
 
@@ -62,10 +58,9 @@ const Filter = () => {
                     <option value={Category.LUXURY}>Luxury</option>
                 </select>
             </div>
-
             <div className="filter-item">
                 <label>Brand:</label>
-                <select value={safeBrandId} onChange={(e) => dispatch(setBrandId(parseInt(e.target.value)))}>
+                <select value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}>
                     <option value="">All</option>
                     {brands.map(brand => (
                         <option key={brand.id} value={brand.id}>{brand.name}</option>
@@ -75,7 +70,7 @@ const Filter = () => {
 
             <div className="filter-item">
                 <label>Model:</label>
-                <select value={safeModelId} onChange={(e) => dispatch(setModelId(parseInt(e.target.value)))}>
+                <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
                     <option value="">All</option>
                     {models.map(model => (
                         <option key={model.id} value={model.id}>{model.name}</option>

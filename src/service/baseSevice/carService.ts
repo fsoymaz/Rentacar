@@ -24,7 +24,6 @@ class CarService extends BaseService<
   }
   async getCarsByCategory(category: string): Promise<AxiosResponse<GetAllCarResponse[]>> {
     try {
-      console.log('category:', category);
       const response = await axiosInstance.get<GetAllCarResponse[]>(`/cars/category?category=${category}`);
       return response;
     } catch (error) {
@@ -33,15 +32,13 @@ class CarService extends BaseService<
     }
   }
 
-  async getAvailableCarsByCategory(startDate: string, endDate: string, locationId: number, category: string, brandId: number, modelId: number, minPrice: number | null, maxPrice: number | null) {
+  async getAvailableCarsByCategory(startDate: string, endDate: string, locationId: number, category: string, minPrice: number | null, maxPrice: number | null) {
     const response = await axiosInstance.get('/cars/availableByCategory', {
       params: {
         startDate,
         endDate,
         locationId,
         category,
-        brandId,
-        modelId,
         minPrice,
         maxPrice,
       },
@@ -51,7 +48,6 @@ class CarService extends BaseService<
 
   async getAvailableCars(startDate: string, endDate: string, locationId: number): Promise<AxiosResponse<GetAllCarResponse[]>> {
     try {
-      console.log(locationId, startDate, endDate);
       const response = await axiosInstance.get(`/cars/available?startDate=${startDate}&endDate=${endDate}&locationId=${locationId}`);
       return response;
     } catch (error) {
@@ -64,7 +60,6 @@ class CarService extends BaseService<
 
   async getByPlate(plate: string): Promise<AxiosResponse<any>> {
     const response = axiosInstance.get(`/cars/${plate}`);
-    console.log(response);
     return response;
   }
 

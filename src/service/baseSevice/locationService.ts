@@ -1,17 +1,17 @@
-import { locationModels } from "../../models/locations/locationModels";
+import { PostlocationModels, locationModels } from "../../models/locations/locationModels";
 import { BaseService } from "./baseService";
 
 class LocationService extends BaseService<
 	locationModels,
 	locationModels,
-	locationModels,
+	PostlocationModels,
 	locationModels,
 	locationModels,
 	locationModels
 >{
-    constructor() {
-        super();
-        this.apiUrl = "locations";
-    }
+	constructor() {
+		super();
+		this.apiUrl = "locations";
+	}
 }
 export default new LocationService();

@@ -3,3 +3,6 @@ export interface locationModels {
 	name: string;
   }
   
+  export interface PostlocationModels {
+	name: string;
+  }

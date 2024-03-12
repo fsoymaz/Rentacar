@@ -10,7 +10,7 @@ const BaseFetcher: React.FC<BaseFetcherProps> = ({ service, onBaseFetched, param
     useEffect(() => {
         const fetchBase = async () => {
             try {
-                const baseResponse = await service(...params); // Rest parametrelerini spread operatörü ile geçir
+                const baseResponse = await service(...params);
                 onBaseFetched(baseResponse.data);
             } catch (error) {
                 console.error('Error fetching base:', error);
@@ -18,7 +18,7 @@ const BaseFetcher: React.FC<BaseFetcherProps> = ({ service, onBaseFetched, param
         };
 
         fetchBase();
-    }, []); // useEffect bağımlılıklarına params ekleyin
+    }, []);
 
     return null;
 };

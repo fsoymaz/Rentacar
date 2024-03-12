@@ -31,6 +31,8 @@ import AdminBrand from './pages/Admin/AdminPages/AddBrandPage/AdminBrand';
 import PrivateRoute from './contexts/PrivateRoute';
 import CampaignCarsPage from './pages/CarPage/CampaignCarsPage';
 import AdminModel from './pages/Admin/AdminModelPage/AdminModel';
+import AddLocation from './components/AddLocation';
+import Color from './components/Admin/color';
 
 
 function App(): ReactElement {
@@ -59,6 +61,8 @@ function App(): ReactElement {
           <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
           <Route path="/admin/addBrand" element={<AdminRoute><AdminBrand /></AdminRoute>} />
           <Route path="/admin/addModel" element={<AdminRoute><AdminModel /></AdminRoute>} />
+          <Route path="/admin/addlocation" element={<AdminRoute><AddLocation /></AdminRoute>} />
+          <Route path="/admin/addcolor" element={<AdminRoute><Color /></AdminRoute>} />
           <Route path="/admin/admincar" element={<AdminRoute><Car /></AdminRoute>} />
 
           <Route path="/register" element={<RegisterCustomer />} />

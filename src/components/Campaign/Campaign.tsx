@@ -23,7 +23,7 @@ const Campaign: React.FC<CampaignProps> = (
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance("http://localhost:8080/api/cars/discounted");
+        const response = await axiosInstance("https://rent-a-car-project.azurewebsites.net/api/cars/discounted");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching campaign cars:", error);
