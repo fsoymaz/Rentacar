@@ -1,12 +1,13 @@
 import path from 'path';
 import { Configuration } from 'webpack';
+import TerserPlugin from 'terser-webpack-plugin';
 
 const config: Configuration = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     fallback: { "crypto": require.resolve("crypto-browserify") }
   },
-  entry: './src/index.ts', // Projenizin ana giriş dosyasının yolu
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -19,8 +20,13 @@ const config: Configuration = {
         exclude: /node_modules/
       }
     ]
-  }
-  // Diğer Webpack ayarları...
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+    ],
+  },
 };
 
 export default config;

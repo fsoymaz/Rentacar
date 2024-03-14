@@ -51,13 +51,13 @@ const RentalByUser = () => {
                                     <div className="crd-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                                         <div className="row align-items-center">
                                             <div className="col-lg-6 mb-4 mb-lg-0">
-                                                <img src={rental.carResponse.imagePath} alt="..." />
+                                                <img src={rental.carResponse.imageUrl} alt="..." />
                                             </div>
                                             <div className="col-lg-6 px-xl-10">
                                                 <div className="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
                                                     <h2 className="h5 text-white mb-0">
-                                                        {rental.carResponse.model.brand.name}{" "}
-                                                        {rental.carResponse.model.name}
+                                                        {rental.carResponse.brandName}{" "}
+                                                        {rental.carResponse.modelName}
                                                     </h2>
                                                 </div>
                                                 <ul className="list-unstyled mb-1-9">
