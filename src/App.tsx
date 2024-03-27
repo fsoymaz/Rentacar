@@ -33,6 +33,8 @@ import CampaignCarsPage from './pages/CarPage/CampaignCarsPage';
 import AdminModel from './pages/Admin/AdminModelPage/AdminModel';
 import AddLocation from './components/AddLocation';
 import Color from './components/Admin/color';
+import ForgotPasswordPage from './pages/Password/ForgotPasswordPage';
+import ResetPasswordPage from './pages/Password/ResetPasswordPage';
 
 
 function App(): ReactElement {
@@ -43,8 +45,8 @@ function App(): ReactElement {
   useEffect(() => {
     window.scrollTo(0, 0); // Sayfanın en üstüne scroll yap
   }, [location.pathname]); // Konum değiştiğinde çalış
-// localStorage.clear(); // LocalStorage için
-// sessionStorage.clear(); // SessionStorage için
+  // localStorage.clear(); // LocalStorage için
+  // sessionStorage.clear(); // SessionStorage için
 
   return (
     <div className='App'>
@@ -74,6 +76,8 @@ function App(): ReactElement {
           <Route path="/invoice" element={<PrivateRoute><Succsess /></PrivateRoute>} />
           <Route path="/userRentals" element={<PrivateRoute><RentalByUser /></PrivateRoute>} />
           <Route path="/campainCar" element={<CampaignCarsPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="*" element={<div>Hata: Bu sayfa bulunamadı!</div>} />
         </Routes>
       </div>
