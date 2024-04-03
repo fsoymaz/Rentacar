@@ -10,6 +10,9 @@ import { loginSuccess } from "../../store/user/userSlice";
 import { setToken } from "../../utils/Interceptors";
 import { addLogin } from "../../models/auth/addLogin";
 import SignedIn from "../../components/Navbar/SignedIn";
+import { Button } from "semantic-ui-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -59,6 +62,17 @@ const LoginForm = () => {
       [name]: value,
     }));
   };
+  const handleForgotPasswordClick = () => {
+    navigate('/forgot-password');
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.color = 'white';
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.backgroundColor = 'transparent';
+  };
 
   return (
     <div className="wrapper fadeInDown">
@@ -94,9 +108,16 @@ const LoginForm = () => {
         </form>
 
         <div id="formFooter">
-          <a className="underlineHover" href="#">
-            Şifre mi Unuttum ?
-          </a>
+        <Button
+            type="button"
+            onClick={handleForgotPasswordClick}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="transparent-button"
+          >
+            <FontAwesomeIcon icon={faRedo} className="mr-2" />
+            Şifremi Unuttum
+          </Button>
         </div>
       </div>
     </div>

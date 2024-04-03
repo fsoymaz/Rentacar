@@ -26,15 +26,7 @@ export default function SignedOut({ signIn }: { signIn: () => void }) {
     navigate('/login');
   };
 
-  // Şifremi Unuttum için yönlendirme işlevi
-  const handleForgotPasswordClick = () => {
-    navigate('/forgot-password');
-  };
 
-  // Şifre Sıfırla için yönlendirme işlevi
-  const handleResetPasswordClick = () => {
-    navigate('/reset-password');
-  };
 
   return (
     <Menu.Item>
@@ -59,16 +51,6 @@ export default function SignedOut({ signIn }: { signIn: () => void }) {
           >
             <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
             Kayıt Ol
-          </Button>
-          <Button
-            type="button"
-            onClick={handleForgotPasswordClick}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="transparent-button"
-          >
-            <FontAwesomeIcon icon={faRedo} className="mr-2" />
-            Şifremi Unuttum
           </Button>
         </>
       )}

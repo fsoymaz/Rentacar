@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faCar, faTags, faCubes } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faCar, faTags, faCubes, faMapMarkerAlt, faPalette } from '@fortawesome/free-solid-svg-icons';
 
 export const navLinks = [
     {
@@ -21,6 +21,16 @@ export const navLinks = [
       path: "/admin/addmodel",
       display: "Model",
       icon: faCubes
+    },
+    {
+      path: "/admin/addlocation",
+      display: "Lokasyon",
+      icon: faMapMarkerAlt
+    },
+    {
+      path: "/admin/addcolor",
+      display: "Renk",
+      icon: faPalette
     },
 ];
 
