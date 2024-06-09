@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Poppins&display=swap');
+
+
+.blanco {
+    margin: 0 auto;
+    width: 80%;
+    background-color: rgb(206, 0, 38);
+    border-radius: 1.5em;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+	margin-bottom: 200px;
+    top: 30%;
+
+}
+
+.blanco h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.blanco form {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.fechas {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fecha {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.fecha input[type="date"] {
+    padding: 1em;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: .4em;
+}
+
+
+
+form label {
+    margin-top: 1em;
+}
+
+form input {
+    border-radius: 0.2em;
+    border: .5px solid gray;
+}
+
+form input[type="text"] {
+    margin-bottom: 1em;
+    padding: 1em;
+    font-weight: bold;
+}
+
+form input[type="date"] {
+    font-weight: bold;
+}
+
+form input[type="time"] {
+    font-weight: bold;
+}
+
+
+form input[placeholder] {
+    color: rgb(35, 34, 34);
+    font-family: 'Roboto', sans-serif;
+}
+
+form input[type="submit"] {
+    margin-top: 2%;
+    width: 100%;
+    background: rgb(6, 49, 78);
+    padding: 2%;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+}
+
+
+#pickupLocation {
+  padding: 10px;
+  font-size: 16px;
+}

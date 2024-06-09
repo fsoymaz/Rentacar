@@ -1,7 +1,0 @@
-/* RentalDetail.css */
-.img-fluid {
-    width: 100%;
-    height: 500px; /* Yüksekliği 500px olarak ayarla */
-    object-fit: cover; /* Görüntünün oranını koru ve kutuya sığdır */
-}
-
