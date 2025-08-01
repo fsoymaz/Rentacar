@@ -1,3 +1,4 @@
-@forward "./boilerplate";
-@forward "./colors";
-@forward "./typhography";
+@import "./colors";
+@import "./utilities";
+@import "./boilerplate";
+@import "./typhography";

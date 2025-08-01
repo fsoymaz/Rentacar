@@ -1,23 +1,48 @@
-# Node.js LTS sürümünü temel alın
-FROM --platform=linux/amd64 node:21.6.2
+# Multi-stage build for optimal image size
+FROM node:18-alpine AS builder
 
-# Çalışma dizinini ayarlayın
-WORKDIR /var/app
+# Set working directory
+WORKDIR /app
 
-# package.json ve package-lock.json dosyalarını kopyalayın
+# Copy package files first for better layer caching
 COPY package*.json ./
 
-COPY package-lock.json ./
+# Install dependencies (including dev dependencies for build)
+RUN npm install
 
-COPY ./ ./
-# Bağımlılıkları yükleyin
-RUN apt-get update && apt-get install -y vim
-RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
-RUN npm install --loglevel verbose
-# Uygulama kodunu kopyalayın
+# Copy source code
+COPY . .
 
-# Uygulamanın çalışacağı portu belirtin
-EXPOSE 3000
+# Build the application
+RUN npm run build
 
-# Uygulamayı başlatın
-CMD ["npm", "start"]
+# Production stage with Nginx
+FROM nginx:alpine
+
+# Copy built files from builder stage
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Copy custom nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Add non-root user for security
+RUN adduser -D -s /bin/sh nginxuser && \
+    chown -R nginxuser:nginxuser /usr/share/nginx/html && \
+    chown -R nginxuser:nginxuser /var/cache/nginx && \
+    chown -R nginxuser:nginxuser /var/log/nginx && \
+    chown -R nginxuser:nginxuser /etc/nginx/conf.d && \
+    touch /var/run/nginx.pid && \
+    chown -R nginxuser:nginxuser /var/run/nginx.pid
+
+# Switch to non-root user
+USER nginxuser
+
+# Expose port
+EXPOSE 80
+
+# Add health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:80 || exit 1
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]

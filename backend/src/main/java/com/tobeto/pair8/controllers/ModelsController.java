@@ -3,7 +3,7 @@ package com.tobeto.pair8.controllers;
 import com.tobeto.pair8.services.abstracts.ModelService;
 import com.tobeto.pair8.services.dtos.model.requests.AddModelRequest;
 import com.tobeto.pair8.services.dtos.model.requests.UpdateModelRequest;
-import com.tobeto.pair8.services.dtos.model.responses.GetAllListModelRespose;
+import com.tobeto.pair8.services.dtos.model.responses.GetAllListModelResponse;
 import com.tobeto.pair8.services.dtos.model.responses.GetByIdModelResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -32,7 +32,7 @@ public class ModelsController {
         modelService.delete(id);
     }
     @GetMapping
-    public List<GetAllListModelRespose> getAll() {
+    public List<GetAllListModelResponse> getAll() {
         return modelService.getAll();
     }
 

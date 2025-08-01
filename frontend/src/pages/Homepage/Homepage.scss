@@ -1,0 +1,393 @@
+@import '../../global/index';
+
+.homepage {
+  overflow-x: hidden;
+}
+
+// Hero Section
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, $primary-main 0%, $secondary-main 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff08" points="0,1000 1000,0 1000,1000"/></svg>');
+    z-index: 1;
+  }
+  
+  .hero-overlay {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-content {
+    color: white;
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: $radius-full;
+      padding: $spacing-2 $spacing-4;
+      font-size: $text-sm;
+      font-weight: $font-medium;
+      margin-bottom: $spacing-6;
+      animation: slideInLeft 0.8s ease-out;
+    }
+    
+    .hero-title {
+      font-size: clamp($text-3xl, 4vw, $text-5xl);
+      font-weight: $font-bold;
+      line-height: 1.2;
+      margin-bottom: $spacing-6;
+      animation: slideInLeft 0.8s ease-out 0.2s both;
+      
+      .text-primary {
+        color: $accent-light !important;
+      }
+    }
+    
+    .hero-description {
+      font-size: $text-lg;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: $spacing-8;
+      animation: slideInLeft 0.8s ease-out 0.4s both;
+    }
+    
+    .hero-buttons {
+      animation: slideInLeft 0.8s ease-out 0.6s both;
+      
+      .hero-btn-primary {
+        @include button-primary;
+        padding: $spacing-4 $spacing-8;
+        font-size: $text-lg;
+        background: white;
+        color: $primary-main;
+        border: none;
+        
+        &:hover {
+          background: $neutral-100;
+          transform: translateY(-2px);
+          box-shadow: $shadow-xl;
+        }
+      }
+      
+      .hero-btn-secondary {
+        padding: $spacing-4 $spacing-8;
+        font-size: $text-lg;
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+        
+        &:hover {
+          background: white;
+          color: $primary-main;
+          border-color: white;
+        }
+      }
+    }
+    
+    .hero-stats {
+      animation: slideInLeft 0.8s ease-out 0.8s both;
+      
+      .stat-item {
+        text-align: center;
+        
+        .stat-value {
+          font-size: $text-2xl;
+          font-weight: $font-bold;
+          color: white;
+          display: block;
+        }
+        
+        .stat-label {
+          font-size: $text-sm;
+          opacity: 0.8;
+          margin-top: $spacing-1;
+        }
+      }
+    }
+  }
+  
+  .hero-image {
+    position: relative;
+    animation: slideInRight 0.8s ease-out 0.4s both;
+    
+    .floating-card {
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+      
+      img {
+        border-radius: $radius-xl;
+        box-shadow: $shadow-2xl;
+        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+      }
+    }
+  }
+}
+
+// Rental Form Section
+.rental-form-section {
+  padding: $spacing-24 0;
+  background: $bg-primary;
+  margin-top: -$spacing-20;
+  position: relative;
+  z-index: 10;
+  
+  .section-header {
+    margin-bottom: $spacing-12;
+    
+    h2 {
+      font-size: $text-3xl;
+      font-weight: $font-bold;
+      color: $text-primary;
+      margin-bottom: $spacing-4;
+    }
+    
+    p {
+      font-size: $text-lg;
+      color: $text-secondary;
+    }
+  }
+  
+  .rental-form-card {
+    @include card-base;
+    padding: $spacing-8;
+    border-radius: $radius-2xl;
+    box-shadow: $shadow-xl;
+    background: white;
+  }
+}
+
+// Features Section
+.features-section {
+  padding: $spacing-24 0;
+  background: white;
+  
+  .section-header {
+    margin-bottom: $spacing-16;
+    
+    h2 {
+      font-size: $text-3xl;
+      font-weight: $font-bold;
+      color: $text-primary;
+      margin-bottom: $spacing-4;
+    }
+    
+    p {
+      font-size: $text-lg;
+      color: $text-secondary;
+    }
+  }
+  
+  .feature-card {
+    @include card-base;
+    border: none;
+    border-radius: $radius-xl;
+    padding: $spacing-6;
+    transition: all $transition-normal;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $shadow-xl;
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, $primary-light, $secondary-light);
+      border-radius: $radius-full;
+      @include flex-center;
+      margin: 0 auto $spacing-6;
+      color: white;
+      font-size: $text-2xl;
+      
+      svg {
+        animation: pulse 2s infinite;
+      }
+    }
+    
+    .feature-title {
+      font-size: $text-xl;
+      font-weight: $font-semibold;
+      color: $text-primary;
+      margin-bottom: $spacing-3;
+    }
+    
+    .feature-description {
+      color: $text-secondary;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Testimonials Section
+.testimonials-section {
+  padding: $spacing-24 0;
+  background: $bg-primary;
+  
+  .section-header {
+    margin-bottom: $spacing-16;
+    
+    h2 {
+      font-size: $text-3xl;
+      font-weight: $font-bold;
+      color: $text-primary;
+      margin-bottom: $spacing-4;
+    }
+    
+    p {
+      font-size: $text-lg;
+      color: $text-secondary;
+    }
+  }
+  
+  .testimonial-card {
+    @include card-base;
+    border: none;
+    border-radius: $radius-xl;
+    padding: $spacing-6;
+    position: relative;
+    
+    &::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: $spacing-6;
+      font-size: 80px;
+      color: $primary-light;
+      opacity: 0.3;
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .testimonial-rating {
+      .star-filled {
+        color: $warning-main;
+        margin-right: $spacing-1;
+      }
+    }
+    
+    .testimonial-comment {
+      font-style: italic;
+      color: $text-secondary;
+      line-height: 1.6;
+      margin-bottom: $spacing-4;
+    }
+    
+    .testimonial-author {
+      strong {
+        color: $text-primary;
+        font-weight: $font-semibold;
+      }
+    }
+  }
+}
+
+// CTA Section
+.cta-section {
+  padding: $spacing-24 0;
+  background: linear-gradient(135deg, $primary-main, $secondary-main);
+  color: white;
+  text-align: center;
+  
+  h2 {
+    font-size: $text-3xl;
+    font-weight: $font-bold;
+    margin-bottom: $spacing-4;
+  }
+  
+  p {
+    font-size: $text-lg;
+    opacity: 0.9;
+    margin-bottom: $spacing-8;
+  }
+  
+  .cta-button {
+    @include button-primary;
+    padding: $spacing-4 $spacing-8;
+    font-size: $text-lg;
+    background: white;
+    color: $primary-main;
+    border: none;
+    
+    &:hover {
+      background: $neutral-100;
+      transform: translateY(-2px);
+      box-shadow: $shadow-xl;
+    }
+  }
+}
+
+// Animations
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+// Responsive Design
+@include responsive(md) {
+  .hero-section {
+    .hero-content {
+      .hero-title {
+        font-size: $text-4xl;
+      }
+    }
+  }
+}
+
+@include responsive(lg) {
+  .hero-section {
+    .hero-content {
+      .hero-title {
+        font-size: $text-5xl;
+      }
+    }
+  }
+} 

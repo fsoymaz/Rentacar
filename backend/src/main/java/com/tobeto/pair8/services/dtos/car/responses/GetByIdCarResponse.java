@@ -4,7 +4,7 @@ import com.tobeto.pair8.entities.concretes.Category;
 import com.tobeto.pair8.entities.concretes.FuelType;
 import com.tobeto.pair8.entities.concretes.TransmissionType;
 import com.tobeto.pair8.services.dtos.color.responses.GetColorNameResponse;
-import com.tobeto.pair8.services.dtos.model.responses.GetAllListModelRespose;
+import com.tobeto.pair8.services.dtos.model.responses.GetAllListModelResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +19,7 @@ public class GetByIdCarResponse {
     private Double dailyPrice;
     private Double discount;
     private String imagePath;
-    private GetAllListModelRespose model;
+    private GetAllListModelResponse model;
     private GetColorNameResponse color;
     private TransmissionType transmissionType;
     private FuelType fuelType;

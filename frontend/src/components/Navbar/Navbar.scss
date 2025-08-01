@@ -1,0 +1,343 @@
+@import '../../global/index';
+
+.custom-navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid $border-light;
+  padding: $spacing-4 0;
+  transition: all $transition-normal;
+  z-index: $z-fixed;
+  
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(30px);
+    padding: $spacing-3 0;
+    box-shadow: $shadow-lg;
+  }
+  
+  .container {
+    @include flex-between;
+  }
+}
+
+// Brand Logo
+.brand-logo {
+  text-decoration: none !important;
+  
+  .logo-container {
+    @include flex-start;
+    gap: $spacing-3;
+    
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, $primary-main, $secondary-main);
+      border-radius: $radius-lg;
+      @include flex-center;
+      color: white;
+      font-size: $text-xl;
+      transition: all $transition-fast;
+      
+      &:hover {
+        transform: rotate(10deg) scale(1.05);
+      }
+    }
+    
+    .logo-text {
+      font-family: $font-primary;
+      font-weight: $font-bold;
+      font-size: $text-2xl;
+      
+      .brand-name {
+        color: $text-primary;
+        transition: color $transition-fast;
+      }
+      
+      .brand-accent {
+        color: $primary-main;
+        font-size: $text-3xl;
+        margin: 0 $spacing-1;
+        transition: all $transition-fast;
+        
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+  
+  &:hover .logo-text .brand-name {
+    color: $primary-main;
+  }
+}
+
+// Desktop Navigation
+.desktop-nav {
+  gap: $spacing-6;
+  
+  .nav-link-custom {
+    position: relative;
+    color: $text-primary !important;
+    font-weight: $font-medium;
+    font-size: $text-base;
+    text-decoration: none !important;
+    padding: $spacing-3 $spacing-4;
+    border-radius: $radius-lg;
+    transition: all $transition-fast;
+    @include flex-center;
+    gap: $spacing-2;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $primary-main, $secondary-main);
+      transition: all $transition-fast;
+      transform: translateX(-50%);
+    }
+    
+    &:hover, &.active {
+      color: $primary-main !important;
+      background: $primary-lighter;
+      
+      &::after {
+        width: 80%;
+      }
+    }
+    
+    &.dropdown-toggle {
+      .fa-chevron-down {
+        font-size: $text-xs;
+        transition: transform $transition-fast;
+      }
+      
+      &:hover .fa-chevron-down {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+// Dropdown Menu
+.nav-dropdown {
+  position: relative;
+  
+  .dropdown-menu-custom {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 250px;
+    background: white;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-xl;
+    border: 1px solid $border-light;
+    padding: $spacing-4;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all $transition-normal;
+    z-index: $z-dropdown;
+    
+    .dropdown-item-custom {
+      display: flex;
+      align-items: center;
+      padding: $spacing-3 $spacing-4;
+      color: $text-primary;
+      text-decoration: none;
+      border-radius: $radius-md;
+      transition: all $transition-fast;
+      font-weight: $font-medium;
+      
+      &:hover {
+        background: $primary-lighter;
+        color: $primary-main;
+        transform: translateX(5px);
+      }
+      
+      svg {
+        color: $primary-main;
+      }
+    }
+  }
+  
+  &:hover .dropdown-menu-custom {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+// Auth Section
+.auth-section {
+  gap: $spacing-3;
+}
+
+// Mobile Menu Toggle
+.mobile-menu-toggle {
+  width: 45px;
+  height: 45px;
+  border: none;
+  background: $primary-lighter;
+  color: $primary-main;
+  border-radius: $radius-lg;
+  @include flex-center;
+  transition: all $transition-fast;
+  font-size: $text-lg;
+  
+  &:hover {
+    background: $primary-main;
+    color: white;
+    transform: scale(1.05);
+  }
+}
+
+// Mobile Offcanvas
+.mobile-offcanvas {
+  .offcanvas {
+    width: 320px !important;
+    background: white;
+    border-left: 1px solid $border-light;
+  }
+  
+  .mobile-header {
+    background: $bg-primary;
+    border-bottom: 1px solid $border-light;
+    padding: $spacing-6;
+    
+    .mobile-logo {
+      font-family: $font-primary;
+      font-weight: $font-bold;
+      font-size: $text-xl;
+      
+      .brand-name {
+        color: $text-primary;
+      }
+      
+      .brand-accent {
+        color: $primary-main;
+        margin: 0 $spacing-1;
+      }
+    }
+    
+    .btn-close {
+      width: 30px;
+      height: 30px;
+      background-size: 16px;
+      opacity: 0.7;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .mobile-body {
+    padding: $spacing-6;
+  }
+  
+  .mobile-nav {
+    .mobile-nav-link {
+      color: $text-primary !important;
+      text-decoration: none !important;
+      padding: $spacing-4;
+      border-radius: $radius-lg;
+      transition: all $transition-fast;
+      font-weight: $font-medium;
+      @include flex-start;
+      gap: $spacing-3;
+      margin-bottom: $spacing-2;
+      
+      &:hover, &.active {
+        background: $primary-lighter;
+        color: $primary-main !important;
+        transform: translateX(5px);
+      }
+      
+      &.sub-link {
+        margin-left: $spacing-6;
+        font-size: $text-sm;
+        padding: $spacing-3 $spacing-4;
+        
+        svg {
+          color: $primary-main;
+        }
+      }
+    }
+    
+    .mobile-nav-section {
+      margin: $spacing-6 0;
+      
+      .mobile-nav-title {
+        font-weight: $font-semibold;
+        color: $text-secondary;
+        font-size: $text-sm;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: $spacing-3;
+        padding: 0 $spacing-4;
+      }
+    }
+  }
+  
+  .mobile-auth-section {
+    border-top: 1px solid $border-light;
+    padding-top: $spacing-6;
+  }
+}
+
+// Animations
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive adjustments
+@include responsive(md) {
+  .custom-navbar {
+    padding: $spacing-3 0;
+  }
+  
+  .brand-logo .logo-container {
+    gap: $spacing-2;
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      font-size: $text-lg;
+    }
+    
+    .logo-text {
+      font-size: $text-xl;
+      
+      .brand-accent {
+        font-size: $text-2xl;
+      }
+    }
+  }
+}
+
+@include responsive(lg) {
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+}
+
+// Legacy CSS override
+.navbar-nav .nav-link {
+  color: inherit !important;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: inherit !important;
+  text-decoration: none !important;
+} 

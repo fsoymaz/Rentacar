@@ -8,18 +8,30 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Pair8Application {
 
     public static void main(String[] args) {
-        // Https deneme
-        Dotenv dotenv = Dotenv.configure()
-                .directory(System.getProperty("user.dir"))
-                .load();
+        // Load .env file if it exists (for local development)
+        try {
+            Dotenv dotenv = Dotenv.configure()
+                    .directory(System.getProperty("user.dir"))
+                    .ignoreIfMissing()
+                    .load();
 
-        System.setProperty("spring.datasource.url", dotenv.get("DATABASE_URL"));
-        System.setProperty("spring.datasource.username", dotenv.get("DATABASE_USERNAME"));
-        System.setProperty("spring.datasource.password", dotenv.get("DATABASE_PASSWORD"));
-        System.setProperty("spring.security.jwt.key", dotenv.get("JWT_KEY"));
-        System.setProperty("spring.mail.username", dotenv.get("MAIL_USERNAME"));
-        System.setProperty("spring.mail.password", dotenv.get("MAIL_PASSWORD"));
+            // Only set system properties if they're not already set (Docker environment variables take precedence)
+            setPropertyIfNotExists("spring.datasource.url", dotenv.get("DATABASE_URL"));
+            setPropertyIfNotExists("spring.datasource.username", dotenv.get("DATABASE_USERNAME"));
+            setPropertyIfNotExists("spring.datasource.password", dotenv.get("DATABASE_PASSWORD"));
+            setPropertyIfNotExists("spring.security.jwt.key", dotenv.get("JWT_KEY"));
+            setPropertyIfNotExists("spring.mail.username", dotenv.get("MAIL_USERNAME"));
+            setPropertyIfNotExists("spring.mail.password", dotenv.get("MAIL_PASSWORD"));
+        } catch (Exception e) {
+            System.out.println("No .env file found, using environment variables or application.properties");
+        }
 
         SpringApplication.run(Pair8Application.class, args);
+    }
+
+    private static void setPropertyIfNotExists(String propertyName, String value) {
+        if (System.getProperty(propertyName) == null && value != null && !value.isEmpty()) {
+            System.setProperty(propertyName, value);
+        }
     }
 }

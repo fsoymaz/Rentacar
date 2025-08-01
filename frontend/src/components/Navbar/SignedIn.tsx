@@ -1,4 +1,6 @@
-import { Dropdown, Icon } from 'semantic-ui-react';
+import { Dropdown } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faSignOutAlt, faMoneyBill, faCog } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutSuccess } from '../../store/user/userSlice';
@@ -25,30 +27,35 @@ export default function SignedIn({ }: {}) {
   return (
     <>
       {isAuthenticated ? (
-        <Dropdown  text={username} pointing className='link item profile px-3'>
-          <Dropdown.Menu >
-            <Dropdown.Item className='bg-white'  onClick={() => { navigate('/profile'); }}>
-              <Icon name='user' />
+        <Dropdown className="profile">
+          <Dropdown.Toggle variant="link" id="dropdown-basic" className="text-decoration-none text-dark">
+            <FontAwesomeIcon icon={faUser} className="me-1" />
+            {username}
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => { navigate('/profile'); }}>
+              <FontAwesomeIcon icon={faUser} className="me-2" />
               <strong>Hesabım</strong>
-            </Dropdown.Item >
+            </Dropdown.Item>
             {isAuthenticated.role === 'ADMIN' &&
-              <Dropdown.Item className='bg-white' onClick={() => { navigate('/admin'); }}>
-                <Icon name='user' />
+              <Dropdown.Item onClick={() => { navigate('/admin'); }}>
+                <FontAwesomeIcon icon={faCog} className="me-2" />
                 <strong>Admin Panel</strong>
               </Dropdown.Item>
             }
-            <Dropdown.Item className='bg-white' onClick={() => {navigate('/userRentals');}}>
-              <Icon name='money' />
+            <Dropdown.Item onClick={() => {navigate('/userRentals');}}>
+              <FontAwesomeIcon icon={faMoneyBill} className="me-2" />
               <strong>Kiralama</strong>
             </Dropdown.Item>
-            <Dropdown.Item className='bg-white' onClick={handleLogout}>
-              <Icon name='sign out' />
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={handleLogout}>
+              <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />
               <strong>Çıkış yap</strong>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       ) : (
-          <Link to='/login'>Giriş yap</Link>
+          <Link to='/login' className="btn btn-outline-primary">Giriş yap</Link>
         )}
     </>
   );

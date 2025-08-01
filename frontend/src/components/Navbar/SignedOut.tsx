@@ -1,6 +1,6 @@
 // SignedOut.tsx
 import React from 'react';
-import { Button, Menu } from 'semantic-ui-react';
+import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faUserPlus, faRedo } from '@fortawesome/free-solid-svg-icons'; // faRedo ikonu şifre sıfırlama için kullanılabilir.
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +29,7 @@ export default function SignedOut({ signIn }: { signIn: () => void }) {
 
 
   return (
-    <Menu.Item>
+    <>
       {isAuthenticated.id === 0 && (
         <>
           <Button
@@ -37,9 +37,10 @@ export default function SignedOut({ signIn }: { signIn: () => void }) {
             type="button"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="transparent-button"
+            variant="outline-primary"
+            className="me-2"
           >
-            <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
+            <FontAwesomeIcon icon={faSignInAlt} className="me-1" />
             Giriş Yap
           </Button>
           <Button
@@ -47,13 +48,13 @@ export default function SignedOut({ signIn }: { signIn: () => void }) {
             onClick={handleRegisterClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="transparent-button"
+            variant="primary"
           >
-            <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
+            <FontAwesomeIcon icon={faUserPlus} className="me-1" />
             Kayıt Ol
           </Button>
         </>
       )}
-    </Menu.Item>
+    </>
   );
 }

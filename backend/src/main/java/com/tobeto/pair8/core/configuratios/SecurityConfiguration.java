@@ -33,6 +33,7 @@ public class SecurityConfiguration {
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
+            "/actuator/**",
             "/api/customers/**",
             "/api/rentals/**",
             "/api/models/**",
